@@ -1,0 +1,3571 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="http://pdfkit.org/">pdfkit (v0.8.0)</a>
+</h1>
+<h4>A PDF generation library for Node.js</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit">module pdfkit</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.ReadableState">
+            function <span class="apidocSignatureSpan">pdfkit.</span>ReadableState
+            <span class="apidocSignatureSpan">(options, stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit._fromList">
+            function <span class="apidocSignatureSpan">pdfkit.</span>_fromList
+            <span class="apidocSignatureSpan">(n, state)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data">
+            function <span class="apidocSignatureSpan">pdfkit.</span>data
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font">
+            function <span class="apidocSignatureSpan">pdfkit.</span>font
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.image">
+            function <span class="apidocSignatureSpan">pdfkit.</span>image
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper">
+            function <span class="apidocSignatureSpan">pdfkit.</span>line_wrapper
+            <span class="apidocSignatureSpan">(document, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.object">
+            function <span class="apidocSignatureSpan">pdfkit.</span>object
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.page">
+            function <span class="apidocSignatureSpan">pdfkit.</span>page
+            <span class="apidocSignatureSpan">(document, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.path">
+            function <span class="apidocSignatureSpan">pdfkit.</span>path
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference">
+            function <span class="apidocSignatureSpan">pdfkit.</span>reference
+            <span class="apidocSignatureSpan">(document, id, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.super_">
+            function <span class="apidocSignatureSpan">pdfkit.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>__super__</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>data.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>font.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>gradient</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>line_wrapper.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>page.prototype</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.</span>reference.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.data">module pdfkit.data</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.data">
+            function <span class="apidocSignatureSpan">pdfkit.</span>data
+            <span class="apidocSignatureSpan">(data)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.data.prototype">module pdfkit.data.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.byteAt">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>byteAt
+            <span class="apidocSignatureSpan">(index)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.read">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>read
+            <span class="apidocSignatureSpan">(bytes)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readBool">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readBool
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readByte">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readByte
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readInt">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readInt
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readInt16">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readInt16
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readInt32">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readInt32
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readLongLong">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readLongLong
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readShort">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readShort
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readString">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readString
+            <span class="apidocSignatureSpan">(length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readUInt16">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readUInt16
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.readUInt32">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readUInt32
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.slice">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>slice
+            <span class="apidocSignatureSpan">(start, end)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.stringAt">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>stringAt
+            <span class="apidocSignatureSpan">(pos, length)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.write">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>write
+            <span class="apidocSignatureSpan">(bytes)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeBool">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeBool
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeByte">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeByte
+            <span class="apidocSignatureSpan">(byte)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeInt">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeInt
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeInt16">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeInt16
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeInt32">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeInt32
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeLongLong">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeLongLong
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeShort">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeShort
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeString">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeString
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeUInt16">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeUInt16
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.data.prototype.writeUInt32">
+            function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeUInt32
+            <span class="apidocSignatureSpan">(val)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.font">module pdfkit.font</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.font">
+            function <span class="apidocSignatureSpan">pdfkit.</span>font
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.open">
+            function <span class="apidocSignatureSpan">pdfkit.font.</span>open
+            <span class="apidocSignatureSpan">(document, src, family, id)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.font.prototype">module pdfkit.font.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.prototype.embed">
+            function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>embed
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.prototype.encode">
+            function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>encode
+            <span class="apidocSignatureSpan">(text)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.prototype.finalize">
+            function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>finalize
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.prototype.lineHeight">
+            function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>lineHeight
+            <span class="apidocSignatureSpan">(size, includeGap)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.prototype.ref">
+            function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>ref
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.font.prototype.widthOfString">
+            function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>widthOfString
+            <span class="apidocSignatureSpan">(text)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.gradient">module pdfkit.gradient</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.gradient.PDFGradient">
+            function <span class="apidocSignatureSpan">pdfkit.gradient.</span>PDFGradient
+            <span class="apidocSignatureSpan">(doc)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.gradient.PDFLinearGradient">
+            function <span class="apidocSignatureSpan">pdfkit.gradient.</span>PDFLinearGradient
+            <span class="apidocSignatureSpan">(doc, x1, y1, x2, y2)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.gradient.PDFRadialGradient">
+            function <span class="apidocSignatureSpan">pdfkit.gradient.</span>PDFRadialGradient
+            <span class="apidocSignatureSpan">(doc, x1, y1, r1, x2, y2, r2)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.image">module pdfkit.image</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.image.image">
+            function <span class="apidocSignatureSpan">pdfkit.</span>image
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.image.open">
+            function <span class="apidocSignatureSpan">pdfkit.image.</span>open
+            <span class="apidocSignatureSpan">(src, label)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.line_wrapper">module pdfkit.line_wrapper</a><ol>
+
+        <li>
+
+            <span class="apidocSignatureSpan">boolean <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>usingDomains</span>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.line_wrapper">
+            function <span class="apidocSignatureSpan">pdfkit.</span>line_wrapper
+            <span class="apidocSignatureSpan">(document, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.EventEmitter">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>EventEmitter
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.init">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>init
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.listenerCount">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>listenerCount
+            <span class="apidocSignatureSpan">(emitter, type)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">number <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>defaultMaxListeners</span>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.line_wrapper.prototype">module pdfkit.line_wrapper.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.prototype.constructor">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(document, options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.prototype.eachWord">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>eachWord
+            <span class="apidocSignatureSpan">(text, fn)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.prototype.nextSection">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>nextSection
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.prototype.wordWidth">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>wordWidth
+            <span class="apidocSignatureSpan">(word)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.line_wrapper.prototype.wrap">
+            function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>wrap
+            <span class="apidocSignatureSpan">(text, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.object">module pdfkit.object</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.object.object">
+            function <span class="apidocSignatureSpan">pdfkit.</span>object
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.object.convert">
+            function <span class="apidocSignatureSpan">pdfkit.object.</span>convert
+            <span class="apidocSignatureSpan">(object)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.page">module pdfkit.page</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.page.page">
+            function <span class="apidocSignatureSpan">pdfkit.</span>page
+            <span class="apidocSignatureSpan">(document, options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.page.prototype">module pdfkit.page.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.page.prototype.end">
+            function <span class="apidocSignatureSpan">pdfkit.page.prototype.</span>end
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.page.prototype.maxY">
+            function <span class="apidocSignatureSpan">pdfkit.page.prototype.</span>maxY
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.page.prototype.write">
+            function <span class="apidocSignatureSpan">pdfkit.page.prototype.</span>write
+            <span class="apidocSignatureSpan">(chunk)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.path">module pdfkit.path</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.path.path">
+            function <span class="apidocSignatureSpan">pdfkit.</span>path
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.path.apply">
+            function <span class="apidocSignatureSpan">pdfkit.path.</span>apply
+            <span class="apidocSignatureSpan">(doc, path)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.reference">module pdfkit.reference</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.reference">
+            function <span class="apidocSignatureSpan">pdfkit.</span>reference
+            <span class="apidocSignatureSpan">(document, id, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.WritableState">
+            function <span class="apidocSignatureSpan">pdfkit.reference.</span>WritableState
+            <span class="apidocSignatureSpan">(options, stream)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.super_">
+            function <span class="apidocSignatureSpan">pdfkit.reference.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">pdfkit.reference.</span>__super__</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit.reference.prototype">module pdfkit.reference.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.prototype._write">
+            function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>_write
+            <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.prototype.constructor">
+            function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>constructor
+            <span class="apidocSignatureSpan">(document, id, data)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.prototype.end">
+            function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>end
+            <span class="apidocSignatureSpan">(chunk)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.prototype.finalize">
+            function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>finalize
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.prototype.initDeflate">
+            function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>initDeflate
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.pdfkit.reference.prototype.toString">
+            function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>toString
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit" id="apidoc.module.pdfkit">module pdfkit</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.ReadableState" id="apidoc.element.pdfkit.ReadableState">
+        function <span class="apidocSignatureSpan">pdfkit.</span>ReadableState
+        <span class="apidocSignatureSpan">(options, stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function ReadableState(options, stream) {
+  options = options || {};
+
+  // object stream flag. Used to make read(n) ignore n and to
+  // make all the buffer merging and length checks go away
+  this.objectMode = !!options.objectMode;
+
+  if (stream instanceof Stream.Duplex)
+    this.objectMode = this.objectMode || !!options.readableObjectMode;
+
+  // the point at which it stops calling _read() to fill the buffer
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
+  var hwm = options.highWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+  this.highWaterMark = (hwm || hwm === 0) ? hwm : defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = ~~this.highWaterMark;
+
+  // A linked list is used to store data chunks instead of an array because the
+  // linked list can remove elements from the beginning faster than
+  // array.shift()
+  this.buffer = new BufferList();
+  this.length = 0;
+  this.pipes = null;
+  this.pipesCount = 0;
+  this.flowing = null;
+  this.ended = false;
+  this.endEmitted = false;
+  this.reading = false;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // whenever we return null, then we set a flag to say
+  // that we're awaiting a 'readable' event emission.
+  this.needReadable = false;
+  this.emittedReadable = false;
+  this.readableListening = false;
+  this.resumeScheduled = false;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // when piping, we only care about 'readable' events that happen
+  // after read()ing all the bytes and not getting any pushback.
+  this.ranOut = false;
+
+  // the number of writers that are awaiting a drain event in .pipe()s
+  this.awaitDrain = 0;
+
+  // if true, a maybeReadMore has been scheduled
+  this.readingMore = false;
+
+  this.decoder = null;
+  this.encoding = null;
+  if (options.encoding) {
+    if (!StringDecoder)
+      StringDecoder = require('string_decoder').StringDecoder;
+    this.decoder = new StringDecoder(options.encoding);
+    this.encoding = options.encoding;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit._fromList" id="apidoc.element.pdfkit._fromList">
+        function <span class="apidocSignatureSpan">pdfkit.</span>_fromList
+        <span class="apidocSignatureSpan">(n, state)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function fromList(n, state) {
+  // nothing buffered
+  if (state.length === 0)
+    return null;
+
+  var ret;
+  if (state.objectMode)
+    ret = state.buffer.shift();
+  else if (!n || n &gt;= state.length) {
+    // read it all, truncate the list
+    if (state.decoder)
+      ret = state.buffer.join('');
+    else if (state.buffer.length === 1)
+      ret = state.buffer.head.data;
+    else
+      ret = state.buffer.concat(state.length);
+    state.buffer.clear();
+  } else {
+    // read part of list
+    ret = fromListPartial(n, state.buffer, state.decoder);
+  }
+
+  return ret;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data" id="apidoc.element.pdfkit.data">
+        function <span class="apidocSignatureSpan">pdfkit.</span>data
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Data(data) {
+  this.data = data != null ? data : [];
+  this.pos = 0;
+  this.length = this.data.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font" id="apidoc.element.pdfkit.font">
+        function <span class="apidocSignatureSpan">pdfkit.</span>font
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFFont() {
+  throw new Error('Cannot construct a PDFFont directly.');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+doc = new PDFDocument
+
+# Pipe its output somewhere, like to a file or HTTP response
+# See below for browser usage
+doc.pipe fs.createWriteStream('output.pdf')
+
+# Embed a font, set the font size, and render some text
+doc.<span class="apidocCodeKeywordSpan">font</span>('fonts/PalatinoBold.ttf')
+.fontSize(25)
+.text('Some text with an embedded font!', 100, 100)
+
+# Add another page
+doc.addPage()
+.fontSize(25)
+.text('Here is some vector graphics...', 100, 100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.image" id="apidoc.element.pdfkit.image">
+        function <span class="apidocSignatureSpan">pdfkit.</span>image
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFImage() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper" id="apidoc.element.pdfkit.line_wrapper">
+        function <span class="apidocSignatureSpan">pdfkit.</span>line_wrapper
+        <span class="apidocSignatureSpan">(document, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LineWrapper(document, options) {
+  var ref;
+  this.document = document;
+  this.indent = options.indent || 0;
+  this.characterSpacing = options.characterSpacing || 0;
+  this.wordSpacing = options.wordSpacing === 0;
+  this.columns = options.columns || 1;
+  this.columnGap = (ref = options.columnGap) != null ? ref : 18;
+  this.lineWidth = (options.width - (this.columnGap * (this.columns - 1))) / this.columns;
+  this.spaceLeft = this.lineWidth;
+  this.startX = this.document.x;
+  this.startY = this.document.y;
+  this.column = 1;
+  this.ellipsis = options.ellipsis;
+  this.continuedX = 0;
+  this.features = options.features;
+  if (options.height != null) {
+    this.height = options.height;
+    this.maxY = this.startY + options.height;
+  } else {
+    this.maxY = this.document.page.maxY();
+  }
+  this.on('firstLine', (function(_this) {
+    return function(options) {
+      var indent;
+      indent = _this.continuedX || _this.indent;
+      _this.document.x += indent;
+      _this.lineWidth -= indent;
+      return _this.once('line', function() {
+        _this.document.x -= indent;
+        _this.lineWidth += indent;
+        if (options.continued &amp;&amp; !_this.continuedX) {
+          _this.continuedX = _this.indent;
+        }
+        if (!options.continued) {
+          return _this.continuedX = 0;
+        }
+      });
+    };
+  })(this));
+  this.on('lastLine', (function(_this) {
+    return function(options) {
+      var align;
+      align = options.align;
+      if (align === 'justify') {
+        options.align = 'left';
+      }
+      _this.lastLine = true;
+      return _this.once('line', function() {
+        _this.document.y += options.paragraphGap || 0;
+        options.align = align;
+        return _this.lastLine = false;
+      });
+    };
+  })(this));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.object" id="apidoc.element.pdfkit.object">
+        function <span class="apidocSignatureSpan">pdfkit.</span>object
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFObject() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.page" id="apidoc.element.pdfkit.page">
+        function <span class="apidocSignatureSpan">pdfkit.</span>page
+        <span class="apidocSignatureSpan">(document, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFPage(document, options) {
+  var dimensions;
+  this.document = document;
+  if (options == null) {
+    options = {};
+  }
+  this.size = options.size || 'letter';
+  this.layout = options.layout || 'portrait';
+  if (typeof options.margin === 'number') {
+    this.margins = {
+      top: options.margin,
+      left: options.margin,
+      bottom: options.margin,
+      right: options.margin
+    };
+  } else {
+    this.margins = options.margins || DEFAULT_MARGINS;
+  }
+  dimensions = Array.isArray(this.size) ? this.size : SIZES[this.size.toUpperCase()];
+  this.width = dimensions[this.layout === 'portrait' ? 0 : 1];
+  this.height = dimensions[this.layout === 'portrait' ? 1 : 0];
+  this.content = this.document.ref();
+  this.resources = this.document.ref({
+    ProcSet: ['PDF', 'Text', 'ImageB', 'ImageC', 'ImageI']
+  });
+  Object.defineProperties(this, {
+    fonts: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).Font != null ? base.Font : base.Font = {};
+        };
+      })(this)
+    },
+    xobjects: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).XObject != null ? base.XObject : base.XObject = {};
+        };
+      })(this)
+    },
+    ext_gstates: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).ExtGState != null ? base.ExtGState : base.ExtGState = {};
+        };
+      })(this)
+    },
+    patterns: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).Pattern != null ? base.Pattern : base.Pattern = {};
+        };
+      })(this)
+    },
+    annotations: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.dictionary.data).Annots != null ? base.Annots : base.Annots = [];
+        };
+      })(this)
+    }
+  });
+  this.dictionary = this.document.ref({
+    Type: 'Page',
+    Parent: this.document._root.data.Pages,
+    MediaBox: [0, 0, this.width, this.height],
+    Contents: this.content,
+    Resources: this.resources
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.path" id="apidoc.element.pdfkit.path">
+        function <span class="apidocSignatureSpan">pdfkit.</span>path
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SVGPath() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+.lineTo(100, 250)
+.lineTo(200, 250)
+.fill("#FF3300")
+
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
+doc.scale(0.6)
+.translate(470, -380)
+.<span class="apidocCodeKeywordSpan">path</span>('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
+.restore()
+
+# Add some text with annotations
+doc.addPage()
+.fillColor("blue")
+.text('Here is a link!', 100, 100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference" id="apidoc.element.pdfkit.reference">
+        function <span class="apidocSignatureSpan">pdfkit.</span>reference
+        <span class="apidocSignatureSpan">(document, id, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFReference(document, id, data) {
+  this.document = document;
+  this.id = id;
+  this.data = data != null ? data : {};
+  this.finalize = bind(this.finalize, this);
+  PDFReference.__super__.constructor.call(this, {
+    decodeStrings: false
+  });
+  this.gen = 0;
+  this.deflate = null;
+  this.compress = this.document.compress &amp;&amp; !this.data.Filter;
+  this.uncompressedLength = 0;
+  this.chunks = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.super_" id="apidoc.element.pdfkit.super_">
+        function <span class="apidocSignatureSpan">pdfkit.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.data" id="apidoc.module.pdfkit.data">module pdfkit.data</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.data" id="apidoc.element.pdfkit.data.data">
+        function <span class="apidocSignatureSpan">pdfkit.</span>data
+        <span class="apidocSignatureSpan">(data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Data(data) {
+  this.data = data != null ? data : [];
+  this.pos = 0;
+  this.length = this.data.length;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.data.prototype" id="apidoc.module.pdfkit.data.prototype">module pdfkit.data.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.byteAt" id="apidoc.element.pdfkit.data.prototype.byteAt">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>byteAt
+        <span class="apidocSignatureSpan">(index)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">byteAt = function (index) {
+  return this.data[index];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.read" id="apidoc.element.pdfkit.data.prototype.read">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>read
+        <span class="apidocSignatureSpan">(bytes)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">read = function (bytes) {
+  var buf, i, j, ref;
+  buf = [];
+  for (i = j = 0, ref = bytes; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
+    buf.push(this.readByte());
+  }
+  return buf;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readBool" id="apidoc.element.pdfkit.data.prototype.readBool">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readBool
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readBool = function () {
+  return !!this.readByte();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readByte" id="apidoc.element.pdfkit.data.prototype.readByte">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readByte
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readByte = function () {
+  return this.data[this.pos++];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+Data.prototype.byteAt = function(index) {
+  return this.data[index];
+};
+
+Data.prototype.readBool = function() {
+  return !!this.<span class="apidocCodeKeywordSpan">readByte</span>();
+};
+
+Data.prototype.writeBool = function(val) {
+  return this.writeByte(val ? 1 : 0);
+};
+
+Data.prototype.readUInt32 = function() {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readInt" id="apidoc.element.pdfkit.data.prototype.readInt">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readInt
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt = function () {
+  return this.readInt32();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readInt16" id="apidoc.element.pdfkit.data.prototype.readInt16">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readInt16
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt16 = function () {
+  var int;
+  int = this.readUInt16();
+  if (int &gt;= 0x8000) {
+    return int - 0x10000;
+  } else {
+    return int;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+Data.prototype.stringAt = function(pos, length) {
+  this.pos = pos;
+  return this.readString(length);
+};
+
+Data.prototype.readShort = function() {
+  return this.<span class="apidocCodeKeywordSpan">readInt16</span>();
+};
+
+Data.prototype.writeShort = function(val) {
+  return this.writeInt16(val);
+};
+
+Data.prototype.readLongLong = function() {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readInt32" id="apidoc.element.pdfkit.data.prototype.readInt32">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readInt32
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readInt32 = function () {
+  var int;
+  int = this.readUInt32();
+  if (int &gt;= 0x80000000) {
+    return int - 0x100000000;
+  } else {
+    return int;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.writeByte((low &gt;&gt; 24) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(low &amp; 0xff);
+};
+
+Data.prototype.readInt = function() {
+  return this.<span class="apidocCodeKeywordSpan">readInt32</span>();
+};
+
+Data.prototype.writeInt = function(val) {
+  return this.writeInt32(val);
+};
+
+Data.prototype.slice = function(start, end) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readLongLong" id="apidoc.element.pdfkit.data.prototype.readLongLong">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readLongLong
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readLongLong = function () {
+  var b1, b2, b3, b4, b5, b6, b7, b8;
+  b1 = this.readByte();
+  b2 = this.readByte();
+  b3 = this.readByte();
+  b4 = this.readByte();
+  b5 = this.readByte();
+  b6 = this.readByte();
+  b7 = this.readByte();
+  b8 = this.readByte();
+  if (b1 &amp; 0x80) {
+    return ((b1 ^ 0xff) * 0x100000000000000 + (b2 ^ 0xff) * 0x1000000000000 + (b3 ^ 0xff) * 0x10000000000 + (b4 ^ 0xff) * 0x100000000
+ + (b5 ^ 0xff) * 0x1000000 + (b6 ^ 0xff) * 0x10000 + (b7 ^ 0xff) * 0x100 + (b8 ^ 0xff) + 1) * -1;
+  }
+  return b1 * 0x100000000000000 + b2 * 0x1000000000000 + b3 * 0x10000000000 + b4 * 0x100000000 + b5 * 0x1000000 + b6 * 0x10000 +
+b7 * 0x100 + b8;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readShort" id="apidoc.element.pdfkit.data.prototype.readShort">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readShort
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readShort = function () {
+  return this.readInt16();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readString" id="apidoc.element.pdfkit.data.prototype.readString">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readString
+        <span class="apidocSignatureSpan">(length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readString = function (length) {
+  var i, j, ref, ret;
+  ret = [];
+  for (i = j = 0, ref = length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
+    ret[i] = String.fromCharCode(this.readByte());
+  }
+  return ret.join('');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    results.push(this.writeByte(val.charCodeAt(i)));
+  }
+  return results;
+};
+
+Data.prototype.stringAt = function(pos, length) {
+  this.pos = pos;
+  return this.<span class="apidocCodeKeywordSpan">readString</span>(length);
+};
+
+Data.prototype.readShort = function() {
+  return this.readInt16();
+};
+
+Data.prototype.writeShort = function(val) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readUInt16" id="apidoc.element.pdfkit.data.prototype.readUInt16">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readUInt16
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt16 = function () {
+  var b1, b2;
+  b1 = this.readByte() &lt;&lt; 8;
+  b2 = this.readByte();
+  return b1 | b2;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+Data.prototype.writeUInt16 = function(val) {
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
+};
+
+Data.prototype.readInt16 = function() {
+  var int;
+  int = this.<span class="apidocCodeKeywordSpan">readUInt16</span>();
+  if (int &gt;= 0x8000) {
+    return int - 0x10000;
+  } else {
+    return int;
+  }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.readUInt32" id="apidoc.element.pdfkit.data.prototype.readUInt32">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>readUInt32
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">readUInt32 = function () {
+  var b1, b2, b3, b4;
+  b1 = this.readByte() * 0x1000000;
+  b2 = this.readByte() &lt;&lt; 16;
+  b3 = this.readByte() &lt;&lt; 8;
+  b4 = this.readByte();
+  return b1 + b2 + b3 + b4;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.writeByte((val &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
+};
+
+Data.prototype.readInt32 = function() {
+  var int;
+  int = this.<span class="apidocCodeKeywordSpan">readUInt32</span>();
+  if (int &gt;= 0x80000000) {
+    return int - 0x100000000;
+  } else {
+    return int;
+  }
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.slice" id="apidoc.element.pdfkit.data.prototype.slice">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>slice
+        <span class="apidocSignatureSpan">(start, end)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">slice = function (start, end) {
+  return this.data.slice(start, end);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+Data.prototype.writeInt = function(val) {
+  return this.writeInt32(val);
+};
+
+Data.prototype.slice = function(start, end) {
+  return this.data.<span class="apidocCodeKeywordSpan">slice</span>(start, end);
+};
+
+Data.prototype.read = function(bytes) {
+  var buf, i, j, ref;
+  buf = [];
+  for (i = j = 0, ref = bytes; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
+    buf.push(this.readByte());
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.stringAt" id="apidoc.element.pdfkit.data.prototype.stringAt">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>stringAt
+        <span class="apidocSignatureSpan">(pos, length)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">stringAt = function (pos, length) {
+  this.pos = pos;
+  return this.readString(length);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.write" id="apidoc.element.pdfkit.data.prototype.write">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>write
+        <span class="apidocSignatureSpan">(bytes)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (bytes) {
+  var byte, j, len, results;
+  results = [];
+  for (j = 0, len = bytes.length; j &lt; len; j++) {
+    byte = bytes[j];
+    results.push(this.writeByte(byte));
+  }
+  return results;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+PDFPage.prototype.maxY = function() {
+  return this.height - this.margins.bottom;
+};
+
+PDFPage.prototype.write = function(chunk) {
+  return this.content.<span class="apidocCodeKeywordSpan">write</span>(chunk);
+};
+
+PDFPage.prototype.end = function() {
+  this.dictionary.end();
+  this.resources.end();
+  return this.content.end();
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeBool" id="apidoc.element.pdfkit.data.prototype.writeBool">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeBool
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeBool = function (val) {
+  return this.writeByte(val ? 1 : 0);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeByte" id="apidoc.element.pdfkit.data.prototype.writeByte">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeByte
+        <span class="apidocSignatureSpan">(byte)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeByte = function (byte) {
+  return this.data[this.pos++] = byte;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+Data.prototype.readBool = function() {
+  return !!this.readByte();
+};
+
+Data.prototype.writeBool = function(val) {
+  return this.<span class="apidocCodeKeywordSpan">writeByte</span>(val ? 1 : 0);
+};
+
+Data.prototype.readUInt32 = function() {
+  var b1, b2, b3, b4;
+  b1 = this.readByte() * 0x1000000;
+  b2 = this.readByte() &lt;&lt; 16;
+  b3 = this.readByte() &lt;&lt; 8;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeInt" id="apidoc.element.pdfkit.data.prototype.writeInt">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeInt
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt = function (val) {
+  return this.writeInt32(val);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeInt16" id="apidoc.element.pdfkit.data.prototype.writeInt16">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeInt16
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt16 = function (val) {
+  if (val &lt; 0) {
+    val += 0x10000;
+  }
+  return this.writeUInt16(val);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+Data.prototype.readShort = function() {
+  return this.readInt16();
+};
+
+Data.prototype.writeShort = function(val) {
+  return this.<span class="apidocCodeKeywordSpan">writeInt16</span>(val);
+};
+
+Data.prototype.readLongLong = function() {
+  var b1, b2, b3, b4, b5, b6, b7, b8;
+  b1 = this.readByte();
+  b2 = this.readByte();
+  b3 = this.readByte();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeInt32" id="apidoc.element.pdfkit.data.prototype.writeInt32">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeInt32
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeInt32 = function (val) {
+  if (val &lt; 0) {
+    val += 0x100000000;
+  }
+  return this.writeUInt32(val);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+Data.prototype.readInt = function() {
+  return this.readInt32();
+};
+
+Data.prototype.writeInt = function(val) {
+  return this.<span class="apidocCodeKeywordSpan">writeInt32</span>(val);
+};
+
+Data.prototype.slice = function(start, end) {
+  return this.data.slice(start, end);
+};
+
+Data.prototype.read = function(bytes) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeLongLong" id="apidoc.element.pdfkit.data.prototype.writeLongLong">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeLongLong
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeLongLong = function (val) {
+  var high, low;
+  high = Math.floor(val / 0x100000000);
+  low = val &amp; 0xffffffff;
+  this.writeByte((high &gt;&gt; 24) &amp; 0xff);
+  this.writeByte((high &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((high &gt;&gt; 8) &amp; 0xff);
+  this.writeByte(high &amp; 0xff);
+  this.writeByte((low &gt;&gt; 24) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(low &amp; 0xff);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeShort" id="apidoc.element.pdfkit.data.prototype.writeShort">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeShort
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeShort = function (val) {
+  return this.writeInt16(val);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeString" id="apidoc.element.pdfkit.data.prototype.writeString">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeString
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeString = function (val) {
+  var i, j, ref, results;
+  results = [];
+  for (i = j = 0, ref = val.length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
+    results.push(this.writeByte(val.charCodeAt(i)));
+  }
+  return results;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeUInt16" id="apidoc.element.pdfkit.data.prototype.writeUInt16">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeUInt16
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt16 = function (val) {
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+};
+
+Data.prototype.writeInt16 = function(val) {
+  if (val &lt; 0) {
+    val += 0x10000;
+  }
+  return this.<span class="apidocCodeKeywordSpan">writeUInt16</span>(val);
+};
+
+Data.prototype.readString = function(length) {
+  var i, j, ref, ret;
+  ret = [];
+  for (i = j = 0, ref = length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
+    ret[i] = String.fromCharCode(this.readByte());
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.data.prototype.writeUInt32" id="apidoc.element.pdfkit.data.prototype.writeUInt32">
+        function <span class="apidocSignatureSpan">pdfkit.data.prototype.</span>writeUInt32
+        <span class="apidocSignatureSpan">(val)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">writeUInt32 = function (val) {
+  this.writeByte((val &gt;&gt;&gt; 24) &amp; 0xff);
+  this.writeByte((val &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  }
+};
+
+Data.prototype.writeInt32 = function(val) {
+  if (val &lt; 0) {
+    val += 0x100000000;
+  }
+  return this.<span class="apidocCodeKeywordSpan">writeUInt32</span>(val);
+};
+
+Data.prototype.readUInt16 = function() {
+  var b1, b2;
+  b1 = this.readByte() &lt;&lt; 8;
+  b2 = this.readByte();
+  return b1 | b2;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.font" id="apidoc.module.pdfkit.font">module pdfkit.font</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.font" id="apidoc.element.pdfkit.font.font">
+        function <span class="apidocSignatureSpan">pdfkit.</span>font
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFFont() {
+  throw new Error('Cannot construct a PDFFont directly.');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+doc = new PDFDocument
+
+# Pipe its output somewhere, like to a file or HTTP response
+# See below for browser usage
+doc.pipe fs.createWriteStream('output.pdf')
+
+# Embed a font, set the font size, and render some text
+doc.<span class="apidocCodeKeywordSpan">font</span>('fonts/PalatinoBold.ttf')
+.fontSize(25)
+.text('Some text with an embedded font!', 100, 100)
+
+# Add another page
+doc.addPage()
+.fontSize(25)
+.text('Here is some vector graphics...', 100, 100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.open" id="apidoc.element.pdfkit.font.open">
+        function <span class="apidocSignatureSpan">pdfkit.font.</span>open
+        <span class="apidocSignatureSpan">(document, src, family, id)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">open = function (document, src, family, id) {
+  var font;
+  if (typeof src === 'string') {
+    if (StandardFont.isStandardFont(src)) {
+      return new StandardFont(document, src, id);
+    }
+    font = fontkit.openSync(src, family);
+  } else if (Buffer.isBuffer(src)) {
+    font = fontkit.create(src, family);
+  } else if (src instanceof Uint8Array) {
+    font = fontkit.create(new Buffer(src), family);
+  } else if (src instanceof ArrayBuffer) {
+    font = fontkit.create(new Buffer(new Uint8Array(src)), family);
+  }
+  if (font == null) {
+    throw new Error('Not a supported font format or standard PDF font.');
+  }
+  return new EmbeddedFont(document, font, id);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.font.prototype" id="apidoc.module.pdfkit.font.prototype">module pdfkit.font.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.prototype.embed" id="apidoc.element.pdfkit.font.prototype.embed">
+        function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>embed
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">embed = function () {
+  throw new Error('Must be implemented by subclasses');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return this.dictionary != null ? this.dictionary : this.dictionary = this.document.ref();
+};
+
+PDFFont.prototype.finalize = function() {
+  if (this.embedded || (this.dictionary == null)) {
+    return;
+  }
+  this.<span class="apidocCodeKeywordSpan">embed</span>();
+  return this.embedded = true;
+};
+
+PDFFont.prototype.embed = function() {
+  throw new Error('Must be implemented by subclasses');
+};
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.prototype.encode" id="apidoc.element.pdfkit.font.prototype.encode">
+        function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>encode
+        <span class="apidocSignatureSpan">(text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">encode = function (text) {
+  throw new Error('Must be implemented by subclasses');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.prototype.finalize" id="apidoc.element.pdfkit.font.prototype.finalize">
+        function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>finalize
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">finalize = function () {
+  if (this.embedded || (this.dictionary == null)) {
+    return;
+  }
+  this.embed();
+  return this.embedded = true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+PDFReference.prototype.end = function(chunk) {
+  PDFReference.__super__.end.apply(this, arguments);
+  if (this.deflate) {
+    return this.deflate.end();
+  } else {
+    return this.<span class="apidocCodeKeywordSpan">finalize</span>();
+  }
+};
+
+PDFReference.prototype.finalize = function() {
+  var chunk, i, len, ref;
+  this.offset = this.document._offset;
+  this.document._write(this.id + " " + this.gen + " obj");
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.prototype.lineHeight" id="apidoc.element.pdfkit.font.prototype.lineHeight">
+        function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>lineHeight
+        <span class="apidocSignatureSpan">(size, includeGap)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">lineHeight = function (size, includeGap) {
+  var gap;
+  if (includeGap == null) {
+    includeGap = false;
+  }
+  gap = includeGap ? this.lineGap : 0;
+  return (this.ascender + gap - this.descender) / 1000 * size;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.prototype.ref" id="apidoc.element.pdfkit.font.prototype.ref">
+        function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>ref
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">ref = function () {
+  return this.dictionary != null ? this.dictionary : this.dictionary = this.document.ref();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+PDFFont.prototype.widthOfString = function(text) {
+  throw new Error('Must be implemented by subclasses');
+};
+
+PDFFont.prototype.ref = function() {
+  return this.dictionary != null ? this.dictionary : this.dictionary = this.document.<span class="apidocCodeKeywordSpan">ref</span>();
+};
+
+PDFFont.prototype.finalize = function() {
+  if (this.embedded || (this.dictionary == null)) {
+    return;
+  }
+  this.embed();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.font.prototype.widthOfString" id="apidoc.element.pdfkit.font.prototype.widthOfString">
+        function <span class="apidocSignatureSpan">pdfkit.font.prototype.</span>widthOfString
+        <span class="apidocSignatureSpan">(text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">widthOfString = function (text) {
+  throw new Error('Must be implemented by subclasses');
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+        return _this.lastLine = false;
+      });
+    };
+  })(this));
+}
+
+LineWrapper.prototype.wordWidth = function(word) {
+  return this.document.<span class="apidocCodeKeywordSpan">widthOfString</span>(word, this) + this.characterSpacing + this.wordSpacing
+;
+};
+
+LineWrapper.prototype.eachWord = function(text, fn) {
+  var bk, breaker, fbk, l, last, lbk, shouldContinue, w, word, wordWidths;
+  breaker = new LineBreaker(text);
+  last = null;
+  wordWidths = Object.create(null);
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.gradient" id="apidoc.module.pdfkit.gradient">module pdfkit.gradient</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.gradient.PDFGradient" id="apidoc.element.pdfkit.gradient.PDFGradient">
+        function <span class="apidocSignatureSpan">pdfkit.gradient.</span>PDFGradient
+        <span class="apidocSignatureSpan">(doc)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFGradient(doc) {
+  this.doc = doc;
+  this.stops = [];
+  this.embedded = false;
+  this.transform = [1, 0, 0, 1, 0, 0];
+  this._colorSpace = 'DeviceRGB';
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.gradient.PDFLinearGradient" id="apidoc.element.pdfkit.gradient.PDFLinearGradient">
+        function <span class="apidocSignatureSpan">pdfkit.gradient.</span>PDFLinearGradient
+        <span class="apidocSignatureSpan">(doc, x1, y1, x2, y2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFLinearGradient(doc, x1, y1, x2, y2) {
+  this.doc = doc;
+  this.x1 = x1;
+  this.y1 = y1;
+  this.x2 = x2;
+  this.y2 = y2;
+  PDFLinearGradient.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.gradient.PDFRadialGradient" id="apidoc.element.pdfkit.gradient.PDFRadialGradient">
+        function <span class="apidocSignatureSpan">pdfkit.gradient.</span>PDFRadialGradient
+        <span class="apidocSignatureSpan">(doc, x1, y1, r1, x2, y2, r2)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFRadialGradient(doc, x1, y1, r1, x2, y2, r2) {
+  this.doc = doc;
+  this.x1 = x1;
+  this.y1 = y1;
+  this.r1 = r1;
+  this.x2 = x2;
+  this.y2 = y2;
+  this.r2 = r2;
+  PDFRadialGradient.__super__.constructor.apply(this, arguments);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.image" id="apidoc.module.pdfkit.image">module pdfkit.image</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.image.image" id="apidoc.element.pdfkit.image.image">
+        function <span class="apidocSignatureSpan">pdfkit.</span>image
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFImage() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.image.open" id="apidoc.element.pdfkit.image.open">
+        function <span class="apidocSignatureSpan">pdfkit.image.</span>open
+        <span class="apidocSignatureSpan">(src, label)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">open = function (src, label) {
+  var data, match;
+  if (Buffer.isBuffer(src)) {
+    data = src;
+  } else if (src instanceof ArrayBuffer) {
+    data = new Buffer(new Uint8Array(src));
+  } else {
+    if (match = /^data:.+;base64,(.*)$/.exec(src)) {
+      data = new Buffer(match[1], 'base64');
+    } else {
+      data = fs.readFileSync(src);
+      if (!data) {
+        return;
+      }
+    }
+  }
+  if (data[0] === 0xff &amp;&amp; data[1] === 0xd8) {
+    return new JPEG(data, label);
+  } else if (data[0] === 0x89 &amp;&amp; data.toString('ascii', 1, 4) === 'PNG') {
+    return new PNG(data, label);
+  } else {
+    throw new Error('Unknown image format.');
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.line_wrapper" id="apidoc.module.pdfkit.line_wrapper">module pdfkit.line_wrapper</a></h1>
+
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.line_wrapper" id="apidoc.element.pdfkit.line_wrapper.line_wrapper">
+        function <span class="apidocSignatureSpan">pdfkit.</span>line_wrapper
+        <span class="apidocSignatureSpan">(document, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LineWrapper(document, options) {
+  var ref;
+  this.document = document;
+  this.indent = options.indent || 0;
+  this.characterSpacing = options.characterSpacing || 0;
+  this.wordSpacing = options.wordSpacing === 0;
+  this.columns = options.columns || 1;
+  this.columnGap = (ref = options.columnGap) != null ? ref : 18;
+  this.lineWidth = (options.width - (this.columnGap * (this.columns - 1))) / this.columns;
+  this.spaceLeft = this.lineWidth;
+  this.startX = this.document.x;
+  this.startY = this.document.y;
+  this.column = 1;
+  this.ellipsis = options.ellipsis;
+  this.continuedX = 0;
+  this.features = options.features;
+  if (options.height != null) {
+    this.height = options.height;
+    this.maxY = this.startY + options.height;
+  } else {
+    this.maxY = this.document.page.maxY();
+  }
+  this.on('firstLine', (function(_this) {
+    return function(options) {
+      var indent;
+      indent = _this.continuedX || _this.indent;
+      _this.document.x += indent;
+      _this.lineWidth -= indent;
+      return _this.once('line', function() {
+        _this.document.x -= indent;
+        _this.lineWidth += indent;
+        if (options.continued &amp;&amp; !_this.continuedX) {
+          _this.continuedX = _this.indent;
+        }
+        if (!options.continued) {
+          return _this.continuedX = 0;
+        }
+      });
+    };
+  })(this));
+  this.on('lastLine', (function(_this) {
+    return function(options) {
+      var align;
+      align = options.align;
+      if (align === 'justify') {
+        options.align = 'left';
+      }
+      _this.lastLine = true;
+      return _this.once('line', function() {
+        _this.document.y += options.paragraphGap || 0;
+        options.align = align;
+        return _this.lastLine = false;
+      });
+    };
+  })(this));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.EventEmitter" id="apidoc.element.pdfkit.line_wrapper.EventEmitter">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>EventEmitter
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.init" id="apidoc.element.pdfkit.line_wrapper.init">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>init
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">init = function () {
+  this.domain = null;
+  if (EventEmitter.usingDomains) {
+    // if there is an active domain, then attach to it.
+    domain = domain || require('domain');
+    if (domain.active &amp;&amp; !(this instanceof domain.Domain)) {
+      this.domain = domain.active;
+    }
+  }
+
+  if (!this._events || this._events === Object.getPrototypeOf(this)._events) {
+    this._events = new EventHandlers();
+    this._eventsCount = 0;
+  }
+
+  this._maxListeners = this._maxListeners || undefined;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.listenerCount" id="apidoc.element.pdfkit.line_wrapper.listenerCount">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.</span>listenerCount
+        <span class="apidocSignatureSpan">(emitter, type)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">listenerCount = function (emitter, type) {
+  if (typeof emitter.listenerCount === 'function') {
+    return emitter.listenerCount(type);
+  } else {
+    return listenerCount.call(emitter, type);
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.line_wrapper.prototype" id="apidoc.module.pdfkit.line_wrapper.prototype">module pdfkit.line_wrapper.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.prototype.constructor" id="apidoc.element.pdfkit.line_wrapper.prototype.constructor">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(document, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function LineWrapper(document, options) {
+  var ref;
+  this.document = document;
+  this.indent = options.indent || 0;
+  this.characterSpacing = options.characterSpacing || 0;
+  this.wordSpacing = options.wordSpacing === 0;
+  this.columns = options.columns || 1;
+  this.columnGap = (ref = options.columnGap) != null ? ref : 18;
+  this.lineWidth = (options.width - (this.columnGap * (this.columns - 1))) / this.columns;
+  this.spaceLeft = this.lineWidth;
+  this.startX = this.document.x;
+  this.startY = this.document.y;
+  this.column = 1;
+  this.ellipsis = options.ellipsis;
+  this.continuedX = 0;
+  this.features = options.features;
+  if (options.height != null) {
+    this.height = options.height;
+    this.maxY = this.startY + options.height;
+  } else {
+    this.maxY = this.document.page.maxY();
+  }
+  this.on('firstLine', (function(_this) {
+    return function(options) {
+      var indent;
+      indent = _this.continuedX || _this.indent;
+      _this.document.x += indent;
+      _this.lineWidth -= indent;
+      return _this.once('line', function() {
+        _this.document.x -= indent;
+        _this.lineWidth += indent;
+        if (options.continued &amp;&amp; !_this.continuedX) {
+          _this.continuedX = _this.indent;
+        }
+        if (!options.continued) {
+          return _this.continuedX = 0;
+        }
+      });
+    };
+  })(this));
+  this.on('lastLine', (function(_this) {
+    return function(options) {
+      var align;
+      align = options.align;
+      if (align === 'justify') {
+        options.align = 'left';
+      }
+      _this.lastLine = true;
+      return _this.once('line', function() {
+        _this.document.y += options.paragraphGap || 0;
+        options.align = align;
+        return _this.lastLine = false;
+      });
+    };
+  })(this));
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.prototype.eachWord" id="apidoc.element.pdfkit.line_wrapper.prototype.eachWord">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>eachWord
+        <span class="apidocSignatureSpan">(text, fn)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">eachWord = function (text, fn) {
+  var bk, breaker, fbk, l, last, lbk, shouldContinue, w, word, wordWidths;
+  breaker = new LineBreaker(text);
+  last = null;
+  wordWidths = Object.create(null);
+  while (bk = breaker.nextBreak()) {
+    word = text.slice((last != null ? last.position : void 0) || 0, bk.position);
+    w = wordWidths[word] != null ? wordWidths[word] : wordWidths[word] = this.wordWidth(word);
+    if (w &gt; this.lineWidth + this.continuedX) {
+      lbk = last;
+      fbk = {};
+      while (word.length) {
+        l = word.length;
+        while (w &gt; this.spaceLeft) {
+          w = this.wordWidth(word.slice(0, --l));
+        }
+        fbk.required = l &lt; word.length;
+        shouldContinue = fn(word.slice(0, l), w, fbk, lbk);
+        lbk = {
+          required: false
+        };
+        word = word.slice(l);
+        w = this.wordWidth(word);
+        if (shouldContinue === false) {
+          break;
+        }
+      }
+    } else {
+      shouldContinue = fn(word, w, bk, last);
+    }
+    if (shouldContinue === false) {
+      break;
+    }
+    last = bk;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    options.lineWidth = _this.lineWidth;
+    y = _this.document.y;
+    _this.emit('line', buffer, options, _this);
+    return lc++;
+  };
+})(this);
+this.emit('sectionStart', options, this);
+this.<span class="apidocCodeKeywordSpan">eachWord</span>(text, (function(_this) {
+  return function(word, w, bk, last) {
+    var lh, shouldContinue;
+    if ((last == null) || last.required) {
+      _this.emit('firstLine', options, _this);
+      _this.spaceLeft = _this.lineWidth;
+    }
+    if (w &lt;= _this.spaceLeft) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.prototype.nextSection" id="apidoc.element.pdfkit.line_wrapper.prototype.nextSection">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>nextSection
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">nextSection = function (options) {
+  var ref;
+  this.emit('sectionEnd', options, this);
+  if (++this.column &gt; this.columns) {
+    if (this.height != null) {
+      return false;
+    }
+    this.document.addPage();
+    this.column = 1;
+    this.startY = this.document.page.margins.top;
+    this.maxY = this.document.page.maxY();
+    this.document.x = this.startX;
+    if (this.document._fillColor) {
+      (ref = this.document).fillColor.apply(ref, this.document._fillColor);
+    }
+    this.emit('pageBreak', options, this);
+  } else {
+    this.document.x += this.lineWidth + this.columnGap;
+    this.document.y = this.startY;
+    this.emit('columnBreak', options, this);
+  }
+  this.emit('sectionStart', options, this);
+  return true;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  this.wordSpacing = options.wordSpacing;
+}
+if (options.ellipsis != null) {
+  this.ellipsis = options.ellipsis;
+}
+nextY = this.document.y + this.document.currentLineHeight(true);
+if (this.document.y &gt; this.maxY || nextY &gt; this.maxY) {
+  this.<span class="apidocCodeKeywordSpan">nextSection</span>();
+}
+buffer = '';
+textWidth = 0;
+wc = 0;
+lc = 0;
+y = this.document.y;
+emitLine = (function(_this) {
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.prototype.wordWidth" id="apidoc.element.pdfkit.line_wrapper.prototype.wordWidth">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>wordWidth
+        <span class="apidocSignatureSpan">(word)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">wordWidth = function (word) {
+  return this.document.widthOfString(word, this) + this.characterSpacing + this.wordSpacing;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    LineWrapper.prototype.eachWord = function(text, fn) {
+var bk, breaker, fbk, l, last, lbk, shouldContinue, w, word, wordWidths;
+breaker = new LineBreaker(text);
+last = null;
+wordWidths = Object.create(null);
+while (bk = breaker.nextBreak()) {
+  word = text.slice((last != null ? last.position : void 0) || 0, bk.position);
+  w = wordWidths[word] != null ? wordWidths[word] : wordWidths[word] = this.<span class="apidocCodeKeywordSpan">wordWidth</span>(
+word);
+  if (w &gt; this.lineWidth + this.continuedX) {
+    lbk = last;
+    fbk = {};
+    while (word.length) {
+      l = word.length;
+      while (w &gt; this.spaceLeft) {
+        w = this.wordWidth(word.slice(0, --l));
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.line_wrapper.prototype.wrap" id="apidoc.element.pdfkit.line_wrapper.prototype.wrap">
+        function <span class="apidocSignatureSpan">pdfkit.line_wrapper.prototype.</span>wrap
+        <span class="apidocSignatureSpan">(text, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">wrap = function (text, options) {
+  var buffer, emitLine, lc, nextY, textWidth, wc, y;
+  if (options.indent != null) {
+    this.indent = options.indent;
+  }
+  if (options.characterSpacing != null) {
+    this.characterSpacing = options.characterSpacing;
+  }
+  if (options.wordSpacing != null) {
+    this.wordSpacing = options.wordSpacing;
+  }
+  if (options.ellipsis != null) {
+    this.ellipsis = options.ellipsis;
+  }
+  nextY = this.document.y + this.document.currentLineHeight(true);
+  if (this.document.y &gt; this.maxY || nextY &gt; this.maxY) {
+    this.nextSection();
+  }
+  buffer = '';
+  textWidth = 0;
+  wc = 0;
+  lc = 0;
+  y = this.document.y;
+  emitLine = (function(_this) {
+    return function() {
+      options.textWidth = textWidth + _this.wordSpacing * (wc - 1);
+      options.wordCount = wc;
+      options.lineWidth = _this.lineWidth;
+      y = _this.document.y;
+      _this.emit('line', buffer, options, _this);
+      return lc++;
+    };
+  })(this);
+  this.emit('sectionStart', options, this);
+  this.eachWord(text, (function(_this) {
+    return function(word, w, bk, last) {
+      var lh, shouldContinue;
+      if ((last == null) || last.required) {
+        _this.emit('firstLine', options, _this);
+        _this.spaceLeft = _this.lineWidth;
+      }
+      if (w &lt;= _this.spaceLeft) {
+        buffer += word;
+        textWidth += w;
+        wc++;
+      }
+      if (bk.required || w &gt; _this.spaceLeft) {
+        if (bk.required) {
+          _this.emit('lastLine', options, _this);
+        }
+        lh = _this.document.currentLineHeight(true);
+        if ((_this.height != null) &amp;&amp; _this.ellipsis &amp;&amp; _this.document.y + lh * 2 &gt; _this.maxY &amp;&amp; _this.column &gt;= _this.columns) {
+          if (_this.ellipsis === true) {
+            _this.ellipsis = 'â€¦';
+          }
+          buffer = buffer.replace(/\s+$/, '');
+          textWidth = _this.wordWidth(buffer + _this.ellipsis);
+          while (textWidth &gt; _this.lineWidth) {
+            buffer = buffer.slice(0, -1).replace(/\s+$/, '');
+            textWidth = _this.wordWidth(buffer + _this.ellipsis);
+          }
+          buffer = buffer + _this.ellipsis;
+        }
+        emitLine();
+        if (_this.document.y + lh &gt; _this.maxY) {
+          shouldContinue = _this.nextSection();
+          if (!shouldContinue) {
+            wc = 0;
+            buffer = '';
+            return false;
+          }
+        }
+        if (bk.required) {
+          if (w &gt; _this.spaceLeft) {
+            buffer = word;
+            textWidth = w;
+            wc = 1;
+            emitLine();
+          }
+          _this.spaceLeft = _this.lineWidth;
+          buffer = '';
+          textWidth = 0;
+          return wc = 0;
+        } else {
+          _this.spaceLeft = _this.lineWidth - w;
+          buffer = word;
+          textWidth = w;
+          return wc = 1;
+        }
+      } else {
+        return _this.spaceLeft -= w;
+      }
+    };
+  })(this));
+  if (wc &gt; 0) {
+    this.emit('lastLine', options, this);
+    emitLine();
+  }
+  this.emit('sectionEnd', options, this);
+  if (options.continued === true) {
+    if (lc &gt; 1) {
+      this.continuedX = 0;
+    }
+    this.continuedX += options.textWidth;
+    return this.document.y = y;
+  } else {
+    return this.document.x = this.startX;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.object" id="apidoc.module.pdfkit.object">module pdfkit.object</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.object.object" id="apidoc.element.pdfkit.object.object">
+        function <span class="apidocSignatureSpan">pdfkit.</span>object
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFObject() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.object.convert" id="apidoc.element.pdfkit.object.convert">
+        function <span class="apidocSignatureSpan">pdfkit.object.</span>convert
+        <span class="apidocSignatureSpan">(object)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">convert = function (object) {
+  var e, i, isUnicode, items, j, key, out, ref, string, val;
+  if (typeof object === 'string') {
+    return '/' + object;
+  } else if (object instanceof String) {
+    string = object.replace(escapableRe, function(c) {
+      return escapable[c];
+    });
+    isUnicode = false;
+    for (i = j = 0, ref = string.length; j &lt; ref; i = j += 1) {
+      if (string.charCodeAt(i) &gt; 0x7f) {
+        isUnicode = true;
+        break;
+      }
+    }
+    if (isUnicode) {
+      string = swapBytes(new Buffer('\ufeff' + string, 'utf16le')).toString('binary');
+    }
+    return '(' + string + ')';
+  } else if (Buffer.isBuffer(object)) {
+    return '&lt;' + object.toString('hex') + '&gt;';
+  } else if (object instanceof PDFReference) {
+    return object.toString();
+  } else if (object instanceof Date) {
+    return '(D:' + pad(object.getUTCFullYear(), 4) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad(object
+.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + 'Z)';
+  } else if (Array.isArray(object)) {
+    items = ((function() {
+      var k, len, results;
+      results = [];
+      for (k = 0, len = object.length; k &lt; len; k++) {
+        e = object[k];
+        results.push(PDFObject.convert(e));
+      }
+      return results;
+    })()).join(' ');
+    return '[' + items + ']';
+  } else if ({}.toString.call(object) === '[object Object]') {
+    out = ['&lt;&lt;'];
+    for (key in object) {
+      val = object[key];
+      out.push('/' + key + ' ' + PDFObject.convert(val));
+    }
+    out.push('&gt;&gt;');
+    return out.join('\n');
+  } else {
+    return '' + object;
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return '(D:' + pad(object.getUTCFullYear(), 4) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad
+(object.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + 'Z)';
+} else if (Array.isArray(object)) {
+  items = ((function() {
+    var k, len, results;
+    results = [];
+    for (k = 0, len = object.length; k &lt; len; k++) {
+      e = object[k];
+      results.push(PDFObject.<span class="apidocCodeKeywordSpan">convert</span>(e));
+    }
+    return results;
+  })()).join(' ');
+  return '[' + items + ']';
+} else if ({}.toString.call(object) === '[object Object]') {
+  out = ['&lt;&lt;'];
+  for (key in object) {
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.page" id="apidoc.module.pdfkit.page">module pdfkit.page</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.page.page" id="apidoc.element.pdfkit.page.page">
+        function <span class="apidocSignatureSpan">pdfkit.</span>page
+        <span class="apidocSignatureSpan">(document, options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFPage(document, options) {
+  var dimensions;
+  this.document = document;
+  if (options == null) {
+    options = {};
+  }
+  this.size = options.size || 'letter';
+  this.layout = options.layout || 'portrait';
+  if (typeof options.margin === 'number') {
+    this.margins = {
+      top: options.margin,
+      left: options.margin,
+      bottom: options.margin,
+      right: options.margin
+    };
+  } else {
+    this.margins = options.margins || DEFAULT_MARGINS;
+  }
+  dimensions = Array.isArray(this.size) ? this.size : SIZES[this.size.toUpperCase()];
+  this.width = dimensions[this.layout === 'portrait' ? 0 : 1];
+  this.height = dimensions[this.layout === 'portrait' ? 1 : 0];
+  this.content = this.document.ref();
+  this.resources = this.document.ref({
+    ProcSet: ['PDF', 'Text', 'ImageB', 'ImageC', 'ImageI']
+  });
+  Object.defineProperties(this, {
+    fonts: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).Font != null ? base.Font : base.Font = {};
+        };
+      })(this)
+    },
+    xobjects: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).XObject != null ? base.XObject : base.XObject = {};
+        };
+      })(this)
+    },
+    ext_gstates: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).ExtGState != null ? base.ExtGState : base.ExtGState = {};
+        };
+      })(this)
+    },
+    patterns: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.resources.data).Pattern != null ? base.Pattern : base.Pattern = {};
+        };
+      })(this)
+    },
+    annotations: {
+      get: (function(_this) {
+        return function() {
+          var base;
+          return (base = _this.dictionary.data).Annots != null ? base.Annots : base.Annots = [];
+        };
+      })(this)
+    }
+  });
+  this.dictionary = this.document.ref({
+    Type: 'Page',
+    Parent: this.document._root.data.Pages,
+    MediaBox: [0, 0, this.width, this.height],
+    Contents: this.content,
+    Resources: this.resources
+  });
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.page.prototype" id="apidoc.module.pdfkit.page.prototype">module pdfkit.page.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.page.prototype.end" id="apidoc.element.pdfkit.page.prototype.end">
+        function <span class="apidocSignatureSpan">pdfkit.page.prototype.</span>end
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function () {
+  this.dictionary.end();
+  this.resources.end();
+  return this.content.end();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+doc.addPage()
+   .fillColor("blue")
+   .text('Here is a link!', 100, 100)
+   .underline(100, 100, 160, 27, color: "#0000FF")
+   .link(100, 100, 160, 27, 'http://google.com/')
+
+# Finalize PDF file
+doc.<span class="apidocCodeKeywordSpan">end</span>()
+```
+
+[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit â€” producing
+complex documents with a very small amount of code.  For more, see the `demo` folder and the
+[PDFKit programming guide](http://pdfkit.org/docs/getting_started.html).
+
+## Browser Usage
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.page.prototype.maxY" id="apidoc.element.pdfkit.page.prototype.maxY">
+        function <span class="apidocSignatureSpan">pdfkit.page.prototype.</span>maxY
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">maxY = function () {
+  return this.height - this.margins.bottom;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+this.ellipsis = options.ellipsis;
+this.continuedX = 0;
+this.features = options.features;
+if (options.height != null) {
+  this.height = options.height;
+  this.maxY = this.startY + options.height;
+} else {
+  this.maxY = this.document.page.<span class="apidocCodeKeywordSpan">maxY</span>();
+}
+this.on('firstLine', (function(_this) {
+  return function(options) {
+    var indent;
+    indent = _this.continuedX || _this.indent;
+    _this.document.x += indent;
+    _this.lineWidth -= indent;
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.page.prototype.write" id="apidoc.element.pdfkit.page.prototype.write">
+        function <span class="apidocSignatureSpan">pdfkit.page.prototype.</span>write
+        <span class="apidocSignatureSpan">(chunk)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">write = function (chunk) {
+  return this.content.write(chunk);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+
+PDFPage.prototype.maxY = function() {
+  return this.height - this.margins.bottom;
+};
+
+PDFPage.prototype.write = function(chunk) {
+  return this.content.<span class="apidocCodeKeywordSpan">write</span>(chunk);
+};
+
+PDFPage.prototype.end = function() {
+  this.dictionary.end();
+  this.resources.end();
+  return this.content.end();
+};
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.path" id="apidoc.module.pdfkit.path">module pdfkit.path</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.path.path" id="apidoc.element.pdfkit.path.path">
+        function <span class="apidocSignatureSpan">pdfkit.</span>path
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function SVGPath() {}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+.lineTo(100, 250)
+.lineTo(200, 250)
+.fill("#FF3300")
+
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
+doc.scale(0.6)
+.translate(470, -380)
+.<span class="apidocCodeKeywordSpan">path</span>('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
+.restore()
+
+# Add some text with annotations
+doc.addPage()
+.fillColor("blue")
+.text('Here is a link!', 100, 100)
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.path.apply" id="apidoc.element.pdfkit.path.apply">
+        function <span class="apidocSignatureSpan">pdfkit.path.</span>apply
+        <span class="apidocSignatureSpan">(doc, path)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">apply = function (doc, path) {
+  var commands;
+  commands = parse(path);
+  return apply(commands, doc);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+
+function PDFLinearGradient(doc, x1, y1, x2, y2) {
+  this.doc = doc;
+  this.x1 = x1;
+  this.y1 = y1;
+  this.x2 = x2;
+  this.y2 = y2;
+  PDFLinearGradient.__super__.constructor.<span class="apidocCodeKeywordSpan">apply</span>(this, arguments);
+}
+
+PDFLinearGradient.prototype.shader = function(fn) {
+  return this.doc.ref({
+    ShadingType: 2,
+    ColorSpace: this._colorSpace,
+    Coords: [this.x1, this.y1, this.x2, this.y2],
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.reference" id="apidoc.module.pdfkit.reference">module pdfkit.reference</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.reference" id="apidoc.element.pdfkit.reference.reference">
+        function <span class="apidocSignatureSpan">pdfkit.</span>reference
+        <span class="apidocSignatureSpan">(document, id, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFReference(document, id, data) {
+  this.document = document;
+  this.id = id;
+  this.data = data != null ? data : {};
+  this.finalize = bind(this.finalize, this);
+  PDFReference.__super__.constructor.call(this, {
+    decodeStrings: false
+  });
+  this.gen = 0;
+  this.deflate = null;
+  this.compress = this.document.compress &amp;&amp; !this.data.Filter;
+  this.uncompressedLength = 0;
+  this.chunks = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.WritableState" id="apidoc.element.pdfkit.reference.WritableState">
+        function <span class="apidocSignatureSpan">pdfkit.reference.</span>WritableState
+        <span class="apidocSignatureSpan">(options, stream)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function WritableState(options, stream) {
+  options = options || {};
+
+  // object stream flag to indicate whether or not this stream
+  // contains buffers or objects.
+  this.objectMode = !!options.objectMode;
+
+  if (stream instanceof Stream.Duplex)
+    this.objectMode = this.objectMode || !!options.writableObjectMode;
+
+  // the point at which write() starts returning false
+  // Note: 0 is a valid value, means that we always return false if
+  // the entire buffer is not flushed immediately on write()
+  var hwm = options.highWaterMark;
+  var defaultHwm = this.objectMode ? 16 : 16 * 1024;
+  this.highWaterMark = (hwm || hwm === 0) ? hwm : defaultHwm;
+
+  // cast to ints.
+  this.highWaterMark = ~~this.highWaterMark;
+
+  // drain event flag.
+  this.needDrain = false;
+  // at the start of calling end()
+  this.ending = false;
+  // when end() has been called, and returned
+  this.ended = false;
+  // when 'finish' is emitted
+  this.finished = false;
+
+  // should we decode strings into buffers before passing to _write?
+  // this is here so that some node-core streams can optimize string
+  // handling at a lower level.
+  var noDecode = options.decodeStrings === false;
+  this.decodeStrings = !noDecode;
+
+  // Crypto is kind of old and crusty.  Historically, its default string
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
+
+  // not an actual buffer we keep track of, but a measurement
+  // of how much we're waiting to get pushed to some underlying
+  // socket or file.
+  this.length = 0;
+
+  // a flag to see when we're in the middle of a write.
+  this.writing = false;
+
+  // when true all writes will be buffered until .uncork() call
+  this.corked = 0;
+
+  // a flag to be able to tell if the onwrite cb is called immediately,
+  // or on a later tick.  We set this to true at first, because any
+  // actions that shouldn't happen until "later" should generally also
+  // not happen before the first write call.
+  this.sync = true;
+
+  // a flag to know if we're processing previously buffered items, which
+  // may call the _write() callback in the same tick, so that we don't
+  // end up in an overlapped onwrite situation.
+  this.bufferProcessing = false;
+
+  // the callback that's passed to _write(chunk,cb)
+  this.onwrite = function(er) {
+    onwrite(stream, er);
+  };
+
+  // the callback that the user supplies to write(chunk,encoding,cb)
+  this.writecb = null;
+
+  // the amount that is being written when _write is called.
+  this.writelen = 0;
+
+  this.bufferedRequest = null;
+  this.lastBufferedRequest = null;
+
+  // number of pending user-supplied write callbacks
+  // this must be 0 before 'finish' can be emitted
+  this.pendingcb = 0;
+
+  // emit prefinish if the only thing we're waiting for is _write cbs
+  // This is relevant for synchronous Transform streams
+  this.prefinished = false;
+
+  // True if the error was already emitted and should not be thrown again
+  this.errorEmitted = false;
+
+  // count buffered requests
+  this.bufferedRequestCount = 0;
+
+  // allocate the first CorkedRequest, there is always
+  // one allocated and free to use, and we maintain at most two
+  this.corkedRequestsFree = new CorkedRequest(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.super_" id="apidoc.element.pdfkit.reference.super_">
+        function <span class="apidocSignatureSpan">pdfkit.reference.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Stream() {
+  EE.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.pdfkit.reference.prototype" id="apidoc.module.pdfkit.reference.prototype">module pdfkit.reference.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.prototype._write" id="apidoc.element.pdfkit.reference.prototype._write">
+        function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>_write
+        <span class="apidocSignatureSpan">(chunk, encoding, callback)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_write = function (chunk, encoding, callback) {
+  var base;
+  if (!Buffer.isBuffer(chunk)) {
+    chunk = new Buffer(chunk + '\n', 'binary');
+  }
+  this.uncompressedLength += chunk.length;
+  if ((base = this.data).Length == null) {
+    base.Length = 0;
+  }
+  if (this.compress) {
+    if (!this.deflate) {
+      this.initDeflate();
+    }
+    this.deflate.write(chunk);
+  } else {
+    this.chunks.push(chunk);
+    this.data.Length += chunk.length;
+  }
+  return callback();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    return this.finalize();
+  }
+};
+
+PDFReference.prototype.finalize = function() {
+  var chunk, i, len, ref;
+  this.offset = this.document._offset;
+  this.document.<span class="apidocCodeKeywordSpan">_write</span>(this.id + " " + this.gen + " obj");
+  this.document._write(PDFObject.convert(this.data));
+  if (this.chunks.length) {
+    this.document._write('stream');
+    ref = this.chunks;
+    for (i = 0, len = ref.length; i &lt; len; i++) {
+      chunk = ref[i];
+      this.document._write(chunk);
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.prototype.constructor" id="apidoc.element.pdfkit.reference.prototype.constructor">
+        function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>constructor
+        <span class="apidocSignatureSpan">(document, id, data)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function PDFReference(document, id, data) {
+  this.document = document;
+  this.id = id;
+  this.data = data != null ? data : {};
+  this.finalize = bind(this.finalize, this);
+  PDFReference.__super__.constructor.call(this, {
+    decodeStrings: false
+  });
+  this.gen = 0;
+  this.deflate = null;
+  this.compress = this.document.compress &amp;&amp; !this.data.Filter;
+  this.uncompressedLength = 0;
+  this.chunks = [];
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.prototype.end" id="apidoc.element.pdfkit.reference.prototype.end">
+        function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>end
+        <span class="apidocSignatureSpan">(chunk)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">end = function (chunk) {
+  PDFReference.__super__.end.apply(this, arguments);
+  if (this.deflate) {
+    return this.deflate.end();
+  } else {
+    return this.finalize();
+  }
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+doc.addPage()
+   .fillColor("blue")
+   .text('Here is a link!', 100, 100)
+   .underline(100, 100, 160, 27, color: "#0000FF")
+   .link(100, 100, 160, 27, 'http://google.com/')
+
+# Finalize PDF file
+doc.<span class="apidocCodeKeywordSpan">end</span>()
+```
+
+[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit â€” producing
+complex documents with a very small amount of code.  For more, see the `demo` folder and the
+[PDFKit programming guide](http://pdfkit.org/docs/getting_started.html).
+
+## Browser Usage
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.prototype.finalize" id="apidoc.element.pdfkit.reference.prototype.finalize">
+        function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>finalize
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">finalize = function () {
+  var chunk, i, len, ref;
+  this.offset = this.document._offset;
+  this.document._write(this.id + " " + this.gen + " obj");
+  this.document._write(PDFObject.convert(this.data));
+  if (this.chunks.length) {
+    this.document._write('stream');
+    ref = this.chunks;
+    for (i = 0, len = ref.length; i &lt; len; i++) {
+      chunk = ref[i];
+      this.document._write(chunk);
+    }
+    this.chunks.length = 0;
+    this.document._write('\nendstream');
+  }
+  this.document._write('endobj');
+  return this.document._refEnd(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+};
+
+PDFReference.prototype.end = function(chunk) {
+  PDFReference.__super__.end.apply(this, arguments);
+  if (this.deflate) {
+    return this.deflate.end();
+  } else {
+    return this.<span class="apidocCodeKeywordSpan">finalize</span>();
+  }
+};
+
+PDFReference.prototype.finalize = function() {
+  var chunk, i, len, ref;
+  this.offset = this.document._offset;
+  this.document._write(this.id + " " + this.gen + " obj");
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.prototype.initDeflate" id="apidoc.element.pdfkit.reference.prototype.initDeflate">
+        function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>initDeflate
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">initDeflate = function () {
+  this.data.Filter = 'FlateDecode';
+  this.deflate = zlib.createDeflate();
+  this.deflate.on('data', (function(_this) {
+    return function(chunk) {
+      _this.chunks.push(chunk);
+      return _this.data.Length += chunk.length;
+    };
+  })(this));
+  return this.deflate.on('end', this.finalize);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+}
+this.uncompressedLength += chunk.length;
+if ((base = this.data).Length == null) {
+  base.Length = 0;
+}
+if (this.compress) {
+  if (!this.deflate) {
+    this.<span class="apidocCodeKeywordSpan">initDeflate</span>();
+  }
+  this.deflate.write(chunk);
+} else {
+  this.chunks.push(chunk);
+  this.data.Length += chunk.length;
+}
+return callback();
+...</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.pdfkit.reference.prototype.toString" id="apidoc.element.pdfkit.reference.prototype.toString">
+        function <span class="apidocSignatureSpan">pdfkit.reference.prototype.</span>toString
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">toString = function () {
+  return this.id + " " + this.gen + " R";
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+      if (!data) {
+        return;
+      }
+    }
+  }
+  if (data[0] === 0xff &amp;&amp; data[1] === 0xd8) {
+    return new JPEG(data, label);
+  } else if (data[0] === 0x89 &amp;&amp; data.<span class="apidocCodeKeywordSpan">toString</span>('ascii', 1, 4) === &amp;#
+x27;PNG') {
+    return new PNG(data, label);
+  } else {
+    throw new Error('Unknown image format.');
+  }
+};
+
+return PDFImage;
+...</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
