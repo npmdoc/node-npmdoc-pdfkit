@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://pdfkit.org/"
-
-    >pdfkit (v0.8.0)</a>
+    <a href="http://pdfkit.org/">pdfkit (v0.8.0)</a>
 </h1>
 <h4>A PDF generation library for Node.js</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit">module pdfkit</a><ol>
 
@@ -140,9 +133,9 @@
   this._ended = false;
   this._offset = 0;
   this._root = this.ref({
-    Type: &#x27;Catalog&#x27;,
+    Type: 'Catalog',
     Pages: this.ref({
-      Type: &#x27;Pages&#x27;,
+      Type: 'Pages',
       Count: 0,
       Kids: []
     })
@@ -154,8 +147,8 @@
   this.initText();
   this.initImages();
   this.info = {
-    Producer: &#x27;PDFKit&#x27;,
-    Creator: &#x27;PDFKit&#x27;,
+    Producer: 'PDFKit',
+    Creator: 'PDFKit',
     CreationDate: new Date()
   };
   if (this.options.info) {
@@ -165,8 +158,8 @@
       this.info[key] = val;
     }
   }
-  this._write(&#x22;%PDF-&#x22; + this.version);
-  this._write(&#x22;%\xFF\xFF\xFF\xFF&#x22;);
+  this._write("%PDF-" + this.version);
+  this._write("%\xFF\xFF\xFF\xFF");
   if (this.options.autoFirstPage !== false) {
     this.addPage();
   }
@@ -194,7 +187,7 @@
     this.objectMode = this.objectMode || !!options.readableObjectMode;
 
   // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means &#x22;don&#x27;t call _read preemptively ever&#x22;
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
   var hwm = options.highWaterMark;
   var defaultHwm = this.objectMode ? 16 : 16 * 1024;
   this.highWaterMark = (hwm || hwm === 0) ? hwm : defaultHwm;
@@ -216,23 +209,23 @@
 
   // a flag to be able to tell if the onwrite cb is called immediately,
   // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn&#x27;t happen until &#x22;later&#x22; should generally also
+  // actions that shouldn't happen until "later" should generally also
   // not happen before the first write call.
   this.sync = true;
 
   // whenever we return null, then we set a flag to say
-  // that we&#x27;re awaiting a &#x27;readable&#x27; event emission.
+  // that we're awaiting a 'readable' event emission.
   this.needReadable = false;
   this.emittedReadable = false;
   this.readableListening = false;
   this.resumeScheduled = false;
 
   // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is &#x27;binary&#x27; so we have to make this configurable.
-  // Everything else in the universe uses &#x27;utf8&#x27;, though.
-  this.defaultEncoding = options.defaultEncoding || &#x27;utf8&#x27;;
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
 
-  // when piping, we only care about &#x27;readable&#x27; events that happen
+  // when piping, we only care about 'readable' events that happen
   // after read()ing all the bytes and not getting any pushback.
   this.ranOut = false;
 
@@ -246,7 +239,7 @@
   this.encoding = null;
   if (options.encoding) {
     if (!StringDecoder)
-      StringDecoder = require(&#x27;string_decoder&#x27;).StringDecoder;
+      StringDecoder = require('string_decoder').StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
     this.encoding = options.encoding;
   }
@@ -271,10 +264,10 @@
   var ret;
   if (state.objectMode)
     ret = state.buffer.shift();
-  else if (!n || n &#x3e;= state.length) {
+  else if (!n || n &gt;= state.length) {
     // read it all, truncate the list
     if (state.decoder)
-      ret = state.buffer.join(&#x27;&#x27;);
+      ret = state.buffer.join('');
     else if (state.buffer.length === 1)
       ret = state.buffer.head.data;
     else
@@ -331,3 +324,4 @@
     ]
 </div>
 </div>
+</body></html>
