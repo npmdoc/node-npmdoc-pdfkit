@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="http://pdfkit.org/"
-
-    >pdfkit (v0.8.0)</a>
+    <a href="http://pdfkit.org/">pdfkit (v0.8.0)</a>
 </h1>
 <h4>A PDF generation library for Node.js</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.pdfkit">module pdfkit</a><ol>
 
@@ -2021,9 +2014,9 @@
   this._ended = false;
   this._offset = 0;
   this._root = this.ref({
-    Type: &#x27;Catalog&#x27;,
+    Type: 'Catalog',
     Pages: this.ref({
-      Type: &#x27;Pages&#x27;,
+      Type: 'Pages',
       Count: 0,
       Kids: []
     })
@@ -2035,8 +2028,8 @@
   this.initText();
   this.initImages();
   this.info = {
-    Producer: &#x27;PDFKit&#x27;,
-    Creator: &#x27;PDFKit&#x27;,
+    Producer: 'PDFKit',
+    Creator: 'PDFKit',
     CreationDate: new Date()
   };
   if (this.options.info) {
@@ -2046,8 +2039,8 @@
       this.info[key] = val;
     }
   }
-  this._write(&#x22;%PDF-&#x22; + this.version);
-  this._write(&#x22;%\xFF\xFF\xFF\xFF&#x22;);
+  this._write("%PDF-" + this.version);
+  this._write("%\xFF\xFF\xFF\xFF");
   if (this.options.autoFirstPage !== false) {
     this.addPage();
   }
@@ -2075,7 +2068,7 @@
     this.objectMode = this.objectMode || !!options.readableObjectMode;
 
   // the point at which it stops calling _read() to fill the buffer
-  // Note: 0 is a valid value, means &#x22;don&#x27;t call _read preemptively ever&#x22;
+  // Note: 0 is a valid value, means "don't call _read preemptively ever"
   var hwm = options.highWaterMark;
   var defaultHwm = this.objectMode ? 16 : 16 * 1024;
   this.highWaterMark = (hwm || hwm === 0) ? hwm : defaultHwm;
@@ -2097,23 +2090,23 @@
 
   // a flag to be able to tell if the onwrite cb is called immediately,
   // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn&#x27;t happen until &#x22;later&#x22; should generally also
+  // actions that shouldn't happen until "later" should generally also
   // not happen before the first write call.
   this.sync = true;
 
   // whenever we return null, then we set a flag to say
-  // that we&#x27;re awaiting a &#x27;readable&#x27; event emission.
+  // that we're awaiting a 'readable' event emission.
   this.needReadable = false;
   this.emittedReadable = false;
   this.readableListening = false;
   this.resumeScheduled = false;
 
   // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is &#x27;binary&#x27; so we have to make this configurable.
-  // Everything else in the universe uses &#x27;utf8&#x27;, though.
-  this.defaultEncoding = options.defaultEncoding || &#x27;utf8&#x27;;
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
 
-  // when piping, we only care about &#x27;readable&#x27; events that happen
+  // when piping, we only care about 'readable' events that happen
   // after read()ing all the bytes and not getting any pushback.
   this.ranOut = false;
 
@@ -2127,7 +2120,7 @@
   this.encoding = null;
   if (options.encoding) {
     if (!StringDecoder)
-      StringDecoder = require(&#x27;string_decoder&#x27;).StringDecoder;
+      StringDecoder = require('string_decoder').StringDecoder;
     this.decoder = new StringDecoder(options.encoding);
     this.encoding = options.encoding;
   }
@@ -2152,10 +2145,10 @@
   var ret;
   if (state.objectMode)
     ret = state.buffer.shift();
-  else if (!n || n &#x3e;= state.length) {
+  else if (!n || n &gt;= state.length) {
     // read it all, truncate the list
     if (state.decoder)
-      ret = state.buffer.join(&#x27;&#x27;);
+      ret = state.buffer.join('');
     else if (state.buffer.length === 1)
       ret = state.buffer.head.data;
     else
@@ -2191,23 +2184,23 @@
   this.charWidths = (function() {
     var j, results;
     results = [];
-    for (i = j = 0; j &#x3c;= 255; i = ++j) {
+    for (i = j = 0; j &lt;= 255; i = ++j) {
       results.push(this.glyphWidths[characters[i]]);
     }
     return results;
   }).call(this);
   this.bbox = (function() {
     var j, len, ref, results;
-    ref = this.attributes[&#x27;FontBBox&#x27;].split(/\s+/);
+    ref = this.attributes['FontBBox'].split(/\s+/);
     results = [];
-    for (j = 0, len = ref.length; j &#x3c; len; j++) {
+    for (j = 0, len = ref.length; j &lt; len; j++) {
       e = ref[j];
       results.push(+e);
     }
     return results;
   }).call(this);
-  this.ascender = +(this.attributes[&#x27;Ascender&#x27;] || 0);
-  this.descender = +(this.attributes[&#x27;Descender&#x27;] || 0);
+  this.ascender = +(this.attributes['Ascender'] || 0);
+  this.descender = +(this.attributes['Descender'] || 0);
   this.lineGap = (this.bbox[3] - this.bbox[1]) - (this.ascender - this.descender);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2266,24 +2259,24 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function PDFFont() {
-  throw new Error(&#x27;Cannot construct a PDFFont directly.&#x27;);
+  throw new Error('Cannot construct a PDFFont directly.');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 doc = new PDFDocument
 
 # Pipe its output somewhere, like to a file or HTTP response
 # See below for browser usage
-doc.pipe fs.createWriteStream(&#x27;output.pdf&#x27;)
+doc.pipe fs.createWriteStream('output.pdf')
 
 # Embed a font, set the font size, and render some text
-doc.<span class="apidocCodeKeywordSpan">font</span>(&#x27;fonts/PalatinoBold.ttf&#x27;)
+doc.<span class="apidocCodeKeywordSpan">font</span>('fonts/PalatinoBold.ttf')
 .fontSize(25)
-.text(&#x27;Some text with an embedded font!&#x27;, 100, 100)
+.text('Some text with an embedded font!', 100, 100)
 
 # Add another page
 doc.addPage()
 .fontSize(25)
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -2314,19 +2307,19 @@ doc.addPage()
   this.data = data;
   this.label = label;
   if (this.data.readUInt16BE(0) !== 0xFFD8) {
-    throw &#x22;SOI not found in JPEG&#x22;;
+    throw "SOI not found in JPEG";
   }
   pos = 2;
-  while (pos &#x3c; this.data.length) {
+  while (pos &lt; this.data.length) {
     marker = this.data.readUInt16BE(pos);
     pos += 2;
-    if (indexOf.call(MARKERS, marker) &#x3e;= 0) {
+    if (indexOf.call(MARKERS, marker) &gt;= 0) {
       break;
     }
     pos += this.data.readUInt16BE(pos);
   }
-  if (indexOf.call(MARKERS, marker) &#x3c; 0) {
-    throw &#x22;Invalid JPEG.&#x22;;
+  if (indexOf.call(MARKERS, marker) &lt; 0) {
+    throw "Invalid JPEG.";
   }
   pos += 2;
   this.bits = this.data[pos++];
@@ -2338,11 +2331,11 @@ doc.addPage()
   this.colorSpace = (function() {
     switch (channels) {
       case 1:
-        return &#x27;DeviceGray&#x27;;
+        return 'DeviceGray';
       case 3:
-        return &#x27;DeviceRGB&#x27;;
+        return 'DeviceRGB';
       case 4:
-        return &#x27;DeviceCMYK&#x27;;
+        return 'DeviceCMYK';
     }
   })();
   this.obj = null;
@@ -2381,16 +2374,16 @@ doc.addPage()
   } else {
     this.maxY = this.document.page.maxY();
   }
-  this.on(&#x27;firstLine&#x27;, (function(_this) {
+  this.on('firstLine', (function(_this) {
     return function(options) {
       var indent;
       indent = _this.continuedX || _this.indent;
       _this.document.x += indent;
       _this.lineWidth -= indent;
-      return _this.once(&#x27;line&#x27;, function() {
+      return _this.once('line', function() {
         _this.document.x -= indent;
         _this.lineWidth += indent;
-        if (options.continued &#x26;&#x26; !_this.continuedX) {
+        if (options.continued &amp;&amp; !_this.continuedX) {
           _this.continuedX = _this.indent;
         }
         if (!options.continued) {
@@ -2399,15 +2392,15 @@ doc.addPage()
       });
     };
   })(this));
-  this.on(&#x27;lastLine&#x27;, (function(_this) {
+  this.on('lastLine', (function(_this) {
     return function(options) {
       var align;
       align = options.align;
-      if (align === &#x27;justify&#x27;) {
-        options.align = &#x27;left&#x27;;
+      if (align === 'justify') {
+        options.align = 'left';
       }
       _this.lastLine = true;
-      return _this.once(&#x27;line&#x27;, function() {
+      return _this.once('line', function() {
         _this.document.y += options.paragraphGap || 0;
         options.align = align;
         return _this.lastLine = false;
@@ -2446,9 +2439,9 @@ doc.addPage()
   if (options == null) {
     options = {};
   }
-  this.size = options.size || &#x27;letter&#x27;;
-  this.layout = options.layout || &#x27;portrait&#x27;;
-  if (typeof options.margin === &#x27;number&#x27;) {
+  this.size = options.size || 'letter';
+  this.layout = options.layout || 'portrait';
+  if (typeof options.margin === 'number') {
     this.margins = {
       top: options.margin,
       left: options.margin,
@@ -2459,11 +2452,11 @@ doc.addPage()
     this.margins = options.margins || DEFAULT_MARGINS;
   }
   dimensions = Array.isArray(this.size) ? this.size : SIZES[this.size.toUpperCase()];
-  this.width = dimensions[this.layout === &#x27;portrait&#x27; ? 0 : 1];
-  this.height = dimensions[this.layout === &#x27;portrait&#x27; ? 1 : 0];
+  this.width = dimensions[this.layout === 'portrait' ? 0 : 1];
+  this.height = dimensions[this.layout === 'portrait' ? 1 : 0];
   this.content = this.document.ref();
   this.resources = this.document.ref({
-    ProcSet: [&#x27;PDF&#x27;, &#x27;Text&#x27;, &#x27;ImageB&#x27;, &#x27;ImageC&#x27;, &#x27;ImageI&#x27;]
+    ProcSet: ['PDF', 'Text', 'ImageB', 'ImageC', 'ImageI']
   });
   Object.defineProperties(this, {
     fonts: {
@@ -2508,7 +2501,7 @@ doc.addPage()
     }
   });
   this.dictionary = this.document.ref({
-    Type: &#x27;Page&#x27;,
+    Type: 'Page',
     Parent: this.document._root.data.Pages,
     MediaBox: [0, 0, this.width, this.height],
     Contents: this.content,
@@ -2531,19 +2524,19 @@ doc.addPage()
     <li>example usage<pre class="apidocCodePre">...
 .lineTo(100, 250)
 .lineTo(200, 250)
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
-.<span class="apidocCodeKeywordSpan">path</span>(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-.fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+.<span class="apidocCodeKeywordSpan">path</span>('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
 .restore()
 
 # Add some text with annotations
 doc.addPage()
-.fillColor(&#x22;blue&#x22;)
-.text(&#x27;Here is a link!&#x27;, 100, 100)
+.fillColor("blue")
+.text('Here is a link!', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -2586,7 +2579,7 @@ doc.addPage()
   });
   this.gen = 0;
   this.deflate = null;
-  this.compress = this.document.compress &#x26;&#x26; !this.data.Filter;
+  this.compress = this.document.compress &amp;&amp; !this.data.Filter;
   this.uncompressedLength = 0;
   this.chunks = [];
 }</pre></li>
@@ -2690,23 +2683,23 @@ doc.addPage()
   this.charWidths = (function() {
     var j, results;
     results = [];
-    for (i = j = 0; j &#x3c;= 255; i = ++j) {
+    for (i = j = 0; j &lt;= 255; i = ++j) {
       results.push(this.glyphWidths[characters[i]]);
     }
     return results;
   }).call(this);
   this.bbox = (function() {
     var j, len, ref, results;
-    ref = this.attributes[&#x27;FontBBox&#x27;].split(/\s+/);
+    ref = this.attributes['FontBBox'].split(/\s+/);
     results = [];
-    for (j = 0, len = ref.length; j &#x3c; len; j++) {
+    for (j = 0, len = ref.length; j &lt; len; j++) {
       e = ref[j];
       results.push(+e);
     }
     return results;
   }).call(this);
-  this.ascender = +(this.attributes[&#x27;Ascender&#x27;] || 0);
-  this.descender = +(this.attributes[&#x27;Descender&#x27;] || 0);
+  this.ascender = +(this.attributes['Ascender'] || 0);
+  this.descender = +(this.attributes['Descender'] || 0);
   this.lineGap = (this.bbox[3] - this.bbox[1]) - (this.ascender - this.descender);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2722,7 +2715,7 @@ doc.addPage()
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">open = function (filename) {
-  return new AFMFont(fs.readFileSync(filename, &#x27;utf8&#x27;));
+  return new AFMFont(fs.readFileSync(filename, 'utf8'));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   this.fontSize(size);
@@ -2731,7 +2724,7 @@ if (font = this._fontFamilies[cacheKey]) {
   this._font = font;
   return this;
 }
-id = &#x27;F&#x27; + (++this._fontCount);
+id = 'F' + (++this._fontCount);
 this._font = PDFFont.<span class="apidocCodeKeywordSpan">open</span>(this, src, family, id);
 if (font = this._fontFamilies[this._font.name]) {
   this._font = font;
@@ -2760,7 +2753,7 @@ if (cacheKey) {
     <li>description and source-code<pre class="apidocCodePre">advancesForGlyphs = function (glyphs) {
   var advances, index, j, left, len, right;
   advances = [];
-  for (index = j = 0, len = glyphs.length; j &#x3c; len; index = ++j) {
+  for (index = j = 0, len = glyphs.length; j &lt; len; index = ++j) {
     left = glyphs[index];
     right = glyphs[index + 1];
     advances.push(this.widthOfGlyph(left) + this.getKernPair(left, right));
@@ -2774,10 +2767,10 @@ if (cacheKey) {
 StandardFont.prototype.encode = function(text) {
   var advances, encoded, glyph, glyphs, i, j, len, positions;
   encoded = this.font.encodeText(text);
-  glyphs = this.font.glyphsForString(&#x27;&#x27; + text);
+  glyphs = this.font.glyphsForString('' + text);
   advances = this.font.<span class="apidocCodeKeywordSpan">advancesForGlyphs</span>(glyphs);
   positions = [];
-  for (i = j = 0, len = glyphs.length; j &#x3c; len; i = ++j) {
+  for (i = j = 0, len = glyphs.length; j &lt; len; i = ++j) {
     glyph = glyphs[i];
     positions.push({
       xAdvance: advances[i],
@@ -2796,7 +2789,7 @@ StandardFont.prototype.encode = function(text) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">characterToGlyph = function (character) {
-  return characters[WIN_ANSI_MAP[character] || character] || &#x27;.notdef&#x27;;
+  return characters[WIN_ANSI_MAP[character] || character] || '.notdef';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 };
@@ -2804,7 +2797,7 @@ StandardFont.prototype.encode = function(text) {
 AFMFont.prototype.glyphsForString = function(string) {
   var charCode, glyphs, i, j, ref;
   glyphs = [];
-  for (i = j = 0, ref = string.length; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = string.length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     charCode = string.charCodeAt(i);
     glyphs.push(this.<span class="apidocCodeKeywordSpan">characterToGlyph</span>(charCode));
   }
@@ -2812,7 +2805,7 @@ AFMFont.prototype.glyphsForString = function(string) {
 };
 
 AFMFont.prototype.characterToGlyph = function(character) {
-  return characters[WIN_ANSI_MAP[character] || character] || &#x27;.notdef&#x27;;
+  return characters[WIN_ANSI_MAP[character] || character] || '.notdef';
 };
 ...</pre></li>
     </ul>
@@ -2829,7 +2822,7 @@ AFMFont.prototype.characterToGlyph = function(character) {
     <li>description and source-code<pre class="apidocCodePre">encodeText = function (text) {
   var char, i, j, ref, res;
   res = [];
-  for (i = j = 0, ref = text.length; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = text.length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     char = text.charCodeAt(i);
     char = WIN_ANSI_MAP[char] || char;
     res.push(char.toString(16));
@@ -2837,7 +2830,7 @@ AFMFont.prototype.characterToGlyph = function(character) {
   return res;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-    Encoding: &#x27;WinAnsiEncoding&#x27;
+    Encoding: 'WinAnsiEncoding'
   };
   return this.dictionary.end();
 };
@@ -2845,10 +2838,10 @@ AFMFont.prototype.characterToGlyph = function(character) {
 StandardFont.prototype.encode = function(text) {
   var advances, encoded, glyph, glyphs, i, j, len, positions;
   encoded = this.font.<span class="apidocCodeKeywordSpan">encodeText</span>(text);
-  glyphs = this.font.glyphsForString(&#x27;&#x27; + text);
+  glyphs = this.font.glyphsForString('' + text);
   advances = this.font.advancesForGlyphs(glyphs);
   positions = [];
-  for (i = j = 0, len = glyphs.length; j &#x3c; len; i = ++j) {
+  for (i = j = 0, len = glyphs.length; j &lt; len; i = ++j) {
     glyph = glyphs[i];
     positions.push({
       xAdvance: advances[i],
@@ -2865,14 +2858,14 @@ StandardFont.prototype.encode = function(text) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">getKernPair = function (left, right) {
-  return this.kernPairs[left + &#x27;\0&#x27; + right] || 0;
+  return this.kernPairs[left + '\0' + right] || 0;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 AFMFont.prototype.advancesForGlyphs = function(glyphs) {
   var advances, index, j, left, len, right;
   advances = [];
-  for (index = j = 0, len = glyphs.length; j &#x3c; len; index = ++j) {
+  for (index = j = 0, len = glyphs.length; j &lt; len; index = ++j) {
     left = glyphs[index];
     right = glyphs[index + 1];
     advances.push(this.widthOfGlyph(left) + this.<span class="apidocCodeKeywordSpan">getKernPair</span>(left, right));
@@ -2880,8 +2873,8 @@ AFMFont.prototype.advancesForGlyphs = function(glyphs) {
   return advances;
 };
 
-characters = &#x27;.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef
-       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n\nspace         exclam         quotedbl       numbersign\ndollar        percent        ampersand      quotesingle\nparenleft     parenright     asterisk       plus\ncomma         hyphen         period         slash\nzero          one            two            three\nfour          five           six            seven\neight         nine           colon          semicolon\nless          equal          greater        question\n\nat            A              B              C\nD             E              F              G\nH             I              J              K\nL             M              N              O\nP             Q              R              S\nT             U              V              W\nX             Y              Z              bracketleft\nbackslash     bracketright   asciicircum    underscore\n\ngrave         a              b              c\nd             e              f              g\nh             i              j              k\nl             m              n              o\np             q              r              s\nt             u              v              w\nx             y              z              braceleft\nbar           braceright     asciitilde     .notdef\n\nEuro          .notdef        quotesinglbase florin\nquotedblbase  ellipsis       dagger         daggerdbl\ncircumflex    perthousand    Scaron         guilsinglleft\nOE            .notdef        Zcaron         .notdef\n.notdef       quoteleft      quoteright     quotedblleft\nquotedblright bullet         endash         emdash\ntilde         trademark      scaron         guilsinglright\noe            .notdef        zcaron         ydieresis\n\nspace         exclamdown     cent           sterling\ncurrency      yen            brokenbar      section\ndieresis      copyright      ordfeminine    guillemotleft\nlogicalnot    hyphen         registered     macron\ndegree        plusminus      twosuperior    threesuperior\nacute         mu             paragraph      periodcentered\ncedilla       onesuperior    ordmasculine   guillemotright\nonequarter    onehalf        threequarters  questiondown\n\nAgrave        Aacute         Acircumflex    Atilde\nAdieresis     Aring          AE             Ccedilla\nEgrave        Eacute         Ecircumflex    Edieresis\nIgrave        Iacute         Icircumflex    Idieresis\nEth           Ntilde         Ograve         Oacute\nOcircumflex   Otilde         Odieresis      multiply\nOslash        Ugrave         Uacute         Ucircumflex\nUdieresis     Yacute         Thorn          germandbls\n\nagrave        aacute         acircumflex    atilde\nadieresis     aring          ae             ccedilla\negrave        eacute         ecircumflex    edieresis\nigrave        iacute         icircumflex    idieresis\neth           ntilde         ograve         oacute\nocircumflex   otilde         odieresis      divide\noslash        ugrave         uacute         ucircumflex\nudieresis     yacute         thorn          ydieresis&#x27;.split(/\s+/);
+characters = '.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef
+       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n\nspace         exclam         quotedbl       numbersign\ndollar        percent        ampersand      quotesingle\nparenleft     parenright     asterisk       plus\ncomma         hyphen         period         slash\nzero          one            two            three\nfour          five           six            seven\neight         nine           colon          semicolon\nless          equal          greater        question\n\nat            A              B              C\nD             E              F              G\nH             I              J              K\nL             M              N              O\nP             Q              R              S\nT             U              V              W\nX             Y              Z              bracketleft\nbackslash     bracketright   asciicircum    underscore\n\ngrave         a              b              c\nd             e              f              g\nh             i              j              k\nl             m              n              o\np             q              r              s\nt             u              v              w\nx             y              z              braceleft\nbar           braceright     asciitilde     .notdef\n\nEuro          .notdef        quotesinglbase florin\nquotedblbase  ellipsis       dagger         daggerdbl\ncircumflex    perthousand    Scaron         guilsinglleft\nOE            .notdef        Zcaron         .notdef\n.notdef       quoteleft      quoteright     quotedblleft\nquotedblright bullet         endash         emdash\ntilde         trademark      scaron         guilsinglright\noe            .notdef        zcaron         ydieresis\n\nspace         exclamdown     cent           sterling\ncurrency      yen            brokenbar      section\ndieresis      copyright      ordfeminine    guillemotleft\nlogicalnot    hyphen         registered     macron\ndegree        plusminus      twosuperior    threesuperior\nacute         mu             paragraph      periodcentered\ncedilla       onesuperior    ordmasculine   guillemotright\nonequarter    onehalf        threequarters  questiondown\n\nAgrave        Aacute         Acircumflex    Atilde\nAdieresis     Aring          AE             Ccedilla\nEgrave        Eacute         Ecircumflex    Edieresis\nIgrave        Iacute         Icircumflex    Idieresis\nEth           Ntilde         Ograve         Oacute\nOcircumflex   Otilde         Odieresis      multiply\nOslash        Ugrave         Uacute         Ucircumflex\nUdieresis     Yacute         Thorn          germandbls\n\nagrave        aacute         acircumflex    atilde\nadieresis     aring          ae             ccedilla\negrave        eacute         ecircumflex    edieresis\nigrave        iacute         icircumflex    idieresis\neth           ntilde         ograve         oacute\nocircumflex   otilde         odieresis      divide\noslash        ugrave         uacute         ucircumflex\nudieresis     yacute         thorn          ydieresis'.split(/\s+/);
 
 return AFMFont;
 ...</pre></li>
@@ -2899,7 +2892,7 @@ return AFMFont;
     <li>description and source-code<pre class="apidocCodePre">glyphsForString = function (string) {
   var charCode, glyphs, i, j, ref;
   glyphs = [];
-  for (i = j = 0, ref = string.length; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = string.length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     charCode = string.charCodeAt(i);
     glyphs.push(this.characterToGlyph(charCode));
   }
@@ -2913,10 +2906,10 @@ return AFMFont;
 StandardFont.prototype.encode = function(text) {
   var advances, encoded, glyph, glyphs, i, j, len, positions;
   encoded = this.font.encodeText(text);
-  glyphs = this.font.<span class="apidocCodeKeywordSpan">glyphsForString</span>(&#x27;&#x27; + text);
+  glyphs = this.font.<span class="apidocCodeKeywordSpan">glyphsForString</span>('' + text);
   advances = this.font.advancesForGlyphs(glyphs);
   positions = [];
-  for (i = j = 0, len = glyphs.length; j &#x3c; len; i = ++j) {
+  for (i = j = 0, len = glyphs.length; j &lt; len; i = ++j) {
     glyph = glyphs[i];
     positions.push({
       xAdvance: advances[i],
@@ -2935,19 +2928,19 @@ StandardFont.prototype.encode = function(text) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">parse = function () {
   var a, j, key, len, line, match, name, ref, section, value;
-  section = &#x27;&#x27;;
-  ref = this.contents.split(&#x27;\n&#x27;);
-  for (j = 0, len = ref.length; j &#x3c; len; j++) {
+  section = '';
+  ref = this.contents.split('\n');
+  for (j = 0, len = ref.length; j &lt; len; j++) {
     line = ref[j];
     if (match = line.match(/^Start(\w+)/)) {
       section = match[1];
       continue;
     } else if (match = line.match(/^End(\w+)/)) {
-      section = &#x27;&#x27;;
+      section = '';
       continue;
     }
     switch (section) {
-      case &#x27;FontMetrics&#x27;:
+      case 'FontMetrics':
         match = line.match(/(^\w+)\s+(.*)/);
         key = match[1];
         value = match[2];
@@ -2960,17 +2953,17 @@ StandardFont.prototype.encode = function(text) {
           this.attributes[key] = value;
         }
         break;
-      case &#x27;CharMetrics&#x27;:
+      case 'CharMetrics':
         if (!/^CH?\s/.test(line)) {
           continue;
         }
         name = line.match(/\bN\s+(\.?\w+)\s*;/)[1];
         this.glyphWidths[name] = +line.match(/\bWX\s+(\d+)\s*;/)[1];
         break;
-      case &#x27;KernPairs&#x27;:
+      case 'KernPairs':
         match = line.match(/^KPX\s+(\.?\w+)\s+(\.?\w+)\s+(-?\d+)/);
         if (match) {
-          this.kernPairs[match[1] + &#x27;\0&#x27; + match[2]] = parseInt(match[3]);
+          this.kernPairs[match[1] + '\0' + match[2]] = parseInt(match[3]);
         }
     }
   }
@@ -2987,7 +2980,7 @@ this.<span class="apidocCodeKeywordSpan">parse</span>();
 this.charWidths = (function() {
   var j, results;
   results = [];
-  for (i = j = 0; j &#x3c;= 255; i = ++j) {
+  for (i = j = 0; j &lt;= 255; i = ++j) {
     results.push(this.glyphWidths[characters[i]]);
   }
   return results;
@@ -3011,7 +3004,7 @@ this.charWidths = (function() {
 AFMFont.prototype.advancesForGlyphs = function(glyphs) {
   var advances, index, j, left, len, right;
   advances = [];
-  for (index = j = 0, len = glyphs.length; j &#x3c; len; index = ++j) {
+  for (index = j = 0, len = glyphs.length; j &lt; len; index = ++j) {
     left = glyphs[index];
     right = glyphs[index + 1];
     advances.push(this.<span class="apidocCodeKeywordSpan">widthOfGlyph</span>(left) + this.getKernPair(left, right));
@@ -3019,8 +3012,8 @@ AFMFont.prototype.advancesForGlyphs = function(glyphs) {
   return advances;
 };
 
-characters = &#x27;.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef
-       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n\nspace         exclam         quotedbl       numbersign\ndollar        percent        ampersand      quotesingle\nparenleft     parenright     asterisk       plus\ncomma         hyphen         period         slash\nzero          one            two            three\nfour          five           six            seven\neight         nine           colon          semicolon\nless          equal          greater        question\n\nat            A              B              C\nD             E              F              G\nH             I              J              K\nL             M              N              O\nP             Q              R              S\nT             U              V              W\nX             Y              Z              bracketleft\nbackslash     bracketright   asciicircum    underscore\n\ngrave         a              b              c\nd             e              f              g\nh             i              j              k\nl             m              n              o\np             q              r              s\nt             u              v              w\nx             y              z              braceleft\nbar           braceright     asciitilde     .notdef\n\nEuro          .notdef        quotesinglbase florin\nquotedblbase  ellipsis       dagger         daggerdbl\ncircumflex    perthousand    Scaron         guilsinglleft\nOE            .notdef        Zcaron         .notdef\n.notdef       quoteleft      quoteright     quotedblleft\nquotedblright bullet         endash         emdash\ntilde         trademark      scaron         guilsinglright\noe            .notdef        zcaron         ydieresis\n\nspace         exclamdown     cent           sterling\ncurrency      yen            brokenbar      section\ndieresis      copyright      ordfeminine    guillemotleft\nlogicalnot    hyphen         registered     macron\ndegree        plusminus      twosuperior    threesuperior\nacute         mu             paragraph      periodcentered\ncedilla       onesuperior    ordmasculine   guillemotright\nonequarter    onehalf        threequarters  questiondown\n\nAgrave        Aacute         Acircumflex    Atilde\nAdieresis     Aring          AE             Ccedilla\nEgrave        Eacute         Ecircumflex    Edieresis\nIgrave        Iacute         Icircumflex    Idieresis\nEth           Ntilde         Ograve         Oacute\nOcircumflex   Otilde         Odieresis      multiply\nOslash        Ugrave         Uacute         Ucircumflex\nUdieresis     Yacute         Thorn          germandbls\n\nagrave        aacute         acircumflex    atilde\nadieresis     aring          ae             ccedilla\negrave        eacute         ecircumflex    edieresis\nigrave        iacute         icircumflex    idieresis\neth           ntilde         ograve         oacute\nocircumflex   otilde         odieresis      divide\noslash        ugrave         uacute         ucircumflex\nudieresis     yacute         thorn          ydieresis&#x27;.split(/\s+/);
+characters = '.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef
+       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n.notdef       .notdef        .notdef        .notdef\n\nspace         exclam         quotedbl       numbersign\ndollar        percent        ampersand      quotesingle\nparenleft     parenright     asterisk       plus\ncomma         hyphen         period         slash\nzero          one            two            three\nfour          five           six            seven\neight         nine           colon          semicolon\nless          equal          greater        question\n\nat            A              B              C\nD             E              F              G\nH             I              J              K\nL             M              N              O\nP             Q              R              S\nT             U              V              W\nX             Y              Z              bracketleft\nbackslash     bracketright   asciicircum    underscore\n\ngrave         a              b              c\nd             e              f              g\nh             i              j              k\nl             m              n              o\np             q              r              s\nt             u              v              w\nx             y              z              braceleft\nbar           braceright     asciitilde     .notdef\n\nEuro          .notdef        quotesinglbase florin\nquotedblbase  ellipsis       dagger         daggerdbl\ncircumflex    perthousand    Scaron         guilsinglleft\nOE            .notdef        Zcaron         .notdef\n.notdef       quoteleft      quoteright     quotedblleft\nquotedblright bullet         endash         emdash\ntilde         trademark      scaron         guilsinglright\noe            .notdef        zcaron         ydieresis\n\nspace         exclamdown     cent           sterling\ncurrency      yen            brokenbar      section\ndieresis      copyright      ordfeminine    guillemotleft\nlogicalnot    hyphen         registered     macron\ndegree        plusminus      twosuperior    threesuperior\nacute         mu             paragraph      periodcentered\ncedilla       onesuperior    ordmasculine   guillemotright\nonequarter    onehalf        threequarters  questiondown\n\nAgrave        Aacute         Acircumflex    Atilde\nAdieresis     Aring          AE             Ccedilla\nEgrave        Eacute         Ecircumflex    Edieresis\nIgrave        Iacute         Icircumflex    Idieresis\nEth           Ntilde         Ograve         Oacute\nOcircumflex   Otilde         Odieresis      multiply\nOslash        Ugrave         Uacute         Ucircumflex\nUdieresis     Yacute         Thorn          germandbls\n\nagrave        aacute         acircumflex    atilde\nadieresis     aring          ae             ccedilla\negrave        eacute         ecircumflex    edieresis\nigrave        iacute         icircumflex    idieresis\neth           ntilde         ograve         oacute\nocircumflex   otilde         odieresis      divide\noslash        ugrave         uacute         ucircumflex\nudieresis     yacute         thorn          ydieresis'.split(/\s+/);
 
 return AFMFont;
 ...</pre></li>
@@ -3059,10 +3052,10 @@ return AFMFont;
 module.exports = {
   annotate: function(x, y, w, h, options) {
     var key, ref, val;
-    options.Type = &#x27;Annot&#x27;;
+    options.Type = 'Annot';
     options.Rect = this.<span class="apidocCodeKeywordSpan">_convertRect</span>(x, y, w, h);
     options.Border = [0, 0, 0];
-    if (options.Subtype !== &#x27;Link&#x27;) {
+    if (options.Subtype !== 'Link') {
       if (options.C == null) {
         options.C = this._normalizeColor(options.color || [0, 0, 0]);
       }
@@ -3094,7 +3087,7 @@ module.exports = {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Highlight&#x27;;
+  options.Subtype = 'Highlight';
   if (options.color == null) {
     options.color = [241, 238, 148];
   }
@@ -3104,7 +3097,7 @@ underline: function(x, y, w, h, options) {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Underline&#x27;;
+  options.Subtype = 'Underline';
   return this._markup(x, y, w, h, options);
 ...</pre></li>
     </ul>
@@ -3120,16 +3113,16 @@ underline: function(x, y, w, h, options) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">annotate = function (x, y, w, h, options) {
   var key, ref, val;
-  options.Type = &#x27;Annot&#x27;;
+  options.Type = 'Annot';
   options.Rect = this._convertRect(x, y, w, h);
   options.Border = [0, 0, 0];
-  if (options.Subtype !== &#x27;Link&#x27;) {
+  if (options.Subtype !== 'Link') {
     if (options.C == null) {
       options.C = this._normalizeColor(options.color || [0, 0, 0]);
     }
   }
   delete options.color;
-  if (typeof options.Dest === &#x27;string&#x27;) {
+  if (typeof options.Dest === 'string') {
     options.Dest = new String(options.Dest);
   }
   for (key in options) {
@@ -3143,9 +3136,9 @@ underline: function(x, y, w, h, options) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   }
-  options.Subtype = &#x27;Text&#x27;;
+  options.Subtype = 'Text';
   options.Contents = new String(contents);
-  options.Name = &#x27;Comment&#x27;;
+  options.Name = 'Comment';
   if (options.color == null) {
     options.color = [243, 223, 92];
   }
@@ -3155,7 +3148,7 @@ link: function(x, y, w, h, url, options) {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Link&#x27;;
+  options.Subtype = 'Link';
   options.A = this.ref({
 ...</pre></li>
     </ul>
@@ -3173,7 +3166,7 @@ link: function(x, y, w, h, url, options) {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Circle&#x27;;
+  options.Subtype = 'Circle';
   options.Contents = new String;
   return this.annotate(x, y, w, h, options);
 }</pre></li>
@@ -3193,7 +3186,7 @@ link: function(x, y, w, h, url, options) {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Highlight&#x27;;
+  options.Subtype = 'Highlight';
   if (options.color == null) {
     options.color = [241, 238, 148];
   }
@@ -3215,7 +3208,7 @@ link: function(x, y, w, h, url, options) {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Line&#x27;;
+  options.Subtype = 'Line';
   options.Contents = new String;
   options.L = [x1, this.page.height - y1, x2, this.page.height - y2];
   return this.annotate(x1, y1, x2, y2, options);
@@ -3236,9 +3229,9 @@ link: function(x, y, w, h, url, options) {
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Link&#x27;;
+  options.Subtype = 'Link';
   options.A = this.ref({
-    S: &#x27;URI&#x27;,
+    S: 'URI',
     URI: new String(url)
   });
   options.A.end();
@@ -3249,16 +3242,16 @@ link: function(x, y, w, h, url, options) {
 
 # Add some text with annotations
 doc.addPage()
-   .fillColor(&#x22;blue&#x22;)
-   .text(&#x27;Here is a link!&#x27;, 100, 100)
-   .underline(100, 100, 160, 27, color: &#x22;#0000FF&#x22;)
-   .<span class="apidocCodeKeywordSpan">link</span>(100, 100, 160, 27, &#x27;http://google.com/&#x27;)
+   .fillColor("blue")
+   .text('Here is a link!', 100, 100)
+   .underline(100, 100, 160, 27, color: "#0000FF")
+   .<span class="apidocCodeKeywordSpan">link</span>(100, 100, 160, 27, 'http://google.com/')
 
 # Finalize PDF file
 doc.end()
 ```
 
-[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit — producing
+[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit â€” producing
 complex documents with a very small amount of code.  For more, see the `demo` folder and the
 ...</pre></li>
     </ul>
@@ -3276,9 +3269,9 @@ complex documents with a very small amount of code.  For more, see the `demo` fo
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Text&#x27;;
+  options.Subtype = 'Text';
   options.Contents = new String(contents);
-  options.Name = &#x27;Comment&#x27;;
+  options.Name = 'Comment';
   if (options.color == null) {
     options.color = [243, 223, 92];
   }
@@ -3300,7 +3293,7 @@ complex documents with a very small amount of code.  For more, see the `demo` fo
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Square&#x27;;
+  options.Subtype = 'Square';
   options.Contents = new String;
   return this.annotate(x, y, w, h, options);
 }</pre></li>
@@ -3320,7 +3313,7 @@ complex documents with a very small amount of code.  For more, see the `demo` fo
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;StrikeOut&#x27;;
+  options.Subtype = 'StrikeOut';
   return this._markup(x, y, w, h, options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -3339,7 +3332,7 @@ complex documents with a very small amount of code.  For more, see the `demo` fo
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;FreeText&#x27;;
+  options.Subtype = 'FreeText';
   options.Contents = new String(text);
   options.DA = new String;
   return this.annotate(x, y, w, h, options);
@@ -3360,25 +3353,25 @@ complex documents with a very small amount of code.  For more, see the `demo` fo
   if (options == null) {
     options = {};
   }
-  options.Subtype = &#x27;Underline&#x27;;
+  options.Subtype = 'Underline';
   return this._markup(x, y, w, h, options);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-   .fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+   .fill('red', 'even-odd')
    .restore()
 
 # Add some text with annotations
 doc.addPage()
-   .fillColor(&#x22;blue&#x22;)
-   .text(&#x27;Here is a link!&#x27;, 100, 100)
-   .<span class="apidocCodeKeywordSpan">underline</span>(100, 100, 160, 27, color: &#x22;#0000FF&#x22;)
-   .link(100, 100, 160, 27, &#x27;http://google.com/&#x27;)
+   .fillColor("blue")
+   .text('Here is a link!', 100, 100)
+   .<span class="apidocCodeKeywordSpan">underline</span>(100, 100, 160, 27, color: "#0000FF")
+   .link(100, 100, 160, 27, 'http://google.com/')
 
 # Finalize PDF file
 doc.end()
 ```
 
-[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit — producing
+[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit â€” producing
 ...</pre></li>
     </ul>
 
@@ -3407,12 +3400,12 @@ doc.end()
   if (strokeOpacity != null) {
     strokeOpacity = Math.max(0, Math.min(1, strokeOpacity));
   }
-  key = fillOpacity + &#x22;_&#x22; + strokeOpacity;
+  key = fillOpacity + "_" + strokeOpacity;
   if (this._opacityRegistry[key]) {
     ref1 = this._opacityRegistry[key], dictionary = ref1[0], name = ref1[1];
   } else {
     dictionary = {
-      Type: &#x27;ExtGState&#x27;
+      Type: 'ExtGState'
     };
     if (fillOpacity != null) {
       dictionary.ca = fillOpacity;
@@ -3423,11 +3416,11 @@ doc.end()
     dictionary = this.ref(dictionary);
     dictionary.end();
     id = ++this._opacityCount;
-    name = &#x22;Gs&#x22; + id;
+    name = "Gs" + id;
     this._opacityRegistry[key] = [dictionary, name];
   }
   this.page.ext_gstates[name] = dictionary;
-  return this.addContent(&#x22;/&#x22; + name + &#x22; gs&#x22;);
+  return this.addContent("/" + name + " gs");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   set = this._setColor(color, true);
@@ -3462,13 +3455,13 @@ strokeOpacity: function(opacity) {
   if (color instanceof PDFGradient) {
     return color;
   }
-  if (typeof color === &#x27;string&#x27;) {
-    if (color.charAt(0) === &#x27;#&#x27;) {
+  if (typeof color === 'string') {
+    if (color.charAt(0) === '#') {
       if (color.length === 4) {
-        color = color.replace(/#([0-9A-F])([0-9A-F])([0-9A-F])/i, &#x22;#$1$1$2$2$3$3&#x22;);
+        color = color.replace(/#([0-9A-F])([0-9A-F])([0-9A-F])/i, "#$1$1$2$2$3$3");
       }
       hex = parseInt(color.slice(1), 16);
-      color = [hex &#x3e;&#x3e; 16, hex &#x3e;&#x3e; 8 &#x26; 0xff, hex &#x26; 0xff];
+      color = [hex &gt;&gt; 16, hex &gt;&gt; 8 &amp; 0xff, hex &amp; 0xff];
     } else if (namedColors[color]) {
       color = namedColors[color];
     }
@@ -3478,7 +3471,7 @@ strokeOpacity: function(opacity) {
       color = (function() {
         var i, len, results;
         results = [];
-        for (i = 0, len = color.length; i &#x3c; len; i++) {
+        for (i = 0, len = color.length; i &lt; len; i++) {
           part = color[i];
           results.push(part / 255);
         }
@@ -3488,7 +3481,7 @@ strokeOpacity: function(opacity) {
       color = (function() {
         var i, len, results;
         results = [];
-        for (i = 0, len = color.length; i &#x3c; len; i++) {
+        for (i = 0, len = color.length; i &lt; len; i++) {
           part = color[i];
           results.push(part / 100);
         }
@@ -3536,29 +3529,29 @@ name, pattern, ref, ref1, ref2, resources, sMask, shader, stop, stops, v;
   }
   if (this._sMasked) {
     gstate = this.ref({
-      Type: &#x27;ExtGState&#x27;,
-      SMask: &#x27;None&#x27;
+      Type: 'ExtGState',
+      SMask: 'None'
     });
     gstate.end();
-    name = &#x22;Gs&#x22; + (++this._opacityCount);
+    name = "Gs" + (++this._opacityCount);
     this.page.ext_gstates[name] = gstate;
-    this.addContent(&#x22;/&#x22; + name + &#x22; gs&#x22;);
+    this.addContent("/" + name + " gs");
     this._sMasked = false;
   }
-  op = stroke ? &#x27;SCN&#x27; : &#x27;scn&#x27;;
+  op = stroke ? 'SCN' : 'scn';
   if (color instanceof PDFGradient) {
-    this._setColorSpace(&#x27;Pattern&#x27;, stroke);
+    this._setColorSpace('Pattern', stroke);
     color.apply(op);
   } else {
-    space = color.length === 4 ? &#x27;DeviceCMYK&#x27; : &#x27;DeviceRGB&#x27;;
+    space = color.length === 4 ? 'DeviceCMYK' : 'DeviceRGB';
     this._setColorSpace(space, stroke);
-    color = color.join(&#x27; &#x27;);
-    this.addContent(color + &#x22; &#x22; + op);
+    color = color.join(' ');
+    this.addContent(color + " " + op);
   }
   return true;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  return this.addContent(&#x22;/&#x22; + space + &#x22; &#x22; + op);
+  return this.addContent("/" + space + " " + op);
 },
 fillColor: function(color, opacity) {
   var set;
@@ -3587,24 +3580,24 @@ strokeColor: function(color, opacity) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_setColorSpace = function (space, stroke) {
   var op;
-  op = stroke ? &#x27;CS&#x27; : &#x27;cs&#x27;;
-  return this.addContent(&#x22;/&#x22; + space + &#x22; &#x22; + op);
+  op = stroke ? 'CS' : 'cs';
+  return this.addContent("/" + space + " " + op);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  name = &#x22;Gs&#x22; + (++this._opacityCount);
+  name = "Gs" + (++this._opacityCount);
   this.page.ext_gstates[name] = gstate;
-  this.addContent(&#x22;/&#x22; + name + &#x22; gs&#x22;);
+  this.addContent("/" + name + " gs");
   this._sMasked = false;
 }
-op = stroke ? &#x27;SCN&#x27; : &#x27;scn&#x27;;
+op = stroke ? 'SCN' : 'scn';
 if (color instanceof PDFGradient) {
-  this.<span class="apidocCodeKeywordSpan">_setColorSpace</span>(&#x27;Pattern&#x27;, stroke);
+  this.<span class="apidocCodeKeywordSpan">_setColorSpace</span>('Pattern', stroke);
   color.apply(op);
 } else {
-  space = color.length === 4 ? &#x27;DeviceCMYK&#x27; : &#x27;DeviceRGB&#x27;;
+  space = color.length === 4 ? 'DeviceCMYK' : 'DeviceRGB';
   this._setColorSpace(space, stroke);
-  color = color.join(&#x27; &#x27;);
-  this.addContent(color + &#x22; &#x22; + op);
+  color = color.join(' ');
+  this.addContent(color + " " + op);
 }
 ...</pre></li>
     </ul>
@@ -3632,16 +3625,16 @@ if (color instanceof PDFGradient) {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
    .translate(470, -380)
-   .path(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-   .fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+   .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
+   .fill('red', 'even-odd')
    .restore()
 
 # Add some text with annotations
 doc.addPage()
-   .<span class="apidocCodeKeywordSpan">fillColor</span>(&#x22;blue&#x22;)
-   .text(&#x27;Here is a link!&#x27;, 100, 100)
-   .underline(100, 100, 160, 27, color: &#x22;#0000FF&#x22;)
-   .link(100, 100, 160, 27, &#x27;http://google.com/&#x27;)
+   .<span class="apidocCodeKeywordSpan">fillColor</span>("blue")
+   .text('Here is a link!', 100, 100)
+   .underline(100, 100, 160, 27, color: "#0000FF")
+   .link(100, 100, 160, 27, 'http://google.com/')
 
 # Finalize PDF file
 doc.end()
@@ -3768,13 +3761,13 @@ strokeColor: function(color, opacity) {
   if (color) {
     this.fillColor(color);
   }
-  return this.addContent(&#x27;f&#x27; + this._windingRule(rule));
+  return this.addContent('f' + this._windingRule(rule));
 },
 stroke: function(color) {
   if (color) {
     this.<span class="apidocCodeKeywordSpan">strokeColor</span>(color);
   }
-  return this.addContent(&#x27;S&#x27;);
+  return this.addContent('S');
 },
 fillAndStroke: function(fillColor, strokeColor, rule) {
   var isFillRule;
@@ -3869,7 +3862,7 @@ opacity: function(opacity) {
     <li>description and source-code<pre class="apidocCodePre">read = function (bytes) {
   var buf, i, j, ref;
   buf = [];
-  for (i = j = 0, ref = bytes; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = bytes; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     buf.push(this.readByte());
   }
   return buf;
@@ -3950,7 +3943,7 @@ Data.prototype.readUInt32 = function() {
     <li>description and source-code<pre class="apidocCodePre">readInt16 = function () {
   var int;
   int = this.readUInt16();
-  if (int &#x3e;= 0x8000) {
+  if (int &gt;= 0x8000) {
     return int - 0x10000;
   } else {
     return int;
@@ -3987,17 +3980,17 @@ Data.prototype.readLongLong = function() {
     <li>description and source-code<pre class="apidocCodePre">readInt32 = function () {
   var int;
   int = this.readUInt32();
-  if (int &#x3e;= 0x80000000) {
+  if (int &gt;= 0x80000000) {
     return int - 0x100000000;
   } else {
     return int;
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  this.writeByte((low &#x3e;&#x3e; 24) &#x26; 0xff);
-  this.writeByte((low &#x3e;&#x3e; 16) &#x26; 0xff);
-  this.writeByte((low &#x3e;&#x3e; 8) &#x26; 0xff);
-  return this.writeByte(low &#x26; 0xff);
+  this.writeByte((low &gt;&gt; 24) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(low &amp; 0xff);
 };
 
 Data.prototype.readInt = function() {
@@ -4031,7 +4024,7 @@ Data.prototype.slice = function(start, end) {
   b6 = this.readByte();
   b7 = this.readByte();
   b8 = this.readByte();
-  if (b1 &#x26; 0x80) {
+  if (b1 &amp; 0x80) {
     return ((b1 ^ 0xff) * 0x100000000000000 + (b2 ^ 0xff) * 0x1000000000000 + (b3 ^ 0xff) * 0x10000000000 + (b4 ^ 0xff) * 0x100000000
  + (b5 ^ 0xff) * 0x1000000 + (b6 ^ 0xff) * 0x10000 + (b7 ^ 0xff) * 0x100 + (b8 ^ 0xff) + 1) * -1;
   }
@@ -4068,10 +4061,10 @@ b7 * 0x100 + b8;
     <li>description and source-code<pre class="apidocCodePre">readString = function (length) {
   var i, j, ref, ret;
   ret = [];
-  for (i = j = 0, ref = length; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     ret[i] = String.fromCharCode(this.readByte());
   }
-  return ret.join(&#x27;&#x27;);
+  return ret.join('');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     results.push(this.writeByte(val.charCodeAt(i)));
@@ -4103,20 +4096,20 @@ Data.prototype.writeShort = function(val) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">readUInt16 = function () {
   var b1, b2;
-  b1 = this.readByte() &#x3c;&#x3c; 8;
+  b1 = this.readByte() &lt;&lt; 8;
   b2 = this.readByte();
   return b1 | b2;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 Data.prototype.writeUInt16 = function(val) {
-  this.writeByte((val &#x3e;&#x3e; 8) &#x26; 0xff);
-  return this.writeByte(val &#x26; 0xff);
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
 };
 
 Data.prototype.readInt16 = function() {
   var int;
   int = this.<span class="apidocCodeKeywordSpan">readUInt16</span>();
-  if (int &#x3e;= 0x8000) {
+  if (int &gt;= 0x8000) {
     return int - 0x10000;
   } else {
     return int;
@@ -4137,21 +4130,21 @@ Data.prototype.readInt16 = function() {
     <li>description and source-code<pre class="apidocCodePre">readUInt32 = function () {
   var b1, b2, b3, b4;
   b1 = this.readByte() * 0x1000000;
-  b2 = this.readByte() &#x3c;&#x3c; 16;
-  b3 = this.readByte() &#x3c;&#x3c; 8;
+  b2 = this.readByte() &lt;&lt; 16;
+  b3 = this.readByte() &lt;&lt; 8;
   b4 = this.readByte();
   return b1 + b2 + b3 + b4;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  this.writeByte((val &#x3e;&#x3e; 16) &#x26; 0xff);
-  this.writeByte((val &#x3e;&#x3e; 8) &#x26; 0xff);
-  return this.writeByte(val &#x26; 0xff);
+  this.writeByte((val &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
 };
 
 Data.prototype.readInt32 = function() {
   var int;
   int = this.<span class="apidocCodeKeywordSpan">readUInt32</span>();
-  if (int &#x3e;= 0x80000000) {
+  if (int &gt;= 0x80000000) {
     return int - 0x100000000;
   } else {
     return int;
@@ -4186,7 +4179,7 @@ Data.prototype.slice = function(start, end) {
 Data.prototype.read = function(bytes) {
   var buf, i, j, ref;
   buf = [];
-  for (i = j = 0, ref = bytes; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = bytes; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     buf.push(this.readByte());
 ...</pre></li>
     </ul>
@@ -4219,7 +4212,7 @@ Data.prototype.read = function(bytes) {
     <li>description and source-code<pre class="apidocCodePre">write = function (bytes) {
   var byte, j, len, results;
   results = [];
-  for (j = 0, len = bytes.length; j &#x3c; len; j++) {
+  for (j = 0, len = bytes.length; j &lt; len; j++) {
     byte = bytes[j];
     results.push(this.writeByte(byte));
   }
@@ -4285,8 +4278,8 @@ Data.prototype.writeBool = function(val) {
 Data.prototype.readUInt32 = function() {
   var b1, b2, b3, b4;
   b1 = this.readByte() * 0x1000000;
-  b2 = this.readByte() &#x3c;&#x3c; 16;
-  b3 = this.readByte() &#x3c;&#x3c; 8;
+  b2 = this.readByte() &lt;&lt; 16;
+  b3 = this.readByte() &lt;&lt; 8;
 ...</pre></li>
     </ul>
 
@@ -4315,7 +4308,7 @@ Data.prototype.readUInt32 = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">writeInt16 = function (val) {
-  if (val &#x3c; 0) {
+  if (val &lt; 0) {
     val += 0x10000;
   }
   return this.writeUInt16(val);
@@ -4349,7 +4342,7 @@ Data.prototype.readLongLong = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">writeInt32 = function (val) {
-  if (val &#x3c; 0) {
+  if (val &lt; 0) {
     val += 0x100000000;
   }
   return this.writeUInt32(val);
@@ -4385,15 +4378,15 @@ Data.prototype.read = function(bytes) {
     <li>description and source-code<pre class="apidocCodePre">writeLongLong = function (val) {
   var high, low;
   high = Math.floor(val / 0x100000000);
-  low = val &#x26; 0xffffffff;
-  this.writeByte((high &#x3e;&#x3e; 24) &#x26; 0xff);
-  this.writeByte((high &#x3e;&#x3e; 16) &#x26; 0xff);
-  this.writeByte((high &#x3e;&#x3e; 8) &#x26; 0xff);
-  this.writeByte(high &#x26; 0xff);
-  this.writeByte((low &#x3e;&#x3e; 24) &#x26; 0xff);
-  this.writeByte((low &#x3e;&#x3e; 16) &#x26; 0xff);
-  this.writeByte((low &#x3e;&#x3e; 8) &#x26; 0xff);
-  return this.writeByte(low &#x26; 0xff);
+  low = val &amp; 0xffffffff;
+  this.writeByte((high &gt;&gt; 24) &amp; 0xff);
+  this.writeByte((high &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((high &gt;&gt; 8) &amp; 0xff);
+  this.writeByte(high &amp; 0xff);
+  this.writeByte((low &gt;&gt; 24) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((low &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(low &amp; 0xff);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -4425,7 +4418,7 @@ Data.prototype.read = function(bytes) {
     <li>description and source-code<pre class="apidocCodePre">writeString = function (val) {
   var i, j, ref, results;
   results = [];
-  for (i = j = 0, ref = val.length; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = val.length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     results.push(this.writeByte(val.charCodeAt(i)));
   }
   return results;
@@ -4443,15 +4436,15 @@ Data.prototype.read = function(bytes) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">writeUInt16 = function (val) {
-  this.writeByte((val &#x3e;&#x3e; 8) &#x26; 0xff);
-  return this.writeByte(val &#x26; 0xff);
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   }
 };
 
 Data.prototype.writeInt16 = function(val) {
-  if (val &#x3c; 0) {
+  if (val &lt; 0) {
     val += 0x10000;
   }
   return this.<span class="apidocCodeKeywordSpan">writeUInt16</span>(val);
@@ -4460,7 +4453,7 @@ Data.prototype.writeInt16 = function(val) {
 Data.prototype.readString = function(length) {
   var i, j, ref, ret;
   ret = [];
-  for (i = j = 0, ref = length; 0 &#x3c;= ref ? j &#x3c; ref : j &#x3e; ref; i = 0 &#x3c;= ref ? ++j : --j) {
+  for (i = j = 0, ref = length; 0 &lt;= ref ? j &lt; ref : j &gt; ref; i = 0 &lt;= ref ? ++j : --j) {
     ret[i] = String.fromCharCode(this.readByte());
 ...</pre></li>
     </ul>
@@ -4475,17 +4468,17 @@ Data.prototype.readString = function(length) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">writeUInt32 = function (val) {
-  this.writeByte((val &#x3e;&#x3e;&#x3e; 24) &#x26; 0xff);
-  this.writeByte((val &#x3e;&#x3e; 16) &#x26; 0xff);
-  this.writeByte((val &#x3e;&#x3e; 8) &#x26; 0xff);
-  return this.writeByte(val &#x26; 0xff);
+  this.writeByte((val &gt;&gt;&gt; 24) &amp; 0xff);
+  this.writeByte((val &gt;&gt; 16) &amp; 0xff);
+  this.writeByte((val &gt;&gt; 8) &amp; 0xff);
+  return this.writeByte(val &amp; 0xff);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   }
 };
 
 Data.prototype.writeInt32 = function(val) {
-  if (val &#x3c; 0) {
+  if (val &lt; 0) {
     val += 0x100000000;
   }
   return this.<span class="apidocCodeKeywordSpan">writeUInt32</span>(val);
@@ -4493,7 +4486,7 @@ Data.prototype.writeInt32 = function(val) {
 
 Data.prototype.readUInt16 = function() {
   var b1, b2;
-  b1 = this.readByte() &#x3c;&#x3c; 8;
+  b1 = this.readByte() &lt;&lt; 8;
   b2 = this.readByte();
   return b1 | b2;
 ...</pre></li>
@@ -4541,7 +4534,7 @@ Data.prototype.readUInt16 = function() {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">open = function (document, src, family, id) {
   var font;
-  if (typeof src === &#x27;string&#x27;) {
+  if (typeof src === 'string') {
     if (StandardFont.isStandardFont(src)) {
       return new StandardFont(document, src, id);
     }
@@ -4554,7 +4547,7 @@ Data.prototype.readUInt16 = function() {
     font = fontkit.create(new Buffer(new Uint8Array(src)), family);
   }
   if (font == null) {
-    throw new Error(&#x27;Not a supported font format or standard PDF font.&#x27;);
+    throw new Error('Not a supported font format or standard PDF font.');
   }
   return new EmbeddedFont(document, font, id);
 }</pre></li>
@@ -4565,7 +4558,7 @@ if (font = this._fontFamilies[cacheKey]) {
   this._font = font;
   return this;
 }
-id = &#x27;F&#x27; + (++this._fontCount);
+id = 'F' + (++this._fontCount);
 this._font = PDFFont.<span class="apidocCodeKeywordSpan">open</span>(this, src, family, id);
 if (font = this._fontFamilies[this._font.name]) {
   this._font = font;
@@ -4624,36 +4617,36 @@ if (cacheKey) {
   isCFF = this.subset.cff != null;
   fontFile = this.document.ref();
   if (isCFF) {
-    fontFile.data.Subtype = &#x27;CIDFontType0C&#x27;;
+    fontFile.data.Subtype = 'CIDFontType0C';
   }
   this.subset.encodeStream().pipe(fontFile);
-  familyClass = (((ref = this.font[&#x27;OS/2&#x27;]) != null ? ref.sFamilyClass : void 0) || 0) &#x3e;&#x3e; 8;
+  familyClass = (((ref = this.font['OS/2']) != null ? ref.sFamilyClass : void 0) || 0) &gt;&gt; 8;
   flags = 0;
   if (this.font.post.isFixedPitch) {
-    flags |= 1 &#x3c;&#x3c; 0;
+    flags |= 1 &lt;&lt; 0;
   }
-  if ((1 &#x3c;= familyClass &#x26;&#x26; familyClass &#x3c;= 7)) {
-    flags |= 1 &#x3c;&#x3c; 1;
+  if ((1 &lt;= familyClass &amp;&amp; familyClass &lt;= 7)) {
+    flags |= 1 &lt;&lt; 1;
   }
-  flags |= 1 &#x3c;&#x3c; 2;
+  flags |= 1 &lt;&lt; 2;
   if (familyClass === 10) {
-    flags |= 1 &#x3c;&#x3c; 3;
+    flags |= 1 &lt;&lt; 3;
   }
   if (this.font.head.macStyle.italic) {
-    flags |= 1 &#x3c;&#x3c; 6;
+    flags |= 1 &lt;&lt; 6;
   }
   tag = ((function() {
     var j, results;
     results = [];
-    for (i = j = 0; j &#x3c; 6; i = ++j) {
+    for (i = j = 0; j &lt; 6; i = ++j) {
       results.push(String.fromCharCode(Math.random() * 26 + 65));
     }
     return results;
-  })()).join(&#x27;&#x27;);
-  name = tag + &#x27;+&#x27; + this.font.postscriptName;
+  })()).join('');
+  name = tag + '+' + this.font.postscriptName;
   bbox = this.font.bbox;
   descriptor = this.document.ref({
-    Type: &#x27;FontDescriptor&#x27;,
+    Type: 'FontDescriptor',
     FontName: name,
     Flags: flags,
     FontBBox: [bbox.minX * this.scale, bbox.minY * this.scale, bbox.maxX * this.scale, bbox.maxY * this.scale],
@@ -4671,12 +4664,12 @@ if (cacheKey) {
   }
   descriptor.end();
   descendantFont = this.document.ref({
-    Type: &#x27;Font&#x27;,
-    Subtype: isCFF ? &#x27;CIDFontType0&#x27; : &#x27;CIDFontType2&#x27;,
+    Type: 'Font',
+    Subtype: isCFF ? 'CIDFontType0' : 'CIDFontType2',
     BaseFont: name,
     CIDSystemInfo: {
-      Registry: new String(&#x27;Adobe&#x27;),
-      Ordering: new String(&#x27;Identity&#x27;),
+      Registry: new String('Adobe'),
+      Ordering: new String('Identity'),
       Supplement: 0
     },
     FontDescriptor: descriptor,
@@ -4684,10 +4677,10 @@ if (cacheKey) {
   });
   descendantFont.end();
   this.dictionary.data = {
-    Type: &#x27;Font&#x27;,
-    Subtype: &#x27;Type0&#x27;,
+    Type: 'Font',
+    Subtype: 'Type0',
     BaseFont: name,
-    Encoding: &#x27;Identity-H&#x27;,
+    Encoding: 'Identity-H',
     DescendantFonts: [descendantFont],
     ToUnicode: this.toUnicodeCmap()
   };
@@ -4706,7 +4699,7 @@ PDFFont.prototype.finalize = function() {
 };
 
 PDFFont.prototype.embed = function() {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 };
 ...</pre></li>
     </ul>
@@ -4724,10 +4717,10 @@ PDFFont.prototype.embed = function() {
   var base, base1, gid, glyph, glyphs, i, j, key, len, positions, ref, res;
   ref = this.font.layout(text, features), glyphs = ref.glyphs, positions = ref.positions;
   res = [];
-  for (i = j = 0, len = glyphs.length; j &#x3c; len; i = ++j) {
+  for (i = j = 0, len = glyphs.length; j &lt; len; i = ++j) {
     glyph = glyphs[i];
     gid = this.subset.includeGlyph(glyph.id);
-    res.push((&#x27;0000&#x27; + gid.toString(16)).slice(-4));
+    res.push(('0000' + gid.toString(16)).slice(-4));
     if ((base = this.widths)[gid] == null) {
       base[gid] = glyph.advanceWidth * this.scale;
     }
@@ -4743,11 +4736,11 @@ PDFFont.prototype.embed = function() {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   words = text.trim().split(/\s+/);
-  wordSpacing += this.widthOfString(&#x27; &#x27;) + characterSpacing;
+  wordSpacing += this.widthOfString(' ') + characterSpacing;
   wordSpacing *= 1000 / this._fontSize;
   encoded = [];
   positions = [];
-  for (j = 0, len = words.length; j &#x3c; len; j++) {
+  for (j = 0, len = words.length; j &lt; len; j++) {
     word = words[j];
     ref = this._font.<span class="apidocCodeKeywordSpan">encode</span>(word, options.features), encodedWord = ref[0], positionsWord
  = ref[1];
@@ -4775,31 +4768,31 @@ PDFFont.prototype.embed = function() {
   cmap = this.document.ref();
   entries = [];
   ref = this.unicode;
-  for (j = 0, len = ref.length; j &#x3c; len; j++) {
+  for (j = 0, len = ref.length; j &lt; len; j++) {
     codePoints = ref[j];
     encoded = [];
-    for (k = 0, len1 = codePoints.length; k &#x3c; len1; k++) {
+    for (k = 0, len1 = codePoints.length; k &lt; len1; k++) {
       value = codePoints[k];
-      if (value &#x3e; 0xffff) {
+      if (value &gt; 0xffff) {
         value -= 0x10000;
-        encoded.push(toHex(value &#x3e;&#x3e;&#x3e; 10 &#x26; 0x3ff | 0xd800));
-        value = 0xdc00 | value &#x26; 0x3ff;
+        encoded.push(toHex(value &gt;&gt;&gt; 10 &amp; 0x3ff | 0xd800));
+        value = 0xdc00 | value &amp; 0x3ff;
       }
       encoded.push(toHex(value));
     }
-    entries.push(&#x22;&#x3c;&#x22; + (encoded.join(&#x27; &#x27;)) + &#x22;&#x3e;&#x22;);
+    entries.push("&lt;" + (encoded.join(' ')) + "&gt;");
   }
-  cmap.end(&#x22;/CIDInit /ProcSet findresource begin\n12 dict begin\nbegincmap\n/CIDSystemInfo &#x3c;&#x3c;\n  /Registry (Adobe)\n  /Ordering (
-UCS)\n  /Supplement 0\n&#x3e;&#x3e; def\n/CMapName /Adobe-Identity-UCS def\n/CMapType 2 def\n1 begincodespacerange\n&#x3c;0000&#x3e;&#x3c;ffff&#x3e;\nendcodespacerange\n1 beginbfrange\n&#x3c;0000&#x3e; &#x3c;&#x22; + (toHex(entries.length - 1)) + &#x22;&#x3e; [&#x22; + (entries.join(&#x27; &#x27;)) + &#x22;]\nendbfrange\nendcmap\nCMapName currentdict /CMap defineresource pop\nend\nend&#x22;);
+  cmap.end("/CIDInit /ProcSet findresource begin\n12 dict begin\nbegincmap\n/CIDSystemInfo &lt;&lt;\n  /Registry (Adobe)\n  /Ordering (
+UCS)\n  /Supplement 0\n&gt;&gt; def\n/CMapName /Adobe-Identity-UCS def\n/CMapType 2 def\n1 begincodespacerange\n&lt;0000&gt;&lt;ffff&gt;\nendcodespacerange\n1 beginbfrange\n&lt;0000&gt; &lt;" + (toHex(entries.length - 1)) + "&gt; [" + (entries.join(' ')) + "]\nendbfrange\nendcmap\nCMapName currentdict /CMap defineresource pop\nend\nend");
   return cmap;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   descendantFont.end();
   this.dictionary.data = {
-    Type: &#x27;Font&#x27;,
-    Subtype: &#x27;Type0&#x27;,
+    Type: 'Font',
+    Subtype: 'Type0',
     BaseFont: name,
-    Encoding: &#x27;Identity-H&#x27;,
+    Encoding: 'Identity-H',
     DescendantFonts: [descendantFont],
     ToUnicode: this.<span class="apidocCodeKeywordSpan">toUnicodeCmap</span>()
   };
@@ -4808,7 +4801,7 @@ UCS)\n  /Supplement 0\n&#x3e;&#x3e; def\n/CMapName /Adobe-Identity-UCS def\n/CMa
 
 toHex = function() {
   var code, codePoints, codes;
-  codePoints = 1 &#x3c;= arguments.length ? slice.call(arguments, 0) : [];
+  codePoints = 1 &lt;= arguments.length ? slice.call(arguments, 0) : [];
 ...</pre></li>
     </ul>
 
@@ -4862,24 +4855,24 @@ LineWrapper.prototype.eachWord = function(text, fn) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function PDFFont() {
-  throw new Error(&#x27;Cannot construct a PDFFont directly.&#x27;);
+  throw new Error('Cannot construct a PDFFont directly.');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 doc = new PDFDocument
 
 # Pipe its output somewhere, like to a file or HTTP response
 # See below for browser usage
-doc.pipe fs.createWriteStream(&#x27;output.pdf&#x27;)
+doc.pipe fs.createWriteStream('output.pdf')
 
 # Embed a font, set the font size, and render some text
-doc.<span class="apidocCodeKeywordSpan">font</span>(&#x27;fonts/PalatinoBold.ttf&#x27;)
+doc.<span class="apidocCodeKeywordSpan">font</span>('fonts/PalatinoBold.ttf')
 .fontSize(25)
-.text(&#x27;Some text with an embedded font!&#x27;, 100, 100)
+.text('Some text with an embedded font!', 100, 100)
 
 # Add another page
 doc.addPage()
 .fontSize(25)
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -4894,7 +4887,7 @@ doc.addPage()
     <ul>
     <li>description and source-code<pre class="apidocCodePre">open = function (document, src, family, id) {
   var font;
-  if (typeof src === &#x27;string&#x27;) {
+  if (typeof src === 'string') {
     if (StandardFont.isStandardFont(src)) {
       return new StandardFont(document, src, id);
     }
@@ -4907,7 +4900,7 @@ doc.addPage()
     font = fontkit.create(new Buffer(new Uint8Array(src)), family);
   }
   if (font == null) {
-    throw new Error(&#x27;Not a supported font format or standard PDF font.&#x27;);
+    throw new Error('Not a supported font format or standard PDF font.');
   }
   return new EmbeddedFont(document, font, id);
 }</pre></li>
@@ -4918,7 +4911,7 @@ if (font = this._fontFamilies[cacheKey]) {
   this._font = font;
   return this;
 }
-id = &#x27;F&#x27; + (++this._fontCount);
+id = 'F' + (++this._fontCount);
 this._font = PDFFont.<span class="apidocCodeKeywordSpan">open</span>(this, src, family, id);
 if (font = this._fontFamilies[this._font.name]) {
   this._font = font;
@@ -4945,7 +4938,7 @@ if (cacheKey) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">embed = function () {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   return this.dictionary != null ? this.dictionary : this.dictionary = this.document.ref();
@@ -4960,7 +4953,7 @@ PDFFont.prototype.finalize = function() {
 };
 
 PDFFont.prototype.embed = function() {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 };
 ...</pre></li>
     </ul>
@@ -4975,15 +4968,15 @@ PDFFont.prototype.embed = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">encode = function (text) {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   words = text.trim().split(/\s+/);
-  wordSpacing += this.widthOfString(&#x27; &#x27;) + characterSpacing;
+  wordSpacing += this.widthOfString(' ') + characterSpacing;
   wordSpacing *= 1000 / this._fontSize;
   encoded = [];
   positions = [];
-  for (j = 0, len = words.length; j &#x3c; len; j++) {
+  for (j = 0, len = words.length; j &lt; len; j++) {
     word = words[j];
     ref = this._font.<span class="apidocCodeKeywordSpan">encode</span>(word, options.features), encodedWord = ref[0], positionsWord
  = ref[1];
@@ -5028,7 +5021,7 @@ PDFReference.prototype.end = function(chunk) {
 PDFReference.prototype.finalize = function() {
   var chunk, i, len, ref;
   this.offset = this.document._offset;
-  this.document._write(this.id + &#x22; &#x22; + this.gen + &#x22; obj&#x22;);
+  this.document._write(this.id + " " + this.gen + " obj");
 ...</pre></li>
     </ul>
 
@@ -5084,12 +5077,11 @@ registerFont: function(name, src, family) {
 };
 
 PDFFont.prototype.widthOfString = function(text) {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 };
 
 PDFFont.prototype.ref = function() {
-  return this.dictionary != null ? this.dictionary : this.dictionary = this.document.<span class="apidocCodeKeywordSpan">ref</span
->();
+  return this.dictionary != null ? this.dictionary : this.dictionary = this.document.<span class="apidocCodeKeywordSpan">ref</span>();
 };
 
 PDFFont.prototype.finalize = function() {
@@ -5110,7 +5102,7 @@ PDFFont.prototype.finalize = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">widthOfString = function (text) {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
         return _this.lastLine = false;
@@ -5161,10 +5153,10 @@ if (options.ellipsis != null) {
   this.ellipsis = options.ellipsis;
 }
 nextY = this.document.y + this.document.<span class="apidocCodeKeywordSpan">currentLineHeight</span>(true);
-if (this.document.y &#x3e; this.maxY || nextY &#x3e; this.maxY) {
+if (this.document.y &gt; this.maxY || nextY &gt; this.maxY) {
   this.nextSection();
 }
-buffer = &#x27;&#x27;;
+buffer = '';
 textWidth = 0;
 wc = 0;
 lc = 0;
@@ -5182,16 +5174,16 @@ lc = 0;
     <ul>
     <li>description and source-code<pre class="apidocCodePre">font = function (src, family, size) {
   var cacheKey, font, id, ref;
-  if (typeof family === &#x27;number&#x27;) {
+  if (typeof family === 'number') {
     size = family;
     family = null;
   }
-  if (typeof src === &#x27;string&#x27; &#x26;&#x26; this._registeredFonts[src]) {
+  if (typeof src === 'string' &amp;&amp; this._registeredFonts[src]) {
     cacheKey = src;
     ref = this._registeredFonts[src], src = ref.src, family = ref.family;
   } else {
     cacheKey = family || src;
-    if (typeof cacheKey !== &#x27;string&#x27;) {
+    if (typeof cacheKey !== 'string') {
       cacheKey = null;
     }
   }
@@ -5202,7 +5194,7 @@ lc = 0;
     this._font = font;
     return this;
   }
-  id = &#x27;F&#x27; + (++this._fontCount);
+  id = 'F' + (++this._fontCount);
   this._font = PDFFont.open(this, src, family, id);
   if (font = this._fontFamilies[this._font.name]) {
     this._font = font;
@@ -5219,17 +5211,17 @@ doc = new PDFDocument
 
 # Pipe its output somewhere, like to a file or HTTP response
 # See below for browser usage
-doc.pipe fs.createWriteStream(&#x27;output.pdf&#x27;)
+doc.pipe fs.createWriteStream('output.pdf')
 
 # Embed a font, set the font size, and render some text
-doc.<span class="apidocCodeKeywordSpan">font</span>(&#x27;fonts/PalatinoBold.ttf&#x27;)
+doc.<span class="apidocCodeKeywordSpan">font</span>('fonts/PalatinoBold.ttf')
 .fontSize(25)
-.text(&#x27;Some text with an embedded font!&#x27;, 100, 100)
+.text('Some text with an embedded font!', 100, 100)
 
 # Add another page
 doc.addPage()
 .fontSize(25)
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -5250,17 +5242,17 @@ doc.addPage()
 
 # Pipe its output somewhere, like to a file or HTTP response
 # See below for browser usage
-doc.pipe fs.createWriteStream(&#x27;output.pdf&#x27;)
+doc.pipe fs.createWriteStream('output.pdf')
 
 # Embed a font, set the font size, and render some text
-doc.font(&#x27;fonts/PalatinoBold.ttf&#x27;)
+doc.font('fonts/PalatinoBold.ttf')
 .<span class="apidocCodeKeywordSpan">fontSize</span>(25)
-.text(&#x27;Some text with an embedded font!&#x27;, 100, 100)
+.text('Some text with an embedded font!', 100, 100)
 
 # Add another page
 doc.addPage()
 .fontSize(25)
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -5279,7 +5271,7 @@ doc.addPage()
   this._fontSize = 12;
   this._font = null;
   this._registeredFonts = {};
-  return this.font(&#x27;Helvetica&#x27;);
+  return this.font('Helvetica');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5322,7 +5314,7 @@ doc.addPage()
   this.stops = [];
   this.embedded = false;
   this.transform = [1, 0, 0, 1, 0, 0];
-  this._colorSpace = &#x27;DeviceRGB&#x27;;
+  this._colorSpace = 'DeviceRGB';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -5404,7 +5396,7 @@ doc.addPage()
     data = new Buffer(new Uint8Array(src));
   } else {
     if (match = /^data:.+;base64,(.*)$/.exec(src)) {
-      data = new Buffer(match[1], &#x27;base64&#x27;);
+      data = new Buffer(match[1], 'base64');
     } else {
       data = fs.readFileSync(src);
       if (!data) {
@@ -5412,12 +5404,12 @@ doc.addPage()
       }
     }
   }
-  if (data[0] === 0xff &#x26;&#x26; data[1] === 0xd8) {
+  if (data[0] === 0xff &amp;&amp; data[1] === 0xd8) {
     return new JPEG(data, label);
-  } else if (data[0] === 0x89 &#x26;&#x26; data.toString(&#x27;ascii&#x27;, 1, 4) === &#x27;PNG&#x27;) {
+  } else if (data[0] === 0x89 &amp;&amp; data.toString('ascii', 1, 4) === 'PNG') {
     return new PNG(data, label);
   } else {
-    throw new Error(&#x27;Unknown image format.&#x27;);
+    throw new Error('Unknown image format.');
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -5427,7 +5419,7 @@ if (font = this._fontFamilies[cacheKey]) {
   this._font = font;
   return this;
 }
-id = &#x27;F&#x27; + (++this._fontCount);
+id = 'F' + (++this._fontCount);
 this._font = PDFFont.<span class="apidocCodeKeywordSpan">open</span>(this, src, family, id);
 if (font = this._fontFamilies[this._font.name]) {
   this._font = font;
@@ -5458,7 +5450,7 @@ if (cacheKey) {
   if (options == null) {
     options = {};
   }
-  if (typeof x === &#x27;object&#x27;) {
+  if (typeof x === 'object') {
     options = x;
     x = null;
   }
@@ -5468,7 +5460,7 @@ if (cacheKey) {
     image = this._imageRegistry[src];
   }
   if (!image) {
-    image = PDFImage.open(src, &#x27;I&#x27; + (++this._imageCount));
+    image = PDFImage.open(src, 'I' + (++this._imageCount));
     image.embed(this);
     if (!Buffer.isBuffer(src)) {
       this._imageRegistry[src] = image;
@@ -5479,11 +5471,11 @@ if (cacheKey) {
   }
   w = options.width || image.width;
   h = options.height || image.height;
-  if (options.width &#x26;&#x26; !options.height) {
+  if (options.width &amp;&amp; !options.height) {
     wp = w / image.width;
     w = image.width * wp;
     h = image.height * wp;
-  } else if (options.height &#x26;&#x26; !options.width) {
+  } else if (options.height &amp;&amp; !options.width) {
     hp = h / image.height;
     w = image.width * hp;
     h = image.height * hp;
@@ -5494,21 +5486,21 @@ if (cacheKey) {
     ref2 = options.fit, bw = ref2[0], bh = ref2[1];
     bp = bw / bh;
     ip = image.width / image.height;
-    if (ip &#x3e; bp) {
+    if (ip &gt; bp) {
       w = bw;
       h = bw / ip;
     } else {
       h = bh;
       w = bh * ip;
     }
-    if (options.align === &#x27;center&#x27;) {
+    if (options.align === 'center') {
       x = x + bw / 2 - w / 2;
-    } else if (options.align === &#x27;right&#x27;) {
+    } else if (options.align === 'right') {
       x = x + bw - w;
     }
-    if (options.valign === &#x27;center&#x27;) {
+    if (options.valign === 'center') {
       y = y + bh / 2 - h / 2;
-    } else if (options.valign === &#x27;bottom&#x27;) {
+    } else if (options.valign === 'bottom') {
       y = y + bh - h;
     }
   }
@@ -5517,7 +5509,7 @@ if (cacheKey) {
   }
   this.save();
   this.transform(w, 0, 0, -h, x, y + h);
-  this.addContent(&#x22;/&#x22; + image.label + &#x22; Do&#x22;);
+  this.addContent("/" + image.label + " Do");
   this.restore();
   return this;
 }</pre></li>
@@ -5559,19 +5551,19 @@ if (cacheKey) {
   this.data = data;
   this.label = label;
   if (this.data.readUInt16BE(0) !== 0xFFD8) {
-    throw &#x22;SOI not found in JPEG&#x22;;
+    throw "SOI not found in JPEG";
   }
   pos = 2;
-  while (pos &#x3c; this.data.length) {
+  while (pos &lt; this.data.length) {
     marker = this.data.readUInt16BE(pos);
     pos += 2;
-    if (indexOf.call(MARKERS, marker) &#x3e;= 0) {
+    if (indexOf.call(MARKERS, marker) &gt;= 0) {
       break;
     }
     pos += this.data.readUInt16BE(pos);
   }
-  if (indexOf.call(MARKERS, marker) &#x3c; 0) {
-    throw &#x22;Invalid JPEG.&#x22;;
+  if (indexOf.call(MARKERS, marker) &lt; 0) {
+    throw "Invalid JPEG.";
   }
   pos += 2;
   this.bits = this.data[pos++];
@@ -5583,11 +5575,11 @@ if (cacheKey) {
   this.colorSpace = (function() {
     switch (channels) {
       case 1:
-        return &#x27;DeviceGray&#x27;;
+        return 'DeviceGray';
       case 3:
-        return &#x27;DeviceRGB&#x27;;
+        return 'DeviceRGB';
       case 4:
-        return &#x27;DeviceCMYK&#x27;;
+        return 'DeviceCMYK';
     }
   })();
   this.obj = null;
@@ -5614,16 +5606,16 @@ if (cacheKey) {
     return;
   }
   this.obj = document.ref({
-    Type: &#x27;XObject&#x27;,
-    Subtype: &#x27;Image&#x27;,
+    Type: 'XObject',
+    Subtype: 'Image',
     BitsPerComponent: this.bits,
     Width: this.width,
     Height: this.height,
     ColorSpace: this.colorSpace,
-    Filter: &#x27;DCTDecode&#x27;
+    Filter: 'DCTDecode'
   });
-  if (this.colorSpace === &#x27;DeviceCMYK&#x27;) {
-    this.obj.data[&#x27;Decode&#x27;] = [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0];
+  if (this.colorSpace === 'DeviceCMYK') {
+    this.obj.data['Decode'] = [1.0, 0.0, 1.0, 0.0, 1.0, 0.0, 1.0, 0.0];
   }
   this.obj.end(this.data);
   return this.data = null;
@@ -5641,7 +5633,7 @@ PDFFont.prototype.finalize = function() {
 };
 
 PDFFont.prototype.embed = function() {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 };
 ...</pre></li>
     </ul>
@@ -5684,16 +5676,16 @@ PDFFont.prototype.embed = function() {
   } else {
     this.maxY = this.document.page.maxY();
   }
-  this.on(&#x27;firstLine&#x27;, (function(_this) {
+  this.on('firstLine', (function(_this) {
     return function(options) {
       var indent;
       indent = _this.continuedX || _this.indent;
       _this.document.x += indent;
       _this.lineWidth -= indent;
-      return _this.once(&#x27;line&#x27;, function() {
+      return _this.once('line', function() {
         _this.document.x -= indent;
         _this.lineWidth += indent;
-        if (options.continued &#x26;&#x26; !_this.continuedX) {
+        if (options.continued &amp;&amp; !_this.continuedX) {
           _this.continuedX = _this.indent;
         }
         if (!options.continued) {
@@ -5702,15 +5694,15 @@ PDFFont.prototype.embed = function() {
       });
     };
   })(this));
-  this.on(&#x27;lastLine&#x27;, (function(_this) {
+  this.on('lastLine', (function(_this) {
     return function(options) {
       var align;
       align = options.align;
-      if (align === &#x27;justify&#x27;) {
-        options.align = &#x27;left&#x27;;
+      if (align === 'justify') {
+        options.align = 'left';
       }
       _this.lastLine = true;
-      return _this.once(&#x27;line&#x27;, function() {
+      return _this.once('line', function() {
         _this.document.y += options.paragraphGap || 0;
         options.align = align;
         return _this.lastLine = false;
@@ -5749,8 +5741,8 @@ PDFFont.prototype.embed = function() {
   this.domain = null;
   if (EventEmitter.usingDomains) {
     // if there is an active domain, then attach to it.
-    domain = domain || require(&#x27;domain&#x27;);
-    if (domain.active &#x26;&#x26; !(this instanceof domain.Domain)) {
+    domain = domain || require('domain');
+    if (domain.active &amp;&amp; !(this instanceof domain.Domain)) {
       this.domain = domain.active;
     }
   }
@@ -5775,7 +5767,7 @@ PDFFont.prototype.embed = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">listenerCount = function (emitter, type) {
-  if (typeof emitter.listenerCount === &#x27;function&#x27;) {
+  if (typeof emitter.listenerCount === 'function') {
     return emitter.listenerCount(type);
   } else {
     return listenerCount.call(emitter, type);
@@ -5824,16 +5816,16 @@ PDFFont.prototype.embed = function() {
   } else {
     this.maxY = this.document.page.maxY();
   }
-  this.on(&#x27;firstLine&#x27;, (function(_this) {
+  this.on('firstLine', (function(_this) {
     return function(options) {
       var indent;
       indent = _this.continuedX || _this.indent;
       _this.document.x += indent;
       _this.lineWidth -= indent;
-      return _this.once(&#x27;line&#x27;, function() {
+      return _this.once('line', function() {
         _this.document.x -= indent;
         _this.lineWidth += indent;
-        if (options.continued &#x26;&#x26; !_this.continuedX) {
+        if (options.continued &amp;&amp; !_this.continuedX) {
           _this.continuedX = _this.indent;
         }
         if (!options.continued) {
@@ -5842,15 +5834,15 @@ PDFFont.prototype.embed = function() {
       });
     };
   })(this));
-  this.on(&#x27;lastLine&#x27;, (function(_this) {
+  this.on('lastLine', (function(_this) {
     return function(options) {
       var align;
       align = options.align;
-      if (align === &#x27;justify&#x27;) {
-        options.align = &#x27;left&#x27;;
+      if (align === 'justify') {
+        options.align = 'left';
       }
       _this.lastLine = true;
-      return _this.once(&#x27;line&#x27;, function() {
+      return _this.once('line', function() {
         _this.document.y += options.paragraphGap || 0;
         options.align = align;
         return _this.lastLine = false;
@@ -5878,15 +5870,15 @@ PDFFont.prototype.embed = function() {
   while (bk = breaker.nextBreak()) {
     word = text.slice((last != null ? last.position : void 0) || 0, bk.position);
     w = wordWidths[word] != null ? wordWidths[word] : wordWidths[word] = this.wordWidth(word);
-    if (w &#x3e; this.lineWidth + this.continuedX) {
+    if (w &gt; this.lineWidth + this.continuedX) {
       lbk = last;
       fbk = {};
       while (word.length) {
         l = word.length;
-        while (w &#x3e; this.spaceLeft) {
+        while (w &gt; this.spaceLeft) {
           w = this.wordWidth(word.slice(0, --l));
         }
-        fbk.required = l &#x3c; word.length;
+        fbk.required = l &lt; word.length;
         shouldContinue = fn(word.slice(0, l), w, fbk, lbk);
         lbk = {
           required: false
@@ -5909,19 +5901,19 @@ PDFFont.prototype.embed = function() {
     <li>example usage<pre class="apidocCodePre">...
     options.lineWidth = _this.lineWidth;
     y = _this.document.y;
-    _this.emit(&#x27;line&#x27;, buffer, options, _this);
+    _this.emit('line', buffer, options, _this);
     return lc++;
   };
 })(this);
-this.emit(&#x27;sectionStart&#x27;, options, this);
+this.emit('sectionStart', options, this);
 this.<span class="apidocCodeKeywordSpan">eachWord</span>(text, (function(_this) {
   return function(word, w, bk, last) {
     var lh, shouldContinue;
     if ((last == null) || last.required) {
-      _this.emit(&#x27;firstLine&#x27;, options, _this);
+      _this.emit('firstLine', options, _this);
       _this.spaceLeft = _this.lineWidth;
     }
-    if (w &#x3c;= _this.spaceLeft) {
+    if (w &lt;= _this.spaceLeft) {
 ...</pre></li>
     </ul>
 
@@ -5936,8 +5928,8 @@ this.<span class="apidocCodeKeywordSpan">eachWord</span>(text, (function(_this) 
     <ul>
     <li>description and source-code<pre class="apidocCodePre">nextSection = function (options) {
   var ref;
-  this.emit(&#x27;sectionEnd&#x27;, options, this);
-  if (++this.column &#x3e; this.columns) {
+  this.emit('sectionEnd', options, this);
+  if (++this.column &gt; this.columns) {
     if (this.height != null) {
       return false;
     }
@@ -5949,13 +5941,13 @@ this.<span class="apidocCodeKeywordSpan">eachWord</span>(text, (function(_this) 
     if (this.document._fillColor) {
       (ref = this.document).fillColor.apply(ref, this.document._fillColor);
     }
-    this.emit(&#x27;pageBreak&#x27;, options, this);
+    this.emit('pageBreak', options, this);
   } else {
     this.document.x += this.lineWidth + this.columnGap;
     this.document.y = this.startY;
-    this.emit(&#x27;columnBreak&#x27;, options, this);
+    this.emit('columnBreak', options, this);
   }
-  this.emit(&#x27;sectionStart&#x27;, options, this);
+  this.emit('sectionStart', options, this);
   return true;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -5965,10 +5957,10 @@ if (options.ellipsis != null) {
   this.ellipsis = options.ellipsis;
 }
 nextY = this.document.y + this.document.currentLineHeight(true);
-if (this.document.y &#x3e; this.maxY || nextY &#x3e; this.maxY) {
+if (this.document.y &gt; this.maxY || nextY &gt; this.maxY) {
   this.<span class="apidocCodeKeywordSpan">nextSection</span>();
 }
-buffer = &#x27;&#x27;;
+buffer = '';
 textWidth = 0;
 wc = 0;
 lc = 0;
@@ -5999,12 +5991,12 @@ while (bk = breaker.nextBreak()) {
   word = text.slice((last != null ? last.position : void 0) || 0, bk.position);
   w = wordWidths[word] != null ? wordWidths[word] : wordWidths[word] = this.<span class="apidocCodeKeywordSpan">wordWidth</span>(
 word);
-  if (w &#x3e; this.lineWidth + this.continuedX) {
+  if (w &gt; this.lineWidth + this.continuedX) {
     lbk = last;
     fbk = {};
     while (word.length) {
       l = word.length;
-      while (w &#x3e; this.spaceLeft) {
+      while (w &gt; this.spaceLeft) {
         w = this.wordWidth(word.slice(0, --l));
 ...</pre></li>
     </ul>
@@ -6033,10 +6025,10 @@ word);
     this.ellipsis = options.ellipsis;
   }
   nextY = this.document.y + this.document.currentLineHeight(true);
-  if (this.document.y &#x3e; this.maxY || nextY &#x3e; this.maxY) {
+  if (this.document.y &gt; this.maxY || nextY &gt; this.maxY) {
     this.nextSection();
   }
-  buffer = &#x27;&#x27;;
+  buffer = '';
   textWidth = 0;
   wc = 0;
   lc = 0;
@@ -6047,58 +6039,58 @@ word);
       options.wordCount = wc;
       options.lineWidth = _this.lineWidth;
       y = _this.document.y;
-      _this.emit(&#x27;line&#x27;, buffer, options, _this);
+      _this.emit('line', buffer, options, _this);
       return lc++;
     };
   })(this);
-  this.emit(&#x27;sectionStart&#x27;, options, this);
+  this.emit('sectionStart', options, this);
   this.eachWord(text, (function(_this) {
     return function(word, w, bk, last) {
       var lh, shouldContinue;
       if ((last == null) || last.required) {
-        _this.emit(&#x27;firstLine&#x27;, options, _this);
+        _this.emit('firstLine', options, _this);
         _this.spaceLeft = _this.lineWidth;
       }
-      if (w &#x3c;= _this.spaceLeft) {
+      if (w &lt;= _this.spaceLeft) {
         buffer += word;
         textWidth += w;
         wc++;
       }
-      if (bk.required || w &#x3e; _this.spaceLeft) {
+      if (bk.required || w &gt; _this.spaceLeft) {
         if (bk.required) {
-          _this.emit(&#x27;lastLine&#x27;, options, _this);
+          _this.emit('lastLine', options, _this);
         }
         lh = _this.document.currentLineHeight(true);
-        if ((_this.height != null) &#x26;&#x26; _this.ellipsis &#x26;&#x26; _this.document.y + lh * 2 &#x3e; _this.maxY &#x26;&#x26; _this.column &#x3e;= _this.columns) {
+        if ((_this.height != null) &amp;&amp; _this.ellipsis &amp;&amp; _this.document.y + lh * 2 &gt; _this.maxY &amp;&amp; _this.column &gt;= _this.columns) {
           if (_this.ellipsis === true) {
-            _this.ellipsis = &#x27;…&#x27;;
+            _this.ellipsis = 'â€¦';
           }
-          buffer = buffer.replace(/\s+$/, &#x27;&#x27;);
+          buffer = buffer.replace(/\s+$/, '');
           textWidth = _this.wordWidth(buffer + _this.ellipsis);
-          while (textWidth &#x3e; _this.lineWidth) {
-            buffer = buffer.slice(0, -1).replace(/\s+$/, &#x27;&#x27;);
+          while (textWidth &gt; _this.lineWidth) {
+            buffer = buffer.slice(0, -1).replace(/\s+$/, '');
             textWidth = _this.wordWidth(buffer + _this.ellipsis);
           }
           buffer = buffer + _this.ellipsis;
         }
         emitLine();
-        if (_this.document.y + lh &#x3e; _this.maxY) {
+        if (_this.document.y + lh &gt; _this.maxY) {
           shouldContinue = _this.nextSection();
           if (!shouldContinue) {
             wc = 0;
-            buffer = &#x27;&#x27;;
+            buffer = '';
             return false;
           }
         }
         if (bk.required) {
-          if (w &#x3e; _this.spaceLeft) {
+          if (w &gt; _this.spaceLeft) {
             buffer = word;
             textWidth = w;
             wc = 1;
             emitLine();
           }
           _this.spaceLeft = _this.lineWidth;
-          buffer = &#x27;&#x27;;
+          buffer = '';
           textWidth = 0;
           return wc = 0;
         } else {
@@ -6112,13 +6104,13 @@ word);
       }
     };
   })(this));
-  if (wc &#x3e; 0) {
-    this.emit(&#x27;lastLine&#x27;, options, this);
+  if (wc &gt; 0) {
+    this.emit('lastLine', options, this);
     emitLine();
   }
-  this.emit(&#x27;sectionEnd&#x27;, options, this);
+  this.emit('sectionEnd', options, this);
   if (options.continued === true) {
-    if (lc &#x3e; 1) {
+    if (lc &gt; 1) {
       this.continuedX = 0;
     }
     this.continuedX += options.textWidth;
@@ -6131,14 +6123,14 @@ word);
   wrapper = this._wrapper;
   if (!wrapper) {
     wrapper = new LineWrapper(this, options);
-    wrapper.on(&#x27;line&#x27;, lineCallback);
+    wrapper.on('line', lineCallback);
   }
   this._wrapper = options.continued ? wrapper : null;
   this._textOptions = options.continued ? options : null;
   wrapper.<span class="apidocCodeKeywordSpan">wrap</span>(text, options);
 } else {
-  ref = text.split(&#x27;\n&#x27;);
-  for (j = 0, len = ref.length; j &#x3c; len; j++) {
+  ref = text.split('\n');
+  for (j = 0, len = ref.length; j &lt; len; j++) {
     line = ref[j];
     lineCallback(line, options);
   }
@@ -6175,69 +6167,69 @@ word);
     <ul>
     <li>description and source-code<pre class="apidocCodePre">convert = function (object) {
   var e, i, isUnicode, items, j, key, out, ref, string, val;
-  if (typeof object === &#x27;string&#x27;) {
-    return &#x27;/&#x27; + object;
+  if (typeof object === 'string') {
+    return '/' + object;
   } else if (object instanceof String) {
     string = object.replace(escapableRe, function(c) {
       return escapable[c];
     });
     isUnicode = false;
-    for (i = j = 0, ref = string.length; j &#x3c; ref; i = j += 1) {
-      if (string.charCodeAt(i) &#x3e; 0x7f) {
+    for (i = j = 0, ref = string.length; j &lt; ref; i = j += 1) {
+      if (string.charCodeAt(i) &gt; 0x7f) {
         isUnicode = true;
         break;
       }
     }
     if (isUnicode) {
-      string = swapBytes(new Buffer(&#x27;\ufeff&#x27; + string, &#x27;utf16le&#x27;)).toString(&#x27;binary&#x27;);
+      string = swapBytes(new Buffer('\ufeff' + string, 'utf16le')).toString('binary');
     }
-    return &#x27;(&#x27; + string + &#x27;)&#x27;;
+    return '(' + string + ')';
   } else if (Buffer.isBuffer(object)) {
-    return &#x27;&#x3c;&#x27; + object.toString(&#x27;hex&#x27;) + &#x27;&#x3e;&#x27;;
+    return '&lt;' + object.toString('hex') + '&gt;';
   } else if (object instanceof PDFReference) {
     return object.toString();
   } else if (object instanceof Date) {
-    return &#x27;(D:&#x27; + pad(object.getUTCFullYear(), 4) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad(object
-.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + &#x27;Z)&#x27;;
+    return '(D:' + pad(object.getUTCFullYear(), 4) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad(object
+.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + 'Z)';
   } else if (Array.isArray(object)) {
     items = ((function() {
       var k, len, results;
       results = [];
-      for (k = 0, len = object.length; k &#x3c; len; k++) {
+      for (k = 0, len = object.length; k &lt; len; k++) {
         e = object[k];
         results.push(PDFObject.convert(e));
       }
       return results;
-    })()).join(&#x27; &#x27;);
-    return &#x27;[&#x27; + items + &#x27;]&#x27;;
-  } else if ({}.toString.call(object) === &#x27;[object Object]&#x27;) {
-    out = [&#x27;&#x3c;&#x3c;&#x27;];
+    })()).join(' ');
+    return '[' + items + ']';
+  } else if ({}.toString.call(object) === '[object Object]') {
+    out = ['&lt;&lt;'];
     for (key in object) {
       val = object[key];
-      out.push(&#x27;/&#x27; + key + &#x27; &#x27; + PDFObject.convert(val));
+      out.push('/' + key + ' ' + PDFObject.convert(val));
     }
-    out.push(&#x27;&#x3e;&#x3e;&#x27;);
-    return out.join(&#x27;\n&#x27;);
+    out.push('&gt;&gt;');
+    return out.join('\n');
   } else {
-    return &#x27;&#x27; + object;
+    return '' + object;
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-  return &#x27;(D:&#x27; + pad(object.getUTCFullYear(), 4) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad
-(object.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + &#x27;Z)&#x27;;
+  return '(D:' + pad(object.getUTCFullYear(), 4) + pad(object.getUTCMonth() + 1, 2) + pad(object.getUTCDate(), 2) + pad
+(object.getUTCHours(), 2) + pad(object.getUTCMinutes(), 2) + pad(object.getUTCSeconds(), 2) + 'Z)';
 } else if (Array.isArray(object)) {
   items = ((function() {
     var k, len, results;
     results = [];
-    for (k = 0, len = object.length; k &#x3c; len; k++) {
+    for (k = 0, len = object.length; k &lt; len; k++) {
       e = object[k];
       results.push(PDFObject.<span class="apidocCodeKeywordSpan">convert</span>(e));
     }
     return results;
-  })()).join(&#x27; &#x27;);
-  return &#x27;[&#x27; + items + &#x27;]&#x27;;
-} else if ({}.toString.call(object) === &#x27;[object Object]&#x27;) {
-  out = [&#x27;&#x3c;&#x3c;&#x27;];
+  })()).join(' ');
+  return '[' + items + ']';
+} else if ({}.toString.call(object) === '[object Object]') {
+  out = ['&lt;&lt;'];
   for (key in object) {
 ...</pre></li>
     </ul>
@@ -6262,9 +6254,9 @@ word);
   if (options == null) {
     options = {};
   }
-  this.size = options.size || &#x27;letter&#x27;;
-  this.layout = options.layout || &#x27;portrait&#x27;;
-  if (typeof options.margin === &#x27;number&#x27;) {
+  this.size = options.size || 'letter';
+  this.layout = options.layout || 'portrait';
+  if (typeof options.margin === 'number') {
     this.margins = {
       top: options.margin,
       left: options.margin,
@@ -6275,11 +6267,11 @@ word);
     this.margins = options.margins || DEFAULT_MARGINS;
   }
   dimensions = Array.isArray(this.size) ? this.size : SIZES[this.size.toUpperCase()];
-  this.width = dimensions[this.layout === &#x27;portrait&#x27; ? 0 : 1];
-  this.height = dimensions[this.layout === &#x27;portrait&#x27; ? 1 : 0];
+  this.width = dimensions[this.layout === 'portrait' ? 0 : 1];
+  this.height = dimensions[this.layout === 'portrait' ? 1 : 0];
   this.content = this.document.ref();
   this.resources = this.document.ref({
-    ProcSet: [&#x27;PDF&#x27;, &#x27;Text&#x27;, &#x27;ImageB&#x27;, &#x27;ImageC&#x27;, &#x27;ImageI&#x27;]
+    ProcSet: ['PDF', 'Text', 'ImageB', 'ImageC', 'ImageI']
   });
   Object.defineProperties(this, {
     fonts: {
@@ -6324,7 +6316,7 @@ word);
     }
   });
   this.dictionary = this.document.ref({
-    Type: &#x27;Page&#x27;,
+    Type: 'Page',
     Parent: this.document._root.data.Pages,
     MediaBox: [0, 0, this.width, this.height],
     Contents: this.content,
@@ -6355,16 +6347,16 @@ word);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 doc.addPage()
-   .fillColor(&#x22;blue&#x22;)
-   .text(&#x27;Here is a link!&#x27;, 100, 100)
-   .underline(100, 100, 160, 27, color: &#x22;#0000FF&#x22;)
-   .link(100, 100, 160, 27, &#x27;http://google.com/&#x27;)
+   .fillColor("blue")
+   .text('Here is a link!', 100, 100)
+   .underline(100, 100, 160, 27, color: "#0000FF")
+   .link(100, 100, 160, 27, 'http://google.com/')
 
 # Finalize PDF file
 doc.<span class="apidocCodeKeywordSpan">end</span>()
 ```
 
-[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit — producing
+[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit â€” producing
 complex documents with a very small amount of code.  For more, see the `demo` folder and the
 [PDFKit programming guide](http://pdfkit.org/docs/getting_started.html).
 
@@ -6394,7 +6386,7 @@ if (options.height != null) {
 } else {
   this.maxY = this.document.page.<span class="apidocCodeKeywordSpan">maxY</span>();
 }
-this.on(&#x27;firstLine&#x27;, (function(_this) {
+this.on('firstLine', (function(_this) {
   return function(options) {
     var indent;
     indent = _this.continuedX || _this.indent;
@@ -6452,19 +6444,19 @@ PDFPage.prototype.end = function() {
     <li>example usage<pre class="apidocCodePre">...
 .lineTo(100, 250)
 .lineTo(200, 250)
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
-.<span class="apidocCodeKeywordSpan">path</span>(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-.fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+.<span class="apidocCodeKeywordSpan">path</span>('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
 .restore()
 
 # Add some text with annotations
 doc.addPage()
-.fillColor(&#x22;blue&#x22;)
-.text(&#x27;Here is a link!&#x27;, 100, 100)
+.fillColor("blue")
+.text('Here is a link!', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -6547,12 +6539,12 @@ PDFLinearGradient.prototype.shader = function(fn) {
     return;
   }
   this.obj = this.document.ref({
-    Type: &#x27;XObject&#x27;,
-    Subtype: &#x27;Image&#x27;,
+    Type: 'XObject',
+    Subtype: 'Image',
     BitsPerComponent: this.image.bits,
     Width: this.width,
     Height: this.height,
-    Filter: &#x27;FlateDecode&#x27;
+    Filter: 'FlateDecode'
   });
   if (!this.image.hasAlphaChannel) {
     params = this.document.ref({
@@ -6561,27 +6553,27 @@ PDFLinearGradient.prototype.shader = function(fn) {
       BitsPerComponent: this.image.bits,
       Columns: this.width
     });
-    this.obj.data[&#x27;DecodeParms&#x27;] = params;
+    this.obj.data['DecodeParms'] = params;
     params.end();
   }
   if (this.image.palette.length === 0) {
-    this.obj.data[&#x27;ColorSpace&#x27;] = this.image.colorSpace;
+    this.obj.data['ColorSpace'] = this.image.colorSpace;
   } else {
     palette = this.document.ref();
     palette.end(new Buffer(this.image.palette));
-    this.obj.data[&#x27;ColorSpace&#x27;] = [&#x27;Indexed&#x27;, &#x27;DeviceRGB&#x27;, (this.image.palette.length / 3) - 1, palette];
+    this.obj.data['ColorSpace'] = ['Indexed', 'DeviceRGB', (this.image.palette.length / 3) - 1, palette];
   }
   if (this.image.transparency.grayscale) {
     val = this.image.transparency.greyscale;
-    return this.obj.data[&#x27;Mask&#x27;] = [val, val];
+    return this.obj.data['Mask'] = [val, val];
   } else if (this.image.transparency.rgb) {
     rgb = this.image.transparency.rgb;
     mask = [];
-    for (k = 0, len1 = rgb.length; k &#x3c; len1; k++) {
+    for (k = 0, len1 = rgb.length; k &lt; len1; k++) {
       x = rgb[k];
       mask.push(x, x);
     }
-    return this.obj.data[&#x27;Mask&#x27;] = mask;
+    return this.obj.data['Mask'] = mask;
   } else if (this.image.transparency.indexed) {
     return this.loadIndexedAlphaChannel();
   } else if (this.image.hasAlphaChannel) {
@@ -6603,7 +6595,7 @@ PDFFont.prototype.finalize = function() {
 };
 
 PDFFont.prototype.embed = function() {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 };
 ...</pre></li>
     </ul>
@@ -6621,17 +6613,17 @@ PDFFont.prototype.embed = function() {
   var sMask;
   if (this.alphaChannel) {
     sMask = this.document.ref({
-      Type: &#x27;XObject&#x27;,
-      Subtype: &#x27;Image&#x27;,
+      Type: 'XObject',
+      Subtype: 'Image',
       Height: this.height,
       Width: this.width,
       BitsPerComponent: 8,
-      Filter: &#x27;FlateDecode&#x27;,
-      ColorSpace: &#x27;DeviceGray&#x27;,
+      Filter: 'FlateDecode',
+      ColorSpace: 'DeviceGray',
       Decode: [0, 1]
     });
     sMask.end(this.alphaChannel);
-    this.obj.data[&#x27;SMask&#x27;] = sMask;
+    this.obj.data['SMask'] = sMask;
   }
   this.obj.end(this.imgData);
   this.image = null;
@@ -6652,7 +6644,7 @@ PDFReference.prototype.end = function(chunk) {
 PDFReference.prototype.finalize = function() {
   var chunk, i, len, ref;
   this.offset = this.document._offset;
-  this.document._write(this.id + &#x22; &#x22; + this.gen + &#x22; obj&#x22;);
+  this.document._write(this.id + " " + this.gen + " obj");
 ...</pre></li>
     </ul>
 
@@ -6673,7 +6665,7 @@ PDFReference.prototype.finalize = function() {
       var alphaChannel, i, j, k, ref;
       alphaChannel = new Buffer(_this.width * _this.height);
       i = 0;
-      for (j = k = 0, ref = pixels.length; k &#x3c; ref; j = k += 1) {
+      for (j = k = 0, ref = pixels.length; k &lt; ref; j = k += 1) {
         alphaChannel[i++] = transparency[pixels[j]];
       }
       return zlib.deflate(alphaChannel, function(err, alphaChannel1) {
@@ -6688,11 +6680,11 @@ PDFReference.prototype.finalize = function() {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
     mask = [];
-    for (k = 0, len1 = rgb.length; k &#x3c; len1; k++) {
+    for (k = 0, len1 = rgb.length; k &lt; len1; k++) {
       x = rgb[k];
       mask.push(x, x);
     }
-    return this.obj.data[&#x27;Mask&#x27;] = mask;
+    return this.obj.data['Mask'] = mask;
   } else if (this.image.transparency.indexed) {
     return this.<span class="apidocCodeKeywordSpan">loadIndexedAlphaChannel</span>();
   } else if (this.image.hasAlphaChannel) {
@@ -6723,7 +6715,7 @@ PDFReference.prototype.finalize = function() {
       alphaChannel = new Buffer(pixelCount);
       i = p = a = 0;
       len = pixels.length;
-      while (i &#x3c; len) {
+      while (i &lt; len) {
         imgData[p++] = pixels[i++];
         imgData[p++] = pixels[i++];
         imgData[p++] = pixels[i++];
@@ -6755,7 +6747,7 @@ PDFReference.prototype.finalize = function() {
       x = rgb[k];
       mask.push(x, x);
     }
-    return this.obj.data[&#x27;Mask&#x27;] = mask;
+    return this.obj.data['Mask'] = mask;
   } else if (this.image.transparency.indexed) {
     return this.loadIndexedAlphaChannel();
   } else if (this.image.hasAlphaChannel) {
@@ -6794,7 +6786,7 @@ PNGImage.prototype.finalize = function() {
   });
   this.gen = 0;
   this.deflate = null;
-  this.compress = this.document.compress &#x26;&#x26; !this.data.Filter;
+  this.compress = this.document.compress &amp;&amp; !this.data.Filter;
   this.uncompressedLength = 0;
   this.chunks = [];
 }</pre></li>
@@ -6836,7 +6828,7 @@ PNGImage.prototype.finalize = function() {
   this.ending = false;
   // when end() has been called, and returned
   this.ended = false;
-  // when &#x27;finish&#x27; is emitted
+  // when 'finish' is emitted
   this.finished = false;
 
   // should we decode strings into buffers before passing to _write?
@@ -6846,16 +6838,16 @@ PNGImage.prototype.finalize = function() {
   this.decodeStrings = !noDecode;
 
   // Crypto is kind of old and crusty.  Historically, its default string
-  // encoding is &#x27;binary&#x27; so we have to make this configurable.
-  // Everything else in the universe uses &#x27;utf8&#x27;, though.
-  this.defaultEncoding = options.defaultEncoding || &#x27;utf8&#x27;;
+  // encoding is 'binary' so we have to make this configurable.
+  // Everything else in the universe uses 'utf8', though.
+  this.defaultEncoding = options.defaultEncoding || 'utf8';
 
   // not an actual buffer we keep track of, but a measurement
-  // of how much we&#x27;re waiting to get pushed to some underlying
+  // of how much we're waiting to get pushed to some underlying
   // socket or file.
   this.length = 0;
 
-  // a flag to see when we&#x27;re in the middle of a write.
+  // a flag to see when we're in the middle of a write.
   this.writing = false;
 
   // when true all writes will be buffered until .uncork() call
@@ -6863,16 +6855,16 @@ PNGImage.prototype.finalize = function() {
 
   // a flag to be able to tell if the onwrite cb is called immediately,
   // or on a later tick.  We set this to true at first, because any
-  // actions that shouldn&#x27;t happen until &#x22;later&#x22; should generally also
+  // actions that shouldn't happen until "later" should generally also
   // not happen before the first write call.
   this.sync = true;
 
-  // a flag to know if we&#x27;re processing previously buffered items, which
-  // may call the _write() callback in the same tick, so that we don&#x27;t
+  // a flag to know if we're processing previously buffered items, which
+  // may call the _write() callback in the same tick, so that we don't
   // end up in an overlapped onwrite situation.
   this.bufferProcessing = false;
 
-  // the callback that&#x27;s passed to _write(chunk,cb)
+  // the callback that's passed to _write(chunk,cb)
   this.onwrite = function(er) {
     onwrite(stream, er);
   };
@@ -6887,10 +6879,10 @@ PNGImage.prototype.finalize = function() {
   this.lastBufferedRequest = null;
 
   // number of pending user-supplied write callbacks
-  // this must be 0 before &#x27;finish&#x27; can be emitted
+  // this must be 0 before 'finish' can be emitted
   this.pendingcb = 0;
 
-  // emit prefinish if the only thing we&#x27;re waiting for is _write cbs
+  // emit prefinish if the only thing we're waiting for is _write cbs
   // This is relevant for synchronous Transform streams
   this.prefinished = false;
 
@@ -6941,7 +6933,7 @@ PNGImage.prototype.finalize = function() {
     <li>description and source-code<pre class="apidocCodePre">_write = function (chunk, encoding, callback) {
   var base;
   if (!Buffer.isBuffer(chunk)) {
-    chunk = new Buffer(chunk + &#x27;\n&#x27;, &#x27;binary&#x27;);
+    chunk = new Buffer(chunk + '\n', 'binary');
   }
   this.uncompressedLength += chunk.length;
   if ((base = this.data).Length == null) {
@@ -6966,12 +6958,12 @@ PNGImage.prototype.finalize = function() {
 PDFReference.prototype.finalize = function() {
   var chunk, i, len, ref;
   this.offset = this.document._offset;
-  this.document.<span class="apidocCodeKeywordSpan">_write</span>(this.id + &#x22; &#x22; + this.gen + &#x22; obj&#x22;);
+  this.document.<span class="apidocCodeKeywordSpan">_write</span>(this.id + " " + this.gen + " obj");
   this.document._write(PDFObject.convert(this.data));
   if (this.chunks.length) {
-    this.document._write(&#x27;stream&#x27;);
+    this.document._write('stream');
     ref = this.chunks;
-    for (i = 0, len = ref.length; i &#x3c; len; i++) {
+    for (i = 0, len = ref.length; i &lt; len; i++) {
       chunk = ref[i];
       this.document._write(chunk);
 ...</pre></li>
@@ -6996,7 +6988,7 @@ PDFReference.prototype.finalize = function() {
   });
   this.gen = 0;
   this.deflate = null;
-  this.compress = this.document.compress &#x26;&#x26; !this.data.Filter;
+  this.compress = this.document.compress &amp;&amp; !this.data.Filter;
   this.uncompressedLength = 0;
   this.chunks = [];
 }</pre></li>
@@ -7022,16 +7014,16 @@ PDFReference.prototype.finalize = function() {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 doc.addPage()
-   .fillColor(&#x22;blue&#x22;)
-   .text(&#x27;Here is a link!&#x27;, 100, 100)
-   .underline(100, 100, 160, 27, color: &#x22;#0000FF&#x22;)
-   .link(100, 100, 160, 27, &#x27;http://google.com/&#x27;)
+   .fillColor("blue")
+   .text('Here is a link!', 100, 100)
+   .underline(100, 100, 160, 27, color: "#0000FF")
+   .link(100, 100, 160, 27, 'http://google.com/')
 
 # Finalize PDF file
 doc.<span class="apidocCodeKeywordSpan">end</span>()
 ```
 
-[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit — producing
+[The PDF output from this example](http://pdfkit.org/demo/out.pdf) (with a few additions) shows the power of PDFKit â€” producing
 complex documents with a very small amount of code.  For more, see the `demo` folder and the
 [PDFKit programming guide](http://pdfkit.org/docs/getting_started.html).
 
@@ -7051,19 +7043,19 @@ complex documents with a very small amount of code.  For more, see the `demo` fo
     <li>description and source-code<pre class="apidocCodePre">finalize = function () {
   var chunk, i, len, ref;
   this.offset = this.document._offset;
-  this.document._write(this.id + &#x22; &#x22; + this.gen + &#x22; obj&#x22;);
+  this.document._write(this.id + " " + this.gen + " obj");
   this.document._write(PDFObject.convert(this.data));
   if (this.chunks.length) {
-    this.document._write(&#x27;stream&#x27;);
+    this.document._write('stream');
     ref = this.chunks;
-    for (i = 0, len = ref.length; i &#x3c; len; i++) {
+    for (i = 0, len = ref.length; i &lt; len; i++) {
       chunk = ref[i];
       this.document._write(chunk);
     }
     this.chunks.length = 0;
-    this.document._write(&#x27;\nendstream&#x27;);
+    this.document._write('\nendstream');
   }
-  this.document._write(&#x27;endobj&#x27;);
+  this.document._write('endobj');
   return this.document._refEnd(this);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
@@ -7081,7 +7073,7 @@ PDFReference.prototype.end = function(chunk) {
 PDFReference.prototype.finalize = function() {
   var chunk, i, len, ref;
   this.offset = this.document._offset;
-  this.document._write(this.id + &#x22; &#x22; + this.gen + &#x22; obj&#x22;);
+  this.document._write(this.id + " " + this.gen + " obj");
 ...</pre></li>
     </ul>
 
@@ -7095,15 +7087,15 @@ PDFReference.prototype.finalize = function() {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">initDeflate = function () {
-  this.data.Filter = &#x27;FlateDecode&#x27;;
+  this.data.Filter = 'FlateDecode';
   this.deflate = zlib.createDeflate();
-  this.deflate.on(&#x27;data&#x27;, (function(_this) {
+  this.deflate.on('data', (function(_this) {
     return function(chunk) {
       _this.chunks.push(chunk);
       return _this.data.Length += chunk.length;
     };
   })(this));
-  return this.deflate.on(&#x27;end&#x27;, this.finalize);
+  return this.deflate.on('end', this.finalize);
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 }
@@ -7134,7 +7126,7 @@ return callback();
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">toString = function () {
-  return this.id + &#x22; &#x22; + this.gen + &#x22; R&#x22;;
+  return this.id + " " + this.gen + " R";
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
       if (!data) {
@@ -7142,13 +7134,13 @@ return callback();
       }
     }
   }
-  if (data[0] === 0xff &#x26;&#x26; data[1] === 0xd8) {
+  if (data[0] === 0xff &amp;&amp; data[1] === 0xd8) {
     return new JPEG(data, label);
-  } else if (data[0] === 0x89 &#x26;&#x26; data.<span class="apidocCodeKeywordSpan">toString</span>(&#x27;ascii&#x27;, 1, 4) === &#
-x27;PNG&#x27;) {
+  } else if (data[0] === 0x89 &amp;&amp; data.<span class="apidocCodeKeywordSpan">toString</span>('ascii', 1, 4) === &amp;#
+x27;PNG') {
     return new PNG(data, label);
   } else {
-    throw new Error(&#x27;Unknown image format.&#x27;);
+    throw new Error('Unknown image format.');
   }
 };
 
@@ -7196,12 +7188,12 @@ return PDFImage;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
-fontkit = require(&#x27;fontkit&#x27;);
+fontkit = require('fontkit');
 
 PDFFont = (function() {
   PDFFont.open = function(document, src, family, id) {
     var font;
-    if (typeof src === &#x27;string&#x27;) {
+    if (typeof src === 'string') {
       if (StandardFont.<span class="apidocCodeKeywordSpan">isStandardFont</span>(src)) {
         return new StandardFont(document, src, id);
       }
@@ -7224,7 +7216,7 @@ PDFFont = (function() {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">open = function (document, src, family, id) {
   var font;
-  if (typeof src === &#x27;string&#x27;) {
+  if (typeof src === 'string') {
     if (StandardFont.isStandardFont(src)) {
       return new StandardFont(document, src, id);
     }
@@ -7237,7 +7229,7 @@ PDFFont = (function() {
     font = fontkit.create(new Buffer(new Uint8Array(src)), family);
   }
   if (font == null) {
-    throw new Error(&#x27;Not a supported font format or standard PDF font.&#x27;);
+    throw new Error('Not a supported font format or standard PDF font.');
   }
   return new EmbeddedFont(document, font, id);
 }</pre></li>
@@ -7248,7 +7240,7 @@ if (font = this._fontFamilies[cacheKey]) {
   this._font = font;
   return this;
 }
-id = &#x27;F&#x27; + (++this._fontCount);
+id = 'F' + (++this._fontCount);
 this._font = PDFFont.<span class="apidocCodeKeywordSpan">open</span>(this, src, family, id);
 if (font = this._fontFamilies[this._font.name]) {
   this._font = font;
@@ -7299,10 +7291,10 @@ if (cacheKey) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">embed = function () {
   this.dictionary.data = {
-    Type: &#x27;Font&#x27;,
+    Type: 'Font',
     BaseFont: this.name,
-    Subtype: &#x27;Type1&#x27;,
-    Encoding: &#x27;WinAnsiEncoding&#x27;
+    Subtype: 'Type1',
+    Encoding: 'WinAnsiEncoding'
   };
   return this.dictionary.end();
 }</pre></li>
@@ -7319,7 +7311,7 @@ PDFFont.prototype.finalize = function() {
 };
 
 PDFFont.prototype.embed = function() {
-  throw new Error(&#x27;Must be implemented by subclasses&#x27;);
+  throw new Error('Must be implemented by subclasses');
 };
 ...</pre></li>
     </ul>
@@ -7336,10 +7328,10 @@ PDFFont.prototype.embed = function() {
     <li>description and source-code<pre class="apidocCodePre">encode = function (text) {
   var advances, encoded, glyph, glyphs, i, j, len, positions;
   encoded = this.font.encodeText(text);
-  glyphs = this.font.glyphsForString(&#x27;&#x27; + text);
+  glyphs = this.font.glyphsForString('' + text);
   advances = this.font.advancesForGlyphs(glyphs);
   positions = [];
-  for (i = j = 0, len = glyphs.length; j &#x3c; len; i = ++j) {
+  for (i = j = 0, len = glyphs.length; j &lt; len; i = ++j) {
     glyph = glyphs[i];
     positions.push({
       xAdvance: advances[i],
@@ -7353,11 +7345,11 @@ PDFFont.prototype.embed = function() {
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   words = text.trim().split(/\s+/);
-  wordSpacing += this.widthOfString(&#x27; &#x27;) + characterSpacing;
+  wordSpacing += this.widthOfString(' ') + characterSpacing;
   wordSpacing *= 1000 / this._fontSize;
   encoded = [];
   positions = [];
-  for (j = 0, len = words.length; j &#x3c; len; j++) {
+  for (j = 0, len = words.length; j &lt; len; j++) {
     word = words[j];
     ref = this._font.<span class="apidocCodeKeywordSpan">encode</span>(word, options.features), encodedWord = ref[0], positionsWord
  = ref[1];
@@ -7382,10 +7374,10 @@ PDFFont.prototype.embed = function() {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">widthOfString = function (string, size) {
   var advance, advances, glyphs, j, len, scale, width;
-  glyphs = this.font.glyphsForString(&#x27;&#x27; + string);
+  glyphs = this.font.glyphsForString('' + string);
   advances = this.font.advancesForGlyphs(glyphs);
   width = 0;
-  for (j = 0, len = advances.length; j &#x3c; len; j++) {
+  for (j = 0, len = advances.length; j &lt; len; j++) {
     advance = advances[j];
     width += advance;
   }
@@ -7432,17 +7424,17 @@ LineWrapper.prototype.eachWord = function(text, fn) {
     <li>example usage<pre class="apidocCodePre">...
 # Pipe its output somewhere, like to a file or HTTP response
 # See below for browser usage
-doc.pipe fs.createWriteStream(&#x27;output.pdf&#x27;)
+doc.pipe fs.createWriteStream('output.pdf')
 
 # Embed a font, set the font size, and render some text
-doc.font(&#x27;fonts/PalatinoBold.ttf&#x27;)
+doc.font('fonts/PalatinoBold.ttf')
    .fontSize(25)
-   .<span class="apidocCodeKeywordSpan">text</span>(&#x27;Some text with an embedded font!&#x27;, 100, 100)
+   .<span class="apidocCodeKeywordSpan">text</span>('Some text with an embedded font!', 100, 100)
 
 # Add another page
 doc.addPage()
    .fontSize(25)
-   .text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+   .text('Here is some vector graphics...', 100, 100)
 
 # Draw a triangle
 ...</pre></li>
@@ -7461,26 +7453,26 @@ doc.addPage()
   var addSegment, align, base, characterSpacing, commands, d, encoded, encodedWord, flush, hadOffset, i, j, last, len, len1, lineWidth
 , lineY, m, mode, name, pos, positions, positionsWord, ref, ref1, renderedWidth, scale, spaceWidth, textWidth, word, wordSpacing
 , words;
-  text = (&#x27;&#x27; + text).replace(/\n/g, &#x27;&#x27;);
+  text = ('' + text).replace(/\n/g, '');
   if (text.length === 0) {
     return;
   }
-  align = options.align || &#x27;left&#x27;;
+  align = options.align || 'left';
   wordSpacing = options.wordSpacing || 0;
   characterSpacing = options.characterSpacing || 0;
   if (options.width) {
     switch (align) {
-      case &#x27;right&#x27;:
-        textWidth = this.widthOfString(text.replace(/\s+$/, &#x27;&#x27;), options);
+      case 'right':
+        textWidth = this.widthOfString(text.replace(/\s+$/, ''), options);
         x += options.lineWidth - textWidth;
         break;
-      case &#x27;center&#x27;:
+      case 'center':
         x += options.lineWidth / 2 - options.textWidth / 2;
         break;
-      case &#x27;justify&#x27;:
+      case 'justify':
         words = text.trim().split(/\s+/);
-        textWidth = this.widthOfString(text.replace(/\s+/g, &#x27;&#x27;), options);
-        spaceWidth = this.widthOfString(&#x27; &#x27;) + characterSpacing;
+        textWidth = this.widthOfString(text.replace(/\s+/g, ''), options);
+        spaceWidth = this.widthOfString(' ') + characterSpacing;
         wordSpacing = Math.max(0, (options.lineWidth - textWidth) / Math.max(1, words.length - 1) - spaceWidth);
     }
   }
@@ -7493,7 +7485,7 @@ doc.addPage()
     if (!options.stroke) {
       this.strokeColor.apply(this, this._fillColor);
     }
-    lineWidth = this._fontSize &#x3c; 10 ? 0.5 : Math.floor(this._fontSize / 10);
+    lineWidth = this._fontSize &lt; 10 ? 0.5 : Math.floor(this._fontSize / 10);
     this.lineWidth(lineWidth);
     d = options.underline ? 1 : 2;
     lineY = y + this.currentLineHeight() / d;
@@ -7511,23 +7503,23 @@ doc.addPage()
   if ((base = this.page.fonts)[name = this._font.id] == null) {
     base[name] = this._font.ref();
   }
-  this.addContent(&#x22;BT&#x22;);
-  this.addContent(&#x22;1 0 0 1 &#x22; + x + &#x22; &#x22; + y + &#x22; Tm&#x22;);
-  this.addContent(&#x22;/&#x22; + this._font.id + &#x22; &#x22; + this._fontSize + &#x22; Tf&#x22;);
-  mode = options.fill &#x26;&#x26; options.stroke ? 2 : options.stroke ? 1 : 0;
+  this.addContent("BT");
+  this.addContent("1 0 0 1 " + x + " " + y + " Tm");
+  this.addContent("/" + this._font.id + " " + this._fontSize + " Tf");
+  mode = options.fill &amp;&amp; options.stroke ? 2 : options.stroke ? 1 : 0;
   if (mode) {
-    this.addContent(mode + &#x22; Tr&#x22;);
+    this.addContent(mode + " Tr");
   }
   if (characterSpacing) {
-    this.addContent(characterSpacing + &#x22; Tc&#x22;);
+    this.addContent(characterSpacing + " Tc");
   }
   if (wordSpacing) {
     words = text.trim().split(/\s+/);
-    wordSpacing += this.widthOfString(&#x27; &#x27;) + characterSpacing;
+    wordSpacing += this.widthOfString(' ') + characterSpacing;
     wordSpacing *= 1000 / this._fontSize;
     encoded = [];
     positions = [];
-    for (j = 0, len = words.length; j &#x3c; len; j++) {
+    for (j = 0, len = words.length; j &lt; len; j++) {
       word = words[j];
       ref = this._font.encode(word, options.features), encodedWord = ref[0], positionsWord = ref[1];
       encoded.push.apply(encoded, encodedWord);
@@ -7544,10 +7536,10 @@ doc.addPage()
   addSegment = (function(_this) {
     return function(cur) {
       var advance, hex;
-      if (last &#x3c; cur) {
-        hex = encoded.slice(last, cur).join(&#x27;&#x27;);
+      if (last &lt; cur) {
+        hex = encoded.slice(last, cur).join('');
         advance = positions[cur - 1].xAdvance - positions[cur - 1].advanceWidth;
-        commands.push(&#x22;&#x3c;&#x22; + hex + &#x22;&#x3e; &#x22; + (-advance));
+        commands.push("&lt;" + hex + "&gt; " + (-advance));
       }
       return last = cur;
     };
@@ -7555,17 +7547,17 @@ doc.addPage()
   flush = (function(_this) {
     return function(i) {
       addSegment(i);
-      if (commands.length &#x3e; 0) {
-        _this.addContent(&#x22;[&#x22; + (commands.join(&#x27; &#x27;)) + &#x22;] TJ&#x22;);
+      if (commands.length &gt; 0) {
+        _this.addContent("[" + (commands.join(' ')) + "] TJ");
         return commands.length = 0;
       }
     };
   })(this);
-  for (i = m = 0, len1 = positions.length; m &#x3c; len1; i = ++m) {
+  for (i = m = 0, len1 = positions.length; m &lt; len1; i = ++m) {
     pos = positions[i];
     if (pos.xOffset || pos.yOffset) {
       flush(i);
-      this.addContent(&#x22;1 0 0 1 &#x22; + (x + pos.xOffset * scale) + &#x22; &#x22; + (y + pos.yOffset * scale) + &#x22; Tm&#x22;);
+      this.addContent("1 0 0 1 " + (x + pos.xOffset * scale) + " " + (y + pos.yOffset * scale) + " Tm");
       flush(i + 1);
       hadOffset = true;
     } else { ...</pre></li>
@@ -7605,7 +7597,7 @@ _line: function(text, options, wrapper) {
   if (options == null) {
     options = {};
   }
-  if (typeof x === &#x27;object&#x27;) {
+  if (typeof x === 'object') {
     options = x;
     x = null;
   }
@@ -7622,7 +7614,7 @@ _line: function(text, options, wrapper) {
     ref = this._textOptions;
     for (key in ref) {
       val = ref[key];
-      if (key !== &#x27;continued&#x27;) {
+      if (key !== 'continued') {
         if (options[key] == null) {
           options[key] = val;
         }
@@ -7656,9 +7648,9 @@ _line: function(text, options, wrapper) {
 _text: function(text, x, y, options, lineCallback) {
   var j, len, line, ref, wrapper;
   options = this.<span class="apidocCodeKeywordSpan">_initOptions</span>(x, y, options);
-  text = &#x27;&#x27; + text;
+  text = '' + text;
   if (options.wordSpacing) {
-    text = text.replace(/\s{2,}/g, &#x27; &#x27;);
+    text = text.replace(/\s{2,}/g, ' ');
   }
   if (options.width) {
     wrapper = this._wrapper;
@@ -7703,22 +7695,22 @@ _text: function(text, x, y, options, lineCallback) {
     <li>description and source-code<pre class="apidocCodePre">_text = function (text, x, y, options, lineCallback) {
   var j, len, line, ref, wrapper;
   options = this._initOptions(x, y, options);
-  text = &#x27;&#x27; + text;
+  text = '' + text;
   if (options.wordSpacing) {
-    text = text.replace(/\s{2,}/g, &#x27; &#x27;);
+    text = text.replace(/\s{2,}/g, ' ');
   }
   if (options.width) {
     wrapper = this._wrapper;
     if (!wrapper) {
       wrapper = new LineWrapper(this, options);
-      wrapper.on(&#x27;line&#x27;, lineCallback);
+      wrapper.on('line', lineCallback);
     }
     this._wrapper = options.continued ? wrapper : null;
     this._textOptions = options.continued ? options : null;
     wrapper.wrap(text, options);
   } else {
-    ref = text.split(&#x27;\n&#x27;);
-    for (j = 0, len = ref.length; j &#x3c; len; j++) {
+    ref = text.split('\n');
+    for (j = 0, len = ref.length; j &lt; len; j++) {
       line = ref[j];
       lineCallback(line, options);
     }
@@ -7830,7 +7822,7 @@ widthOfString: function(string, options) {
   flatten = function(list) {
     var i, item, j, len, results;
     results = [];
-    for (i = j = 0, len = list.length; j &#x3c; len; i = ++j) {
+    for (i = j = 0, len = list.length; j &lt; len; i = ++j) {
       item = list[i];
       if (Array.isArray(item)) {
         level++;
@@ -7845,10 +7837,10 @@ widthOfString: function(string, options) {
   };
   flatten(list);
   wrapper = new LineWrapper(this, options);
-  wrapper.on(&#x27;line&#x27;, this._line.bind(this));
+  wrapper.on('line', this._line.bind(this));
   level = 1;
   i = 0;
-  wrapper.on(&#x27;firstLine&#x27;, (function(_this) {
+  wrapper.on('firstLine', (function(_this) {
     return function() {
       var diff, l;
       if ((l = levels[i++]) !== level) {
@@ -7861,7 +7853,7 @@ widthOfString: function(string, options) {
       return _this.fill();
     };
   })(this));
-  wrapper.on(&#x27;sectionStart&#x27;, (function(_this) {
+  wrapper.on('sectionStart', (function(_this) {
     return function() {
       var pos;
       pos = indent + itemIndent * (level - 1);
@@ -7869,7 +7861,7 @@ widthOfString: function(string, options) {
       return wrapper.lineWidth -= pos;
     };
   })(this));
-  wrapper.on(&#x27;sectionEnd&#x27;, (function(_this) {
+  wrapper.on('sectionEnd', (function(_this) {
     return function() {
       var pos;
       pos = indent + itemIndent * (level - 1);
@@ -7877,7 +7869,7 @@ widthOfString: function(string, options) {
       return wrapper.lineWidth += pos;
     };
   })(this));
-  wrapper.wrap(items.join(&#x27;\n&#x27;), options);
+  wrapper.wrap(items.join('\n'), options);
   return this;
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -7973,9 +7965,9 @@ LineWrapper.prototype.eachWord = function(text, fn) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">_windingRule = function (rule) {
   if (/even-?odd/.test(rule)) {
-    return &#x27;*&#x27;;
+    return '*';
   }
-  return &#x27;&#x27;;
+  return '';
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   if (/(even-?odd)|(non-?zero)/.test(color)) {
@@ -7985,13 +7977,13 @@ LineWrapper.prototype.eachWord = function(text, fn) {
   if (color) {
     this.fillColor(color);
   }
-  return this.addContent(&#x27;f&#x27; + this.<span class="apidocCodeKeywordSpan">_windingRule</span>(rule));
+  return this.addContent('f' + this.<span class="apidocCodeKeywordSpan">_windingRule</span>(rule));
 },
 stroke: function(color) {
   if (color) {
     this.strokeColor(color);
   }
-  return this.addContent(&#x27;S&#x27;);
+  return this.addContent('S');
 },
 ...</pre></li>
     </ul>
@@ -8006,7 +7998,7 @@ stroke: function(color) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">bezierCurveTo = function (cp1x, cp1y, cp2x, cp2y, x, y) {
-  return this.addContent(cp1x + &#x22; &#x22; + cp1y + &#x22; &#x22; + cp2x + &#x22; &#x22; + cp2y + &#x22; &#x22; + x + &#x22; &#x22; + y + &#x22; c&#x22;);
+  return this.addContent(cp1x + " " + cp1y + " " + cp2x + " " + cp2y + " " + x + " " + y + " c");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   cx = a[4];
@@ -8051,7 +8043,7 @@ S: function(doc, a) {
     return _this.fill();
   };
 })(this));
-wrapper.on(&#x27;sectionStart&#x27;, (function(_this) {
+wrapper.on('sectionStart', (function(_this) {
   return function() {
     var pos;
     pos = indent + itemIndent * (level - 1);
@@ -8068,7 +8060,7 @@ wrapper.on(&#x27;sectionStart&#x27;, (function(_this) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">clip = function (rule) {
-  return this.addContent(&#x27;W&#x27; + this._windingRule(rule) + &#x27; n&#x27;);
+  return this.addContent('W' + this._windingRule(rule) + ' n');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8083,7 +8075,7 @@ wrapper.on(&#x27;sectionStart&#x27;, (function(_this) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">closePath = function () {
-  return this.addContent(&#x27;h&#x27;);
+  return this.addContent('h');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 },
@@ -8123,7 +8115,7 @@ z: function(doc) {
   }
   space = (ref = options.space) != null ? ref : length;
   phase = options.phase || 0;
-  return this.addContent(&#x22;[&#x22; + length + &#x22; &#x22; + space + &#x22;] &#x22; + phase + &#x22; d&#x22;);
+  return this.addContent("[" + length + " " + space + "] " + phase + " d");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8169,9 +8161,9 @@ circle: function(x, y, radius) {
 },
 polygon: function() {
   var i, len, point, points;
-  points = 1 &#x3c;= arguments.length ? slice.call(arguments, 0) : [];
+  points = 1 &lt;= arguments.length ? slice.call(arguments, 0) : [];
   this.moveTo.apply(this, points.shift());
-  for (i = 0, len = points.length; i &#x3c; len; i++) {
+  for (i = 0, len = points.length; i &lt; len; i++) {
     point = points[i];
 ...</pre></li>
     </ul>
@@ -8193,23 +8185,23 @@ polygon: function() {
   if (color) {
     this.fillColor(color);
   }
-  return this.addContent(&#x27;f&#x27; + this._windingRule(rule));
+  return this.addContent('f' + this._windingRule(rule));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 
 # Draw a triangle
 doc.save()
 .moveTo(100, 150)
 .lineTo(100, 250)
 .lineTo(200, 250)
-.<span class="apidocCodeKeywordSpan">fill</span>(&#x22;#FF3300&#x22;)
+.<span class="apidocCodeKeywordSpan">fill</span>("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
-.path(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-.fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+.path('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
 .restore()
 ...</pre></li>
     </ul>
@@ -8241,7 +8233,7 @@ doc.scale(0.6)
     this.fillColor(fillColor);
     this.strokeColor(strokeColor);
   }
-  return this.addContent(&#x27;B&#x27; + this._windingRule(rule));
+  return this.addContent('B' + this._windingRule(rule));
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8272,10 +8264,10 @@ doc.scale(0.6)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lineCap = function (c) {
-  if (typeof c === &#x27;string&#x27;) {
+  if (typeof c === 'string') {
     c = this._CAP_STYLES[c.toUpperCase()];
   }
-  return this.addContent(c + &#x22; J&#x22;);
+  return this.addContent(c + " J");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8290,10 +8282,10 @@ doc.scale(0.6)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lineJoin = function (j) {
-  if (typeof j === &#x27;string&#x27;) {
+  if (typeof j === 'string') {
     j = this._JOIN_STYLES[j.toUpperCase()];
   }
-  return this.addContent(j + &#x22; j&#x22;);
+  return this.addContent(j + " j");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8308,24 +8300,24 @@ doc.scale(0.6)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lineTo = function (x, y) {
-  return this.addContent(x + &#x22; &#x22; + y + &#x22; l&#x22;);
+  return this.addContent(x + " " + y + " l");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 doc.addPage()
 .fontSize(25)
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 
 # Draw a triangle
 doc.save()
 .moveTo(100, 150)
 .<span class="apidocCodeKeywordSpan">lineTo</span>(100, 250)
 .lineTo(200, 250)
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
-.path(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
+.path('M 250,75 L 323,301 131,161 369,161 177,301 z')
 ...</pre></li>
     </ul>
 
@@ -8339,7 +8331,7 @@ doc.scale(0.6)
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">lineWidth = function (w) {
-  return this.addContent(w + &#x22; w&#x22;);
+  return this.addContent(w + " w");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 }
@@ -8348,7 +8340,7 @@ if (options.underline || options.strike) {
   if (!options.stroke) {
     this.strokeColor.apply(this, this._fillColor);
   }
-  lineWidth = this._fontSize &#x3c; 10 ? 0.5 : Math.floor(this._fontSize / 10);
+  lineWidth = this._fontSize &lt; 10 ? 0.5 : Math.floor(this._fontSize / 10);
   this.<span class="apidocCodeKeywordSpan">lineWidth</span>(lineWidth);
   d = options.underline ? 1 : 2;
   lineY = y + this.currentLineHeight() / d;
@@ -8370,7 +8362,7 @@ if (options.underline || options.strike) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">miterLimit = function (m) {
-  return this.addContent(m + &#x22; M&#x22;);
+  return this.addContent(m + " M");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8385,22 +8377,22 @@ if (options.underline || options.strike) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">moveTo = function (x, y) {
-  return this.addContent(x + &#x22; &#x22; + y + &#x22; m&#x22;);
+  return this.addContent(x + " " + y + " m");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 # Add another page
 doc.addPage()
 .fontSize(25)
-.text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+.text('Here is some vector graphics...', 100, 100)
 
 # Draw a triangle
 doc.save()
 .<span class="apidocCodeKeywordSpan">moveTo</span>(100, 150)
 .lineTo(100, 250)
 .lineTo(200, 250)
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
 ...</pre></li>
@@ -8422,19 +8414,19 @@ doc.scale(0.6)
     <li>example usage<pre class="apidocCodePre">...
 .lineTo(100, 250)
 .lineTo(200, 250)
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
-.<span class="apidocCodeKeywordSpan">path</span>(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-.fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+.<span class="apidocCodeKeywordSpan">path</span>('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
 .restore()
 
 # Add some text with annotations
 doc.addPage()
-.fillColor(&#x22;blue&#x22;)
-.text(&#x27;Here is a link!&#x27;, 100, 100)
+.fillColor("blue")
+.text('Here is a link!', 100, 100)
 ...</pre></li>
     </ul>
 
@@ -8449,9 +8441,9 @@ doc.addPage()
     <ul>
     <li>description and source-code<pre class="apidocCodePre">polygon = function () {
   var i, len, point, points;
-  points = 1 &#x3c;= arguments.length ? slice.call(arguments, 0) : [];
+  points = 1 &lt;= arguments.length ? slice.call(arguments, 0) : [];
   this.moveTo.apply(this, points.shift());
-  for (i = 0, len = points.length; i &#x3c; len; i++) {
+  for (i = 0, len = points.length; i &lt; len; i++) {
     point = points[i];
     this.lineTo.apply(this, point);
   }
@@ -8470,7 +8462,7 @@ doc.addPage()
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">quadraticCurveTo = function (cpx, cpy, x, y) {
-  return this.addContent(cpx + &#x22; &#x22; + cpy + &#x22; &#x22; + x + &#x22; &#x22; + y + &#x22; v&#x22;);
+  return this.addContent(cpx + " " + cpy + " " + x + " " + y + " v");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   return cy += a[3];
@@ -8501,7 +8493,7 @@ q: function(doc, a) {
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">rect = function (x, y, w, h) {
-  return this.addContent(x + &#x22; &#x22; + y + &#x22; &#x22; + w + &#x22; &#x22; + h + &#x22; re&#x22;);
+  return this.addContent(x + " " + y + " " + w + " " + h + " re");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8517,24 +8509,24 @@ q: function(doc, a) {
     <ul>
     <li>description and source-code<pre class="apidocCodePre">restore = function () {
   this._ctm = this._ctmStack.pop() || [1, 0, 0, 1, 0, 0];
-  return this.addContent(&#x27;Q&#x27;);
+  return this.addContent('Q');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .translate(470, -380)
-.path(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-.fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+.path('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
 .<span class="apidocCodeKeywordSpan">restore</span>()
 
 # Add some text with annotations
 doc.addPage()
-.fillColor(&#x22;blue&#x22;)
-.text(&#x27;Here is a link!&#x27;, 100, 100)
-.underline(100, 100, 160, 27, color: &#x22;#0000FF&#x22;)
-.link(100, 100, 160, 27, &#x27;http://google.com/&#x27;)
+.fillColor("blue")
+.text('Here is a link!', 100, 100)
+.underline(100, 100, 160, 27, color: "#0000FF")
+.link(100, 100, 160, 27, 'http://google.com/')
 ...</pre></li>
     </ul>
 
@@ -8605,23 +8597,23 @@ doc.addPage()
     <ul>
     <li>description and source-code<pre class="apidocCodePre">save = function () {
   this._ctmStack.push(this._ctm.slice());
-  return this.addContent(&#x27;q&#x27;);
+  return this.addContent('q');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
 
 # Add another page
 doc.addPage()
    .fontSize(25)
-   .text(&#x27;Here is some vector graphics...&#x27;, 100, 100)
+   .text('Here is some vector graphics...', 100, 100)
 
 # Draw a triangle
 doc.<span class="apidocCodeKeywordSpan">save</span>()
    .moveTo(100, 150)
    .lineTo(100, 250)
    .lineTo(200, 250)
-   .fill(&#x22;#FF3300&#x22;)
+   .fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 ...</pre></li>
     </ul>
@@ -8660,13 +8652,13 @@ doc.save()
    .moveTo(100, 150)
    .lineTo(100, 250)
    .lineTo(200, 250)
-   .fill(&#x22;#FF3300&#x22;)
+   .fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.<span class="apidocCodeKeywordSpan">scale</span>(0.6)
    .translate(470, -380)
-   .path(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-   .fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+   .path('M 250,75 L 323,301 131,161 369,161 177,301 z')
+   .fill('red', 'even-odd')
    .restore()
 
 # Add some text with annotations
@@ -8687,7 +8679,7 @@ doc.addPage()
   if (color) {
     this.strokeColor(color);
   }
-  return this.addContent(&#x27;S&#x27;);
+  return this.addContent('S');
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
   d = options.underline ? 1 : 2;
@@ -8731,13 +8723,13 @@ if ((base = this.page.fonts)[name = this._font.id] == null) {
     var i, len, ref, results;
     ref = [m11, m12, m21, m22, dx, dy];
     results = [];
-    for (i = 0, len = ref.length; i &#x3c; len; i++) {
+    for (i = 0, len = ref.length; i &lt; len; i++) {
       v = ref[i];
       results.push(+v.toFixed(5));
     }
     return results;
-  })()).join(&#x27; &#x27;);
-  return this.addContent(values + &#x22; cm&#x22;);
+  })()).join(' ');
+  return this.addContent(values + " cm");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
           y = y + bh - h;
@@ -8748,7 +8740,7 @@ if ((base = this.page.fonts)[name = this._font.id] == null) {
       }
       this.save();
       this.<span class="apidocCodeKeywordSpan">transform</span>(w, 0, 0, -h, x, y + h);
-      this.addContent(&#x22;/&#x22; + image.label + &#x22; Do&#x22;);
+      this.addContent("/" + image.label + " Do");
       this.restore();
       return this;
     }
@@ -8774,18 +8766,18 @@ if ((base = this.page.fonts)[name = this._font.id] == null) {
 .moveTo(100, 150)
 .lineTo(100, 250)
 .lineTo(200, 250)
-.fill(&#x22;#FF3300&#x22;)
+.fill("#FF3300")
 
-# Apply some transforms and render an SVG path with the &#x27;even-odd&#x27; fill rule
+# Apply some transforms and render an SVG path with the 'even-odd' fill rule
 doc.scale(0.6)
 .<span class="apidocCodeKeywordSpan">translate</span>(470, -380)
-.path(&#x27;M 250,75 L 323,301 131,161 369,161 177,301 z&#x27;)
-.fill(&#x27;red&#x27;, &#x27;even-odd&#x27;)
+.path('M 250,75 L 323,301 131,161 369,161 177,301 z')
+.fill('red', 'even-odd')
 .restore()
 
 # Add some text with annotations
 doc.addPage()
-.fillColor(&#x22;blue&#x22;)
+.fillColor("blue")
 ...</pre></li>
     </ul>
 
@@ -8799,7 +8791,7 @@ doc.addPage()
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">undash = function () {
-  return this.addContent(&#x22;[] 0 d&#x22;);
+  return this.addContent("[] 0 d");
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -8817,3 +8809,4 @@ doc.addPage()
     ]
 </div>
 </div>
+</body></html>
