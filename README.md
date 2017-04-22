@@ -21,27 +21,24 @@
 ```json
 
 {
-    "name": "pdfkit",
-    "description": "A PDF generation library for Node.js",
-    "keywords": [
-        "pdf",
-        "pdf writer",
-        "pdf generator",
-        "graphics",
-        "document",
-        "vector"
-    ],
-    "version": "0.8.0",
-    "homepage": "http://pdfkit.org/",
     "author": {
         "name": "Devon Govett",
         "url": "http://badassjs.com/"
     },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/devongovett/pdfkit.git"
+    "browserify": {
+        "transform": [
+            "brfs"
+        ]
     },
-    "bugs": "http://github.com/devongovett/pdfkit/issues",
+    "bugs": {
+        "url": "http://github.com/devongovett/pdfkit/issues"
+    },
+    "dependencies": {
+        "fontkit": "^1.0.0",
+        "linebreak": "~0.1.0",
+        "png-js": ">=0.1.0"
+    },
+    "description": "A PDF generation library for Node.js",
     "devDependencies": {
         "blob-stream": "^0.1.2",
         "brace": "^0.2.1",
@@ -55,24 +52,42 @@
         "jade": "~1.1.5",
         "markdown": "~0.5.0"
     },
-    "dependencies": {
-        "fontkit": "^1.0.0",
-        "linebreak": "~0.1.0",
-        "png-js": ">=0.1.0"
-    },
-    "scripts": {
-        "prepublish": "make js",
-        "postpublish": "make clean"
-    },
-    "main": "js/document",
-    "browserify": {
-        "transform": [
-            "brfs"
-        ]
+    "directories": {},
+    "dist": {
+        "shasum": "0b3f7c0c3b00cc4f7f69e46d85d2a7cbb3818af6",
+        "tarball": "https://registry.npmjs.org/pdfkit/-/pdfkit-0.8.0.tgz"
     },
     "engine": [
         "node >= v0.10.0"
-    ]
+    ],
+    "gitHead": "08ef766c00ee6cb377322f58f5c388aae0bf36bb",
+    "homepage": "http://pdfkit.org/",
+    "keywords": [
+        "pdf",
+        "pdf writer",
+        "pdf generator",
+        "graphics",
+        "document",
+        "vector"
+    ],
+    "main": "js/document",
+    "maintainers": [
+        {
+            "name": "devongovett"
+        }
+    ],
+    "name": "pdfkit",
+    "optionalDependencies": {},
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/devongovett/pdfkit.git"
+    },
+    "scripts": {
+        "postpublish": "make clean",
+        "prepublish": "make js"
+    },
+    "version": "0.8.0",
+    "bin": {}
 }
 ```
 
